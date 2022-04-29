@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of sherlock is to ...
+{sherlock} provides engineers, mostly in industrial/manufacturing settings, powerful graphical and analytical tools to diagnose quality or reliability-related problems.
 
 ## Installation
 
