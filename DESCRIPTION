@@ -1,12 +1,8 @@
-Package: sherlock
+Package: Sherlock
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
-    person(
-    "Gabor", 
-    "Szabo",
-    "gabor.attila.szabo@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+Authors@R:c( 
+    person(given = "Gabor", family = "Szabo", email = "gabor.attila.szabo@gmail.com", role = c("aut", "cre")))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
