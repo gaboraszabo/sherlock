@@ -1,4 +1,4 @@
-#' Draw Multi-Vari Chart
+#' Draw multi-vari plot
 #'
 #' @description
 #' Draws a multi-vari small multiples plot
