@@ -18,13 +18,14 @@
 
 draw_cartesian_small_multiples <- function(data, x, y, grouping_var_1, grouping_var_2, show_axis_values = FALSE, faceted = TRUE) {
 
+  # 1. Tidy Eval ----
   x_expr <- rlang::enquo(x)
   y_expr <- rlang::enquo(y)
   grouping_var_1_expr <- rlang::enquo(grouping_var_1)
   grouping_var_2_expr <- rlang::enquo(grouping_var_2)
   grouping_var_1_2_expr <- rlang::enquos(grouping_var_1, grouping_var_2)
 
-
+  # 2. Calculate Limits ----
   range_tbl <- data %>%
     dplyr::summarize(range_max = range(!!x_expr, !!y_expr)[2],
                      range_min = range(!!x_expr, !!y_expr)[1])
@@ -43,7 +44,7 @@ draw_cartesian_small_multiples <- function(data, x, y, grouping_var_1, grouping_
   x_and_y_limits <- c(-abs_max - limit_scalar, abs_max + limit_scalar)
 
 
-
+  # 3. Convert grouping variables to factor ----
   if (missing(grouping_var_2)) {
     data <- data %>%
       dplyr::mutate(!!grouping_var_1_expr := forcats::as_factor(!!grouping_var_1_expr))
@@ -54,7 +55,7 @@ draw_cartesian_small_multiples <- function(data, x, y, grouping_var_1, grouping_
   }
 
 
-
+  # 4. Plot ----
   plot <- data %>%
 
     ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_1_expr)) +
@@ -81,7 +82,7 @@ draw_cartesian_small_multiples <- function(data, x, y, grouping_var_1, grouping_
                                            "#335F34", "#8E5816", "#624187", "#141B7A"))
 
 
-
+  # 5. Conditionals ----
   if (missing(grouping_var_2)) {
 
     if (faceted) {
