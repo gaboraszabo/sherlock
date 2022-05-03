@@ -82,6 +82,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
         axis.title.y  = ggplot2::element_text(size = 10, color = "grey50"),
         axis.text     = ggplot2::element_text(size = 9, color = "grey50"))
 
+
     if (median_line) plot <- plot + ggplot2::geom_quantile(quantiles = 0.5,
                                                            size = 0.8,
                                                            linetype = "dashed",
@@ -113,7 +114,9 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
         plot.subtitle = ggplot2::element_text(hjust = 0, size = 14, color = "grey50"),
         axis.title.x  = ggplot2::element_text(size = 10, color = "grey50"),
         axis.title.y  = ggplot2::element_text(size = 10, color = "grey50"),
-        axis.text     = ggplot2::element_text(size = 9, color = "grey50")) +
+        axis.text     = ggplot2::element_text(size = 9, color = "grey50"),
+        legend.title  = ggplot2::element_text(color = "grey50", size = 11),
+        legend.text   = ggplot2::element_text(color = "grey50", size = 11)) +
       ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
                                              "#335F34", "#8E5816", "#624187", "#141B7A"))
 
