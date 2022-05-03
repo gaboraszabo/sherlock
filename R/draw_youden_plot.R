@@ -111,7 +111,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
         y        = y_axis_label) +
       ggplot2::theme(
         plot.title    = ggplot2::element_text(hjust = 0.5, size = 18, color = "grey50"),
-        plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 14, color = "grey50"),
+        plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 12, color = "grey50"),
         axis.title.x  = ggplot2::element_text(size = 10, color = "grey50"),
         axis.title.y  = ggplot2::element_text(size = 10, color = "grey50"),
         axis.text     = ggplot2::element_text(size = 9, color = "grey50"),
