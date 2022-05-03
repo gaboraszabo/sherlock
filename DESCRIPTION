@@ -16,7 +16,6 @@ Imports:
     forcats,
     ggplot2,
     dplyr,
-    cowplot,
-    quantreg
+    cowplot
 Suggests: 
     roxygen2
