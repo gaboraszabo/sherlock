@@ -8,9 +8,9 @@ draw_youden_plot(
   data,
   x_axis_var,
   y_axis_var,
+  grouping_var,
   lsl,
   usl,
-  grouping_var,
   median_line = FALSE,
   analysis_desc_label = NULL,
   x_axis_label = "Measurement 1",
@@ -24,11 +24,11 @@ draw_youden_plot(
 
 \item{y_axis_var}{variable to be plotted on x axis (required)}
 
+\item{grouping_var}{grouping variable (optional)}
+
 \item{lsl}{lower specification limit (optional)}
 
 \item{usl}{upper specification limit (optional)}
-
-\item{grouping_var}{grouping variable (optional)}
 
 \item{median_line}{logical. If TRUE, a median bias line is plotted. By default, it is set to FALSE  (optional)}
 
