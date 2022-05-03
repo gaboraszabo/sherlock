@@ -171,7 +171,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
   if (missing(lsl) & missing(usl)) {
     plot
   } else {
-    plot <- plot + ggplot2::geom_rect(aes(xmin = lsl, xmax = usl, ymin = lsl, ymax = usl), color = "#C8102E", fill = NA, size = 0.5)
+    plot <- plot + ggplot2::geom_rect(ggplot2::aes(xmin = lsl, xmax = usl, ymin = lsl, ymax = usl), color = "#C8102E", fill = NA, size = 0.5)
   }
 
 
