@@ -6,9 +6,9 @@
 #' @param data input dataset to be plotted (required)
 #' @param x_axis_var variable to be plotted on x axis (required)
 #' @param y_axis_var variable to be plotted on x axis (required)
+#' @param grouping_var grouping variable (optional)
 #' @param lsl lower specification limit (optional)
 #' @param usl upper specification limit (optional)
-#' @param grouping_var grouping variable (optional)
 #' @param median_line logical. If TRUE, a median bias line is plotted. By default, it is set to FALSE  (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #' @param x_axis_label Label for x axis. By default, it is set to "Measurement 1"  (optional)
@@ -18,8 +18,8 @@
 #'
 #' @export
 
-draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
-                             grouping_var, median_line = FALSE, analysis_desc_label = NULL,
+draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, usl,
+                             median_line = FALSE, analysis_desc_label = NULL,
                              x_axis_label = "Measurement 1", y_axis_label = "Measurement 2") {
 
   # 1. Tidy Eval ----
