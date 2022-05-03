@@ -3,13 +3,16 @@
 #' @description
 #' Draws a Youden Plot
 #'
-#' @param
-#' @param
-#' @param
-#' @param
-#' @param
-#' @param
-#' @param
+#' @param data input dataset to be plotted (required)
+#' @param x_axis_var variable to be plotted on x axis (required)
+#' @param y_axis_var variable to be plotted on x axis (required)
+#' @param lsl lower specification limit (optional)
+#' @param usl upper specification limit (optional)
+#' @param grouping_var grouping variable (optional)
+#' @param median_line logical. If TRUE, a median bias line is plotted. By default, it is set to FALSE  (optional)
+#' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
+#' @param x_axis_label Label for x axis. By default, it is set to "Measurement 1"  (optional)
+#' @param y_axis_label Label for y axis. By default, it is set to "Measurement 2"  (optional)
 #'
 #' @return A ggplot Youden Plot object
 #'
@@ -57,7 +60,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
 
     plot <- data %>%
 
-      ggplot2::ggplot(aes(!!(meas_1_expr), !!(meas_2_expr))) +
+      ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
       ggplot2::geom_point(color  = "#3971CB", alpha  = 0.4, size = 2.5) +
 
       ggplot2::theme_light() +
@@ -90,7 +93,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
 
       dplyr::mutate(!!grouping_var_expr := as_factor(!!grouping_var_expr)) %>%
 
-      ggplot2::ggplot(aes(!!(meas_1_expr), !!(meas_2_expr))) +
+      ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
       ggplot2::geom_point(aes(color = !!(grouping_var_expr)), alpha  = 0.4, size = 2.5) +
 
       ggplot2::theme_light() +
@@ -124,9 +127,9 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
 
       dplyr::mutate(!!grouping_var_expr := as_factor(!!grouping_var_expr)) %>%
 
-      ggplot2::ggplot(aes(!!(meas_1_expr), !!(meas_2_expr))) +
+      ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
       ggplot2::geom_point(aes(color = !!(grouping_var_expr)), alpha  = 0.4, size = 1.5) +
-      ggplot2::facet_wrap(vars(!!grouping_var_expr), ncol = 4) +
+      ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr), ncol = 4) +
 
       ggplot2::theme_light() +
       ggplot2::theme(
