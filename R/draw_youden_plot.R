@@ -128,7 +128,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
       dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr)) %>%
 
       ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
-      ggplot2::geom_point(aes(color = !!(grouping_var_expr)), alpha  = 0.4, size = 1.5) +
+      ggplot2::geom_point(ggplot2::aes(color = !!(grouping_var_expr)), alpha  = 0.4, size = 1.5) +
       ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr), ncol = 4) +
 
       ggplot2::theme_light() +
