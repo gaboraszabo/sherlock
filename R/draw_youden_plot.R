@@ -61,8 +61,8 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
       ggplot2::geom_point(color  = "#3971CB", alpha  = 0.4, size = 2.5) +
 
       ggplot2::theme_light() +
-      ggplot2::theme(panel.grid.major = element_blank(),
-                     panel.grid.minor = element_blank()) +
+      ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
+                     panel.grid.minor = ggplot2::element_blank()) +
       ggplot2::geom_abline(color = "grey") +
       ggplot2::coord_fixed(ratio = 1,
                            xlim  = c(min-limit_scalar, max+limit_scalar),
@@ -73,11 +73,11 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
         x        = x_axis_label,
         y        = y_axis_label) +
       ggplot2::theme(
-        plot.title    = element_text(hjust = 0.5, size = 20, color = "grey30"),
-        plot.subtitle = element_text(hjust = 0.5, size = 14, color = "grey30"),
-        axis.title.x  = element_text(size = 13, color = "grey30"),
-        axis.title.y  = element_text(size = 13, color = "grey30"),
-        axis.text     = element_text(size = 12, color = "grey30"))
+        plot.title    = ggplot2::element_text(hjust = 0.5, size = 20, color = "grey30"),
+        plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 14, color = "grey30"),
+        axis.title.x  = ggplot2::element_text(size = 13, color = "grey30"),
+        axis.title.y  = ggplot2::element_text(size = 13, color = "grey30"),
+        axis.text     = ggplot2::element_text(size = 12, color = "grey30"))
 
     if (median_line) plot <- plot + ggplot2::geom_quantile(quantiles = 0.5,
                                                            size = 0.8,
@@ -94,8 +94,8 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
       ggplot2::geom_point(aes(color = !!(grouping_var_expr)), alpha  = 0.4, size = 2.5) +
 
       ggplot2::theme_light() +
-      ggplot2::theme(panel.grid.major = element_blank(),
-                     panel.grid.minor = element_blank()) +
+      ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
+                     panel.grid.minor = ggplot2::element_blank()) +
       ggplot2::geom_abline(color = "grey") +
       ggplot2::coord_fixed(ratio = 1,
                            xlim  = c(min-limit_scalar, max+limit_scalar),
@@ -106,11 +106,11 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
         x        = x_axis_label,
         y        = y_axis_label) +
       ggplot2::theme(
-        plot.title    = element_text(hjust = 0.5, size = 20, color = "grey30"),
-        plot.subtitle = element_text(hjust = 0.5, size = 14, color = "grey30"),
-        axis.title.x  = element_text(size = 13, color = "grey30"),
-        axis.title.y  = element_text(size = 13, color = "grey30"),
-        axis.text     = element_text(size = 12, color = "grey30")) +
+        plot.title    = ggplot2::element_text(hjust = 0.5, size = 20, color = "grey30"),
+        plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 14, color = "grey30"),
+        axis.title.x  = ggplot2::element_text(size = 13, color = "grey30"),
+        axis.title.y  = ggplot2::element_text(size = 13, color = "grey30"),
+        axis.text     = ggplot2::element_text(size = 12, color = "grey30")) +
       ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
                                              "#335F34", "#8E5816", "#624187", "#141B7A"))
 
@@ -130,8 +130,8 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
 
       ggplot2::theme_light() +
       ggplot2::theme(
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank()) +
+        panel.grid.major = ggplot2::element_blank(),
+        panel.grid.minor = ggplot2::element_blank()) +
       ggplot2::geom_abline(color = "grey") +
       ggplot2::coord_fixed(
         ratio = 1,
@@ -141,12 +141,12 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, lsl, usl,
         x        = x_axis_label,
         y        = y_axis_label) +
       ggplot2::theme(
-        axis.title.x  = element_text(size = 10, color = "grey30"),
-        axis.title.y  = element_text(size = 10, color = "grey30"),
-        axis.text     = element_text(size = 8, color = "grey30"),
+        axis.title.x  = ggplot2::element_text(size = 10, color = "grey30"),
+        axis.title.y  = ggplot2::element_text(size = 10, color = "grey30"),
+        axis.text     = ggplot2::element_text(size = 8, color = "grey30"),
         legend.position  = "none",
-        strip.background = element_rect(fill = "#FFFFFF", color = "grey"),
-        strip.text       = element_text(size = 10, color = "grey30")) +
+        strip.background = ggplot2::element_rect(fill = "#FFFFFF", color = "grey"),
+        strip.text       = ggplot2::element_text(size = 10, color = "grey30")) +
       ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
                                              "#335F34", "#8E5816", "#624187", "#141B7A"))
 
