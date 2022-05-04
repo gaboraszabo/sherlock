@@ -61,7 +61,7 @@ draw_cartesian_small_multiples <- function(data, x, y, grouping_var_1, grouping_
     ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_1_expr)) +
     ggplot2::geom_hline(yintercept = 0, color = "grey70") +
     ggplot2::geom_vline(xintercept = 0, color = "grey70") +
-    ggplot2::geom_point(size = 2, alpha  = 0.4) +
+    ggplot2::geom_point(size = 2, alpha  = 0.5) +
     ggplot2::coord_fixed(
       ratio = 1,
       xlim = x_and_y_limits,
