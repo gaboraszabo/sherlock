@@ -4,8 +4,8 @@
 #' Draws a cartesian small multiples plot
 #'
 #' @param data input dataset to be plotted (required)
-#' @param x x coordinate values (required)
-#' @param y y coordinate values (required)
+#' @param x_coord x coordinate values (required)
+#' @param y_coord y coordinate values (required)
 #' @param grouping_var_1 Grouping variable 1 (required)
 #' @param grouping_var_2 Grouping variable 2 (optional)
 #' @param show_axis_values logical. if FALSE, default, axis values are not shown (optional)
@@ -16,11 +16,11 @@
 #' @export
 
 
-draw_cartesian_small_multiples <- function(data, x, y, grouping_var_1, grouping_var_2, show_axis_values = FALSE, faceted = TRUE) {
+draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, show_axis_values = FALSE, faceted = TRUE) {
 
   # 1. Tidy Eval ----
-  x_expr <- rlang::enquo(x)
-  y_expr <- rlang::enquo(y)
+  x_expr <- rlang::enquo(x_coord)
+  y_expr <- rlang::enquo(y_coord)
   grouping_var_1_expr <- rlang::enquo(grouping_var_1)
   grouping_var_2_expr <- rlang::enquo(grouping_var_2)
   grouping_var_1_2_expr <- rlang::enquos(grouping_var_1, grouping_var_2)
