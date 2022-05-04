@@ -16,7 +16,8 @@
 #' @export
 
 
-draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, show_axis_values = FALSE, faceted = TRUE) {
+draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2,
+                                           show_axis_values = FALSE, faceted = TRUE) {
 
   # 1. Tidy Eval ----
   x_expr <- rlang::enquo(x_coord)
