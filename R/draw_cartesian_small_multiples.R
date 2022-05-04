@@ -27,14 +27,14 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
 
   # 2. Calculate Limits ----
   range_tbl <- data %>%
-    dplyr::summarize(range_max = range(!!x_expr, !!y_expr)[2],
-                     range_min = range(!!x_expr, !!y_expr)[1])
+    dplyr::summarize(range_max_2 = range(!!x_expr, !!y_expr)[2],
+                     range_min_2 = range(!!x_expr, !!y_expr)[1])
 
   min <- range_tbl %>%
-    dplyr::pull(range_min)
+    dplyr::pull(range_min_2)
 
   max <- range_tbl %>%
-    dplyr::pull(range_max)
+    dplyr::pull(range_max_2)
 
   range_vector <- abs(max - min)
   limit_scalar <- abs(range_vector / 20)
