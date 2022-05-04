@@ -6,8 +6,8 @@
 \usage{
 draw_cartesian_small_multiples(
   data,
-  x,
-  y,
+  x_coord,
+  y_coord,
   grouping_var_1,
   grouping_var_2,
   show_axis_values = FALSE,
@@ -17,9 +17,9 @@ draw_cartesian_small_multiples(
 \arguments{
 \item{data}{input dataset to be plotted (required)}
 
-\item{x}{x coordinate values (required)}
+\item{x_coord}{x coordinate values (required)}
 
-\item{y}{y coordinate values (required)}
+\item{y_coord}{y coordinate values (required)}
 
 \item{grouping_var_1}{Grouping variable 1 (required)}
 
