@@ -4,7 +4,6 @@
 #' Set color scheme to one of the Sherlock color palettes
 #'
 #' @param palette color palette to be used (required)
-
 #'
 #' @return Plot color scheme uses one of the Sherlock color palettes
 #'
