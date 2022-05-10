@@ -16,6 +16,13 @@
 #'
 #' @return A ggplot Youden Plot object
 #'
+#' @examples
+#' library(tidyverse)
+#'
+#' youden_plot_data %>%
+#'     draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, grouping_var = location)
+#'
+#'
 #' @export
 
 draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, usl,
