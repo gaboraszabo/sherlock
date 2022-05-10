@@ -44,3 +44,11 @@ A ggplot Youden Plot object
 \description{
 Draws a Youden Plot
 }
+\examples{
+library(tidyverse)
+
+youden_plot_data \%>\%
+    draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, grouping_var = location)
+
+
+}
