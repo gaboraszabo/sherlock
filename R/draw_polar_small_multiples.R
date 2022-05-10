@@ -1,3 +1,5 @@
+#' Draw Polar Small Multiples
+#'
 #' @description
 #' Draws a Polar Small Multiple Plot
 #'
