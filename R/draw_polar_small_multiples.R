@@ -54,7 +54,7 @@ draw_polar_small_multiples <- function(data, x, y, grouping_var, connect_with_li
                                            "#335F34", "#8E5816", "#624187", "#141B7A"))
 
   if (connect_with_lines) {
-    plot <- plot + ggplot2::geom_line()
+    plot <- plot + ggplot2::geom_line(alpha = 0.4)
   }
 
   return(plot)
