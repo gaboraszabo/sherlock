@@ -27,7 +27,8 @@ draw_polar_small_multiples <- function(data, x, y, grouping_var, connect_with_li
     ggplot2::geom_point() +
     ggplot2::coord_polar(theta = "x") +
     ggplot2::scale_x_continuous(breaks = c(0, 90, 180, 270),
-                                limits = c(0, 360)) +
+                                limits = c(0, 360),
+                                labels = scales::number_format(suffix = "\u00b0")) +
     ggplot2::scale_y_continuous(limits = c(0, NA)) +
     ggplot2::theme_light() +
     ggplot2::theme(
