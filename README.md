@@ -21,6 +21,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(sherlock)
-## basic example code
+
+youden_plot_data %>%
+    draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, grouping_var = location)
 ```
 
