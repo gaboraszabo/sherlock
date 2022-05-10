@@ -43,7 +43,15 @@ draw_polar_small_multiples <- function(data, x, y, grouping_var, connect_with_li
       legend.text      = ggplot2::element_text(color = "grey50", size = 11),
       plot.title       = ggplot2::element_text(color = "grey50", size = 14, hjust = 0),
       plot.subtitle    = ggplot2::element_text(color = "grey50", size = 11, hjust = 0),
-      plot.caption     = ggplot2::element_text(color = "grey50", size = 8))
+      plot.caption     = ggplot2::element_text(color = "grey50", size = 8)) +
+    ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
+                                           "#335F34", "#8E5816", "#624187", "#141B7A",
+                                           "#3971CB", "#D76213", "#111111", "#9A0000",
+                                           "#335F34", "#8E5816", "#624187", "#141B7A",
+                                           "#3971CB", "#D76213", "#111111", "#9A0000",
+                                           "#335F34", "#8E5816", "#624187", "#141B7A",
+                                           "#3971CB", "#D76213", "#111111", "#9A0000",
+                                           "#335F34", "#8E5816", "#624187", "#141B7A"))
 
   if (connect_with_lines) {
     plot <- plot + ggplot2::geom_line()
