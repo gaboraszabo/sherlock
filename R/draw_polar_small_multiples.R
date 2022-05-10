@@ -24,7 +24,7 @@ draw_polar_small_multiples <- function(data, x, y, grouping_var, connect_with_li
     dplyr::mutate(!! grouping_var_expr := forcats::as_factor(!! grouping_var_expr)) %>%
 
     ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_expr)) +
-    ggplot2::geom_point() +
+    ggplot2::geom_point(alpha = 0.4) +
     ggplot2::coord_polar(theta = "x") +
     ggplot2::scale_x_continuous(breaks = c(0, 90, 180, 270),
                                 limits = c(0, 360),
