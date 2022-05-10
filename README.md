@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-{sherlock} provides engineers, mostly in industrial/manufacturing settings, powerful graphical and analytical tools to diagnose quality or reliability-related problems.
+{sherlock} provides engineers, mostly in industrial/manufacturing settings, powerful graphical and analytical tools to aid structured problem solving and diagnosis.
 
 ## Installation
 
