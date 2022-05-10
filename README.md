@@ -12,7 +12,7 @@ You can install the development version of sherlock from [GitHub](https://github
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("gaborszabo11/sherlock")
+devtools::install_github("gaboraszabo/sherlock")
 ```
 
 ## Example
