@@ -6,8 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of {sherlock} is to provide powerful graphical displays and
-statistical tools to aid Structured problem solving and diagnosis.
+{sherlock} provides powerful graphical displays and statistical tools to
+aid Structured problem solving and diagnosis.
 
 ## Installation
 
