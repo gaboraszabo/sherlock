@@ -2,7 +2,7 @@
 % Please edit documentation in R/draw_multi_vari_plot.R
 \name{draw_multi_vari_plot}
 \alias{draw_multi_vari_plot}
-\title{Draw multi-vari plot}
+\title{Draw Multi-Vari plot}
 \usage{
 draw_multi_vari_plot(
   data,
@@ -31,4 +31,9 @@ A ggplot multi-vari small multiples object
 }
 \description{
 Draws a multi-vari small multiples plot
+}
+\examples{
+multi_vari_data_2 \%>\%
+    draw_multi_vari_plot(response = Length, factor_1 = Trial, factor_2 = Part, factor_3 = Operator)
+
 }
