@@ -46,7 +46,8 @@ Draws a Youden Plot
 }
 \examples{
 youden_plot_data \%>\%
-    draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, grouping_var = location)
+    draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2,
+                     grouping_var = location)
 
 
 }
