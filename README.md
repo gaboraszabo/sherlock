@@ -56,6 +56,19 @@ youden_plot_data %>%
 
 <img src="man/figures/README-cars-1.png" width="100%" />
 
+Here’s another example
+
+``` r
+library(ggh4x)
+#> Warning: package 'ggh4x' was built under R version 4.1.3
+#> Loading required package: ggplot2
+
+multi_vari_data %>% 
+  draw_multi_vari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
 up-to-date. `devtools::build_readme()` is handy for this. You could also
 use GitHub Actions to re-render `README.Rmd` every time you push. An
