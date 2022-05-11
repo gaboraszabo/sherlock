@@ -7,7 +7,25 @@
 <!-- badges: end -->
 
 {sherlock} provides powerful graphical displays and statistical tools to
-aid Structured problem solving and diagnosis.
+aid Structured problem solving and diagnosis. It is designed to
+seamlessly work with the `tidyverse`.
+
+While the package is currently under development, a few functions are
+already available and ready to be used. Available functions are:
+
+``` r
+# library(sherlock)
+# 
+# # Plotting functions
+# draw_multi_vari_plot()
+# draw_cartesian_small_multiples()
+# draw_polar_small_multiples()
+# draw_youden_plot()
+# 
+# # Helper functions (theme, scale color etc.)
+# theme_sherlock()
+# scale_color_sherlock()
+```
 
 ## Installation
 
@@ -21,7 +39,7 @@ devtools::install_github("gaborszabo11/sherlock")
 
 ## Examples
 
-This is a basic example which shows you how to solve a common problem:
+Here are a few examples :
 
 ``` r
 library(sherlock)
