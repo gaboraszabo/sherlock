@@ -18,7 +18,8 @@ Imports:
     dplyr,
     cowplot,
     scales,
-    ggh4x
+    ggh4x,
+    stringr
 Suggests: 
     roxygen2
 Depends: 
