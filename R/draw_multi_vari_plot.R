@@ -10,7 +10,7 @@
 #' @param factor_3 top level factor (optional)
 #' @param plot_means logical. if FALSE, default, means for mid-level factor are not plotted (optional)
 #'
-#' @return A ggplot multi-vari small multiples object
+#' @return A ggplot multi-vari plot object
 #'
 #' @examples
 #' multi_vari_data_2 %>%

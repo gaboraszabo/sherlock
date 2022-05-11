@@ -1,5 +1,5 @@
 Package: sherlock
-Title: What the Package Does (One Line, Title Case)
+Title: Graphical Displays to Aid Structured Problem Solving and Diagnosis
 Version: 0.0.0.9000
 Authors@R: c( 
     person(given = "Gabor", family = "Szabo", email = "gabor.attila.szabo@gmail.com", role = c("aut", "cre")))
