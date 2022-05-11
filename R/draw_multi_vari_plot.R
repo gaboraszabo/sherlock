@@ -13,6 +13,8 @@
 #' @return A ggplot multi-vari plot object
 #'
 #' @examples
+#' library(ggh4x)
+#'
 #' multi_vari_data_2 %>%
 #'     draw_multi_vari_plot(response = Length, factor_1 = Trial, factor_2 = Part, factor_3 = Operator)
 #'

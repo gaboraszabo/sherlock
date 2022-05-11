@@ -27,12 +27,14 @@ draw_multi_vari_plot(
 \item{plot_means}{logical. if FALSE, default, means for mid-level factor are not plotted (optional)}
 }
 \value{
-A ggplot multi-vari small multiples object
+A ggplot multi-vari plot object
 }
 \description{
 Draws a multi-vari small multiples plot
 }
 \examples{
+library(ggh4x)
+
 multi_vari_data_2 \%>\%
     draw_multi_vari_plot(response = Length, factor_1 = Trial, factor_2 = Part, factor_3 = Operator)
 
