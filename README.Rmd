@@ -56,18 +56,21 @@ library(sherlock)
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
-```{r cars}
-youden_plot_data %>% 
-  draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, grouping_var = location, x_axis_label = "Trial 1", y_axis_label = "Trial 2")
-```
-
-Here's another example
 ```{r}
 library(ggh4x)
 
 multi_vari_data %>% 
   draw_multi_vari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 ```
+
+
+Here's another example:
+```{r}
+youden_plot_data %>% 
+  draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, grouping_var = location, x_axis_label = "Trial 1", y_axis_label = "Trial 2")
+```
+
+
 
 
 
