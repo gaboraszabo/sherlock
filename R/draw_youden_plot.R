@@ -61,7 +61,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
   limit_scalar <- abs(range_vector / 6)
 
 
-  # plot ----
+  # 2. Plotting function ----
   if (missing(grouping_var)) {
 
     plot <- data %>%
@@ -124,6 +124,12 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
         legend.title  = ggplot2::element_text(color = "grey50", size = 11),
         legend.text   = ggplot2::element_text(color = "grey50", size = 11)) +
       ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
+                                             "#335F34", "#8E5816", "#624187", "#141B7A",
+                                             "#3971CB", "#D76213", "#111111", "#9A0000",
+                                             "#335F34", "#8E5816", "#624187", "#141B7A",
+                                             "#3971CB", "#D76213", "#111111", "#9A0000",
+                                             "#335F34", "#8E5816", "#624187", "#141B7A",
+                                             "#3971CB", "#D76213", "#111111", "#9A0000",
                                              "#335F34", "#8E5816", "#624187", "#141B7A"))
 
     if (median_line) plot <- plot + ggplot2::geom_quantile(quantiles = 0.5,
@@ -160,6 +166,12 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
         strip.background = ggplot2::element_rect(fill = "#FFFFFF", color = "grey"),
         strip.text       = ggplot2::element_text(size = 10, color = "grey50")) +
       ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
+                                             "#335F34", "#8E5816", "#624187", "#141B7A",
+                                             "#3971CB", "#D76213", "#111111", "#9A0000",
+                                             "#335F34", "#8E5816", "#624187", "#141B7A",
+                                             "#3971CB", "#D76213", "#111111", "#9A0000",
+                                             "#335F34", "#8E5816", "#624187", "#141B7A",
+                                             "#3971CB", "#D76213", "#111111", "#9A0000",
                                              "#335F34", "#8E5816", "#624187", "#141B7A"))
 
     if (median_line) small_plots <- small_plots + ggplot2::geom_quantile(quantiles = 0.5,
