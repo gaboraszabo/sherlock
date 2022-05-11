@@ -1,4 +1,4 @@
-#' Draw multi-vari plot
+#' Draw Multi-Vari plot
 #'
 #' @description
 #' Draws a multi-vari small multiples plot
@@ -11,6 +11,10 @@
 #' @param plot_means logical. if FALSE, default, means for mid-level factor are not plotted (optional)
 #'
 #' @return A ggplot multi-vari small multiples object
+#'
+#' @examples
+#' multi_vari_data_2 %>%
+#'     draw_multi_vari_plot(response = Length, factor_1 = Trial, factor_2 = Part, factor_3 = Operator)
 #'
 #' @export
 
