@@ -18,22 +18,13 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-{sherlock} provides powerful graphical displays and statistical tools to aid Structured problem solving and diagnosis. It is designed to seamlessly work with the `tidyverse`.
+The __{sherlock} R package__ provides powerful graphical displays and statistical tools to aid structured problem solving and diagnosis. It is designed to seamlessly work with the `tidyverse` set of packages.
 
-While the package is currently under development, a few functions are already available and ready to be used. Available functions are:
-```{r}
-# library(sherlock)
-# 
-# # Plotting functions
-# draw_multi_vari_plot()
-# draw_cartesian_small_multiples()
-# draw_polar_small_multiples()
-# draw_youden_plot()
-# 
-# # Helper functions (theme, scale color etc.)
-# theme_sherlock()
-# scale_color_sherlock()
-```
+
+_"That is to say, nature's laws are causal; they reveal themselves by comparison and difference, and they operate at every multi-variate space-time point" - Edward Tufte_
+
+
+
 
 
 ## Installation
@@ -45,18 +36,33 @@ You can install the development version of sherlock from [GitHub](https://github
 devtools::install_github("gaborszabo11/sherlock")
 ```
 
+## Functions
+
+While the package is currently under development, a few functions are already available and ready to be used. Available functions are as follows:
+
+
+#### Plotting functions
+`draw_multi_vari_plot()`
+
+`draw_cartesian_small_multiples()`
+
+`draw_polar_small_multiples()`
+
+`draw_youden_plot()`
+
+#### Helper functions
+`theme_sherlock()`
+
+`scale_color_sherlock()`
+
+
+
 ## Examples
 
 Here are a few examples :
 
 ```{r example}
 library(sherlock)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r}
 library(ggh4x)
 
 multi_vari_data %>% 
@@ -64,22 +70,37 @@ multi_vari_data %>%
 ```
 
 
+
+```{r}
+library(sherlock)
+library(ggh4x)
+
+multi_vari_data_2 %>% 
+  draw_multi_vari_plot(response = Length, factor_1 = Part, factor_2 = Operator, plot_means = TRUE)
+```
+
+
 Here's another example:
+
+
+```{r}
+youden_plot_data_2 %>% 
+  draw_youden_plot(x_axis_var = gage_1, y_axis_var = gage_2, median_line = TRUE, 
+                   x_axis_label = "Gage 1", y_axis_label = "Gage 2")
+```
+
+
 ```{r}
 youden_plot_data %>% 
-  draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, grouping_var = location, x_axis_label = "Trial 1", y_axis_label = "Trial 2")
+  draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, 
+                   grouping_var = location, x_axis_label = "Trial 1", y_axis_label = "Trial 2")
 ```
 
 
 
 
+## References
+Diagnosing Performance and Reliability, David Hartshorne and The New Science of Fixing Things, 2019
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
+Statistical Engineering - An Algorithm for Reducing Variation in Manufacturing Processes, Stefan H. Steiner and Jock MacKay, 2005
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

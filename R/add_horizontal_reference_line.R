@@ -21,15 +21,15 @@
 add_horizontal_reference_line <- function(reference_line, color = "grey", linetype = "dashed") {
 
   if(color == "grey") {
-    ref_line <- ggplot2::geom_hline(yintercept = reference_line, color = "grey50", linetype = linetype, alpha = 0.5)
+    ref_line <- ggplot2::geom_hline(yintercept = reference_line, color = "grey50", linetype = linetype, alpha = 0.5, size = 1)
   }
 
   if(color == "blue") {
-    ref_line <- ggplot2::geom_hline(yintercept = reference_line, color = "#40506e", linetype = linetype, alpha = 0.7)
+    ref_line <- ggplot2::geom_hline(yintercept = reference_line, color = "#40506e", linetype = linetype, alpha = 0.7, size = 1)
   }
 
   if(color == "red") {
-    ref_line <- ggplot2::geom_hline(yintercept = reference_line, color = "#700808", linetype = linetype, alpha = 0.5)
+    ref_line <- ggplot2::geom_hline(yintercept = reference_line, color = "#700808", linetype = linetype, alpha = 0.5, size = 1)
   }
 
   return(ref_line)
