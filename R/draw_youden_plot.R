@@ -23,7 +23,7 @@
 #'
 #' youden_plot_data_2 %>%
 #'     draw_youden_plot(x_axis_var = gage_1, y_axis_var = gage_2, median_line = TRUE,
-#'                      x_axis_label = "Gage 1", y_axis_label = "Gage_2")
+#'                      x_axis_label = "Gage 1", y_axis_label = "Gage 2")
 #'
 #'
 #' @export
