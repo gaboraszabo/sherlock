@@ -80,7 +80,6 @@ multi_vari_data_2 %>%
 ```
 
 
-Here's another example:
 
 
 ```{r}

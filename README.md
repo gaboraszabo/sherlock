@@ -57,8 +57,7 @@ library(ggh4x)
 #> Loading required package: ggplot2
 
 multi_vari_data %>% 
-  draw_multi_vari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line) +
-  add_horizontal_reference_line(c(19, 24))
+  draw_multi_vari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -72,8 +71,6 @@ multi_vari_data_2 %>%
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
-
-Here’s another example:
 
 ``` r
 youden_plot_data_2 %>% 
