@@ -1,4 +1,4 @@
 utils::globalVariables(
   c("range_min", "range_max", "range_min_2", "range_max_2", "measurement_1", "measurement_2", "location", "theme_element",
     "mean_tbl", "multi_vari_tbl", "multi_vari_data_2", "Length", "Trial", "Part", "Operator", "multi_vari_data",
-    "cycle", "fixture", "line", "force"))
+    "cycle", "fixture", "line", "force", "youden_plot_data_2", "gage_1", "gage_2"))

@@ -21,6 +21,10 @@
 #'     draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2,
 #'                      grouping_var = location)
 #'
+#' youden_plot_data_2 %>%
+#'     draw_youden_plot(x_axis_var = gage_1, y_axis_var = gage_2, median_line = TRUE,
+#'                      x_axis_label = "Gage 1", y_axis_label = "Gage_2")
+#'
 #'
 #' @export
 
