@@ -7,7 +7,8 @@
 add_horizontal_reference_line(
   reference_line,
   color = "grey",
-  linetype = "dashed"
+  linetype = "dashed",
+  size = 0.7
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ add_horizontal_reference_line(
 \item{color}{change reference line color. options are "grey", "blue" and "red". by default, it is set to "grey" (optional)}
 
 \item{linetype}{change line type. identical to linetype ggplot2 aesthetic. by default, it is set to "dashed" (optional)}
+
+\item{size}{change line thickness. identical to size ggplot2 aesthetic. by default, it is set to 0.7 (optional)}
 }
 \value{
 A ggplot multi-vari plot object
