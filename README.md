@@ -42,13 +42,15 @@ follows:
 
 #### Helper functions
 
+`normalize_observations()`
+
 `theme_sherlock()`
 
 `scale_color_sherlock()`
 
 ## Examples
 
-Here are a few examples :
+Here are a few examples:
 
 ``` r
 library(sherlock)

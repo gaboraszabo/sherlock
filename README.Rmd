@@ -51,6 +51,8 @@ While the package is currently under development, a few functions are already av
 `draw_youden_plot()`
 
 #### Helper functions
+`normalize_observations()`
+
 `theme_sherlock()`
 
 `scale_color_sherlock()`
@@ -59,7 +61,7 @@ While the package is currently under development, a few functions are already av
 
 ## Examples
 
-Here are a few examples :
+Here are a few examples:
 
 ```{r example}
 library(sherlock)
