@@ -10,7 +10,7 @@
 
 theme_sherlock <- function(axis_text_size = "normal") {
 
-  if(axis_text_size = "normal") {
+  if(axis_text_size == "normal") {
     ggplot2::theme_light() +
       ggplot2::theme(
         panel.grid       = ggplot2::element_blank(),
@@ -29,7 +29,7 @@ theme_sherlock <- function(axis_text_size = "normal") {
   }
 
 
-  if(axis_text_size = "small") {
+  if(axis_text_size == "small") {
 
     ggplot2::theme_light() +
       ggplot2::theme(
