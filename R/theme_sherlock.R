@@ -11,7 +11,7 @@
 theme_sherlock <- function(axis_text_size = "normal") {
 
   if(axis_text_size == "normal") {
-    ggplot2::theme_light() +
+    theme_element <- ggplot2::theme_light() +
       ggplot2::theme(
         panel.grid       = ggplot2::element_blank(),
         strip.background = ggplot2::element_blank(),
@@ -30,8 +30,7 @@ theme_sherlock <- function(axis_text_size = "normal") {
 
 
   if(axis_text_size == "small") {
-
-    ggplot2::theme_light() +
+    theme_element <- ggplot2::theme_light() +
       ggplot2::theme(
         panel.grid       = ggplot2::element_blank(),
         strip.background = ggplot2::element_blank(),
@@ -46,9 +45,8 @@ theme_sherlock <- function(axis_text_size = "normal") {
         plot.title       = ggplot2::element_text(color = "grey50", size = 14, hjust = 0),
         plot.subtitle    = ggplot2::element_text(color = "grey50", size = 11, hjust = 0),
         plot.caption     = ggplot2::element_text(color = "grey50", size = 8))
-
   }
 
-
+  return(theme_element)
 
 }
