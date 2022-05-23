@@ -15,7 +15,7 @@
 #'
 #' multi_vari_data %>%
 #'     draw_multi_vari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line) +
-#'     add_horizontal_reference_line(reference_line = c(19.3, 23.5))
+#'     draw_horizontal_reference_line(reference_line = c(19.3, 23.5))
 #'
 #' @export
 
