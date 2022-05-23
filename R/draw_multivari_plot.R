@@ -1,7 +1,7 @@
-#' Draw Multi-Vari plot
+#' Draw Multivari Plot
 #'
 #' @description
-#' Draws a multi-vari small multiples plot
+#' Draws a multivari small multiples plot
 #'
 #' @param data input dataset to be plotted (required)
 #' @param response response variable, Y (required)
@@ -16,16 +16,16 @@
 #' library(ggh4x)
 #'
 #' multi_vari_data %>%
-#'     draw_multi_vari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
+#'     draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 #'
 #' multi_vari_data_2 %>%
-#'     draw_multi_vari_plot(response = Length, factor_1 = Trial, factor_2 = Part,
+#'     draw_multivari_plot(response = Length, factor_1 = Trial, factor_2 = Part,
 #'                          factor_3 = Operator, plot_means = TRUE)
 #'
 #' @export
 
 
-draw_multi_vari_plot <- function(data, response, factor_1, factor_2, factor_3, plot_means = FALSE) {
+draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, plot_means = FALSE) {
 
   # 1. Tidy Eval ----
   response_expr <- rlang::enquo(response)
@@ -86,7 +86,7 @@ draw_multi_vari_plot <- function(data, response, factor_1, factor_2, factor_3, p
       ggplot2::guides(y.sec = "axis") +
       theme_element +
       ggplot2::labs(
-        title = "Multi-Vari Chart",
+        title = "Multivari Plot",
         subtitle = stringr::str_glue("{as_label(factor_1_expr)} by {as_label(factor_2_expr)}"),
         x = stringr::str_glue("{as_label(factor_1_expr)}"),
         y = stringr::str_glue("{as_label(response_expr)}")
@@ -136,7 +136,7 @@ draw_multi_vari_plot <- function(data, response, factor_1, factor_2, factor_3, p
 
         theme_element +
         ggplot2::labs(
-          title    = "Multi-Vari Chart",
+          title    = "Multivari Plot",
           subtitle = stringr::str_glue("{as_label(factor_1_expr)} by {as_label(factor_2_expr)} by {as_label(factor_3_expr)}"),
           x        = stringr::str_glue("{as_label(factor_2_expr)}"),
           y        = stringr::str_glue("{as_label(response_expr)}"),
@@ -157,7 +157,7 @@ draw_multi_vari_plot <- function(data, response, factor_1, factor_2, factor_3, p
 
         theme_element +
         ggplot2::labs(
-          title    = "Multi-Vari Chart",
+          title    = "Multivari Plot",
           subtitle = stringr::str_glue("{as_label(factor_1_expr)} by {as_label(factor_2_expr)} by {as_label(factor_3_expr)}"),
           x        = stringr::str_glue("{as_label(factor_1_expr)}"),
           y        = stringr::str_glue("{as_label(response_expr)}")

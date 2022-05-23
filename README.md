@@ -32,7 +32,7 @@ follows:
 
 #### Plotting functions
 
-`draw_multi_vari_plot()`
+`draw_multivari_plot()`
 
 `draw_cartesian_small_multiples()`
 
@@ -47,6 +47,8 @@ follows:
 `theme_sherlock()`
 
 `scale_color_sherlock()`
+
+`draw_horizontal_reference_line()`
 
 ## Examples
 
