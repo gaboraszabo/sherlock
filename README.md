@@ -61,7 +61,7 @@ library(ggh4x)
 #> Loading required package: ggplot2
 
 multi_vari_data %>% 
-  draw_multi_vari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
+  draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -71,7 +71,7 @@ library(sherlock)
 library(ggh4x)
 
 multi_vari_data_2 %>% 
-  draw_multi_vari_plot(response = Length, factor_1 = Part, factor_2 = Operator, plot_means = TRUE)
+  draw_multivari_plot(response = Length, factor_1 = Part, factor_2 = Operator, plot_means = TRUE)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
