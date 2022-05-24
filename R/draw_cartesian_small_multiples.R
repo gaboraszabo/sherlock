@@ -78,7 +78,11 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
       axis.title       = ggplot2::element_blank(),
       axis.ticks       = ggplot2::element_blank(),
       legend.title     = ggplot2::element_text(color = "grey50", size = 11),
-      legend.text      = ggplot2::element_text(color = "grey50", size = 11)) +
+      legend.text      = ggplot2::element_text(color = "grey50", size = 11),
+      plot.title    = ggplot2::element_text(hjust = 0.5, size = 16, color = "grey50")) +
+    ggplot2::labs(
+      title = "Cartesian Small Multiples Plot"
+    ) +
     ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
                                            "#335F34", "#8E5816", "#624187", "#141B7A",
                                            "#3971CB", "#D76213", "#111111", "#9A0000",

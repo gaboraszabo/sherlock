@@ -30,7 +30,7 @@ Draws horizontal reference line(s) to plots
 library(ggh4x)
 
 multi_vari_data \%>\%
-    draw_multi_vari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line) +
+    draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line) +
     draw_horizontal_reference_line(reference_line = c(19.3, 23.5))
 
 }
