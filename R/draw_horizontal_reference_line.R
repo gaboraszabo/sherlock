@@ -19,7 +19,7 @@
 #'
 #' @export
 
-draw_horizontal_reference_line <- function(reference_line, color = "grey", linetype = "dashed", size = 0.5) {
+draw_horizontal_reference_line <- function(reference_line, color = "grey", linetype = "dashed", size = 0.7) {
 
   if(color == "grey") {
     ref_line <- ggplot2::geom_hline(yintercept = reference_line, color = "grey50", linetype = linetype, alpha = 0.5, size = size)
