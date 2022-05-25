@@ -8,7 +8,7 @@ draw_horizontal_reference_line(
   reference_line,
   color = "grey",
   linetype = "dashed",
-  size = 0.5
+  size = 0.7
 )
 }
 \arguments{
