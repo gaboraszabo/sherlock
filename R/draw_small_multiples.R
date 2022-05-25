@@ -15,7 +15,7 @@
 #' @export
 
 
-draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, faceting = TRUE, uniqe_color_by_group = TRUE) {
+draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, faceting = TRUE, unique_color_by_group = TRUE) {
 
   x_axis_var_expr <- rlang::enquo(x_axis_var)
   y_axis_var_expr <- rlang::enquo(y_axis_var)
