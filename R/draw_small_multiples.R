@@ -25,27 +25,27 @@ draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, fac
     dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr))
 
 
-  if (faceting && uniqe_color_by_group) {
+  if (faceting && unique_color_by_group) {
     plot <- data %>%
       ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
       ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = 0.4, size = 0.7) +
       ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr))
   }
 
-  if (faceting && !uniqe_color_by_group) {
+  if (faceting && !unique_color_by_group) {
     plot <- data %>%
       ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
       ggplot2::geom_line(color = "grey60", alpha = 0.4, size = 0.7) +
       ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr))
   }
 
-  if (!faceting && uniqe_color_by_group) {
+  if (!faceting && unique_color_by_group) {
     plot <- data %>%
       ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
       ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = 0.4, size = 0.7)
   }
 
-  if (!faceting && !uniqe_color_by_group) {
+  if (!faceting && !unique_color_by_group) {
     plot <- data %>%
       ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
       ggplot2::geom_line(color = "grey60", alpha = 0.4, size = 0.7)

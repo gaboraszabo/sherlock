@@ -10,7 +10,7 @@ draw_small_multiples(
   y_axis_var,
   grouping_var,
   faceting = TRUE,
-  uniqe_color_by_group = TRUE
+  unique_color_by_group = TRUE
 )
 }
 \arguments{
