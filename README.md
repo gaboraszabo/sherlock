@@ -55,11 +55,14 @@ follows:
 Here are a few examples:
 
 ``` r
+# Loading libraries
 library(sherlock)
 library(ggh4x)
 #> Warning: package 'ggh4x' was built under R version 4.1.3
 #> Loading required package: ggplot2
+```
 
+``` r
 multi_vari_data %>% 
   draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 ```
@@ -74,7 +77,7 @@ multi_vari_data_2 %>%
   draw_multivari_plot(response = Length, factor_1 = Part, factor_2 = Operator, plot_means = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 ``` r
 youden_plot_data_2 %>% 
@@ -87,7 +90,7 @@ youden_plot_data_2 %>%
 #> Smoothing formula not specified. Using: y ~ x
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 ``` r
 youden_plot_data %>% 
@@ -95,7 +98,7 @@ youden_plot_data %>%
                    grouping_var = location, x_axis_label = "Trial 1", y_axis_label = "Trial 2")
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 ## References
 

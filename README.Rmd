@@ -64,11 +64,15 @@ While the package is currently under development, a few functions are already av
 ## Examples
 
 Here are a few examples:
-
-```{r example}
+```{r}
+# Loading libraries
 library(sherlock)
 library(ggh4x)
+```
 
+
+
+```{r example}
 multi_vari_data %>% 
   draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 ```
