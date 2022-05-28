@@ -6,8 +6,8 @@
 \usage{
 draw_polar_small_multiples(
   data,
-  x,
-  y,
+  angular_axis,
+  y_coord_axis,
   grouping_var,
   connect_with_lines = FALSE
 )
@@ -15,9 +15,9 @@ draw_polar_small_multiples(
 \arguments{
 \item{data}{input dataset to be plotted (required)}
 
-\item{x}{x coordinate values (required)}
+\item{angular_axis}{angular coordinate values (required)}
 
-\item{y}{y coordinate values (required)}
+\item{y_coord_axis}{y coordinate values (required)}
 
 \item{grouping_var}{grouping variable (required)}
 
