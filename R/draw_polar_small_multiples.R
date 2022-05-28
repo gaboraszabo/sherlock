@@ -4,8 +4,8 @@
 #' Draws a Polar Small Multiple Plot
 #'
 #' @param data input dataset to be plotted (required)
-#' @param x x coordinate values (required)
-#' @param y y coordinate values (required)
+#' @param angular_axis angular coordinate values (required)
+#' @param y_coord_axis y coordinate values (required)
 #' @param grouping_var grouping variable (required)
 #' @param connect_with_lines logical. if FALSE, default, values within each group are not connected with a line (optional)
 #'
@@ -13,10 +13,10 @@
 #' @export
 #'
 
-draw_polar_small_multiples <- function(data, x, y, grouping_var, connect_with_lines = FALSE) {
+draw_polar_small_multiples <- function(data, angular_axis, y_coord_axis, grouping_var, connect_with_lines = FALSE) {
 
-  x_expr            <- rlang::enquo(x)
-  y_expr            <- rlang::enquo(y)
+  x_expr            <- rlang::enquo(angular_axis)
+  y_expr            <- rlang::enquo(y_coord_axis)
   grouping_var_expr <- rlang::enquo(grouping_var)
 
 
