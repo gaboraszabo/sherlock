@@ -7,7 +7,7 @@
 draw_polar_small_multiples(
   data,
   angular_axis,
-  y_coord_axis,
+  x_y_coord_axis,
   grouping_var,
   connect_with_lines = FALSE
 )
@@ -17,7 +17,7 @@ draw_polar_small_multiples(
 
 \item{angular_axis}{angular coordinate values (required)}
 
-\item{y_coord_axis}{y coordinate values (required)}
+\item{x_y_coord_axis}{x-y coordinate values (required)}
 
 \item{grouping_var}{grouping variable (required)}
 
