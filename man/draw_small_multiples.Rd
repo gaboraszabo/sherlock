@@ -6,7 +6,7 @@
 \usage{
 draw_small_multiples(
   data,
-  x_axis_var,
+  x_z_axis_var,
   y_axis_var,
   grouping_var,
   faceting = TRUE,
@@ -16,7 +16,7 @@ draw_small_multiples(
 \arguments{
 \item{data}{input dataset to be plotted (required)}
 
-\item{x_axis_var}{variable to be plotted on x axis (required)}
+\item{x_z_axis_var}{variable to be plotted on x and z axes (required)}
 
 \item{y_axis_var}{variable to be plotted on x axis (required)}
 

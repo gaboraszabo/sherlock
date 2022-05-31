@@ -4,7 +4,7 @@
 #' Draws a Small Multiples Plot
 #'
 #' @param data input dataset to be plotted (required)
-#' @param x_z_axis_var variable to be plotted on x and z axes (required)
+#' @param x_axis_var variable to be plotted on x axis (required)
 #' @param y_axis_var variable to be plotted on x axis (required)
 #' @param grouping_var set grouping variable (required)
 #' @param faceting set whether to display each group in a separate plot. By default, it is set to TRUE (optional)
@@ -15,9 +15,9 @@
 #' @export
 
 
-draw_small_multiples <- function(data, x_z_axis_var, y_axis_var, grouping_var, faceting = TRUE, unique_color_by_group = TRUE) {
+draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, faceting = TRUE, unique_color_by_group = TRUE) {
 
-  x_axis_var_expr <- rlang::enquo(x_z_axis_var)
+  x_axis_var_expr <- rlang::enquo(x_axis_var)
   y_axis_var_expr <- rlang::enquo(y_axis_var)
   grouping_var_expr <- rlang::enquo(grouping_var)
 
