@@ -47,14 +47,7 @@ draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, group
     ggplot2::labs(
       title = "Polar Small Multiples Plot"
     ) +
-    ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A",
-                                           "#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A",
-                                           "#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A",
-                                           "#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A"))
+    sherlock::scale_color_sherlock()
 
   if (connect_with_lines) {
     plot <- plot + ggplot2::geom_line()

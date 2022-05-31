@@ -169,14 +169,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
 
   # 5. Scale color ----
   multi_vari_chart <- multi_vari_chart +
-    ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A",
-                                           "#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A",
-                                           "#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A",
-                                           "#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A"))
+    sherlock::scale_color_sherlock()
 
   return(multi_vari_chart)
 

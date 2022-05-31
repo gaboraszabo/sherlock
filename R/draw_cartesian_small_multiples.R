@@ -83,14 +83,7 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
     ggplot2::labs(
       title = "Cartesian Small Multiples Plot"
     ) +
-    ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A",
-                                           "#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A",
-                                           "#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A",
-                                           "#3971CB", "#D76213", "#111111", "#9A0000",
-                                           "#335F34", "#8E5816", "#624187", "#141B7A"))
+    sherlock::scale_color_sherlock()
 
 
   # 5. Conditionals ----
