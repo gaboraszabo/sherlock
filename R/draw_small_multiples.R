@@ -38,7 +38,7 @@ draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, low
 
 
   # Plotting
-  if (!missing(lowest_highest_units)) {
+  if (missing(lowest_highest_units)) {
 
     if (faceting && unique_color_by_group) {
       plot <- data %>%
@@ -98,10 +98,7 @@ draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, low
   }
 
 
-
-
-
-  # Plot theme ----
+  # Plot theme and color scheme ----
   plot <- plot +
     ggplot2::theme_light() +
     ggplot2::theme(
