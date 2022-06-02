@@ -7,6 +7,7 @@
 #' @param x_axis_var variable to be plotted on x axis (required)
 #' @param y_axis_var variable to be plotted on x axis (required)
 #' @param grouping_var set grouping variable (required)
+#' @param lowest_highest_units takes a vector of strings corresponding to the lowest/ihghest units to be highlighted (optional)
 #' @param faceting set whether to display each group in a separate plot. By default, it is set to TRUE (optional)
 #' @param unique_color_by_group set whether to display each group in a unique color. By default, it is set to TRUE (optional)
 #' @param interactive set plot interactivity. By default, it is set to FALSE (optional)
@@ -16,7 +17,7 @@
 #' @export
 
 
-draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, faceting = TRUE, unique_color_by_group = TRUE,
+draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, lowest_highest_units, faceting = TRUE, unique_color_by_group = TRUE,
                                  interactive = FALSE) {
 
   x_axis_var_expr <- rlang::enquo(x_axis_var)
@@ -27,33 +28,80 @@ draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, fac
     dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr))
 
 
-  if (faceting && unique_color_by_group) {
-    plot <- data %>%
-      ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-      ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = 0.4, size = 0.7) +
-      ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr))
-  }
-
-  if (faceting && !unique_color_by_group) {
-    plot <- data %>%
-      ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-      ggplot2::geom_line(color = "grey60", alpha = 0.4, size = 0.7) +
-      ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr))
-  }
-
-  if (!faceting && unique_color_by_group) {
-    plot <- data %>%
-      ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-      ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = 0.4, size = 0.7)
-  }
-
-  if (!faceting && !unique_color_by_group) {
-    plot <- data %>%
-      ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-      ggplot2::geom_line(color = "grey60", alpha = 0.4, size = 0.7)
+  if (!missing(lowest_highest_units)) {
+    data <- data %>%
+      mutate(color = case_when(!!grouping_var_expr %in% lowest_highest_units ~ "darkblue",
+                               TRUE ~ "grey60")) %>%
+      mutate(size = case_when(!!grouping_var_expr %in% lowest_highest_units ~ 0.7,
+                              TRUE ~ 0.5))
   }
 
 
+  # Plotting
+  if (!missing(lowest_highest_units)) {
+
+    if (faceting && unique_color_by_group) {
+      plot <- data %>%
+        ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
+        ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = 0.4, size = 0.7) +
+        ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr))
+    }
+
+    if (faceting && !unique_color_by_group) {
+      plot <- data %>%
+        ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
+        ggplot2::geom_line(color = "grey60", alpha = 0.4, size = 0.7) +
+        ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr))
+    }
+
+    if (!faceting && unique_color_by_group) {
+      plot <- data %>%
+        ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
+        ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = 0.4, size = 0.7)
+    }
+
+    if (!faceting && !unique_color_by_group) {
+      plot <- data %>%
+        ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
+        ggplot2::geom_line(color = "grey60", alpha = 0.4, size = 0.7)
+    }
+
+  } else {
+
+    if (faceting && unique_color_by_group) {
+      plot <- data %>%
+        ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
+        ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = 0.4, size = data$size) +
+        ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr))
+    }
+
+    if (faceting && !unique_color_by_group) {
+      plot <- data %>%
+        ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
+        ggplot2::geom_line(color = data$color, alpha = 0.4, size = data$size) +
+        ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr))
+    }
+
+    if (!faceting && unique_color_by_group) {
+      plot <- data %>%
+        ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
+        ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = 0.4, size = data$size)
+    }
+
+    if (!faceting && !unique_color_by_group) {
+      plot <- data %>%
+        ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
+        ggplot2::geom_line(color = data$color, alpha = 0.4, size = data$size)
+
+    }
+
+  }
+
+
+
+
+
+  # Plot theme ----
   plot <- plot +
     ggplot2::theme_light() +
     ggplot2::theme(

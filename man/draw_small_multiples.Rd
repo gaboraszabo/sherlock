@@ -10,7 +10,8 @@ draw_small_multiples(
   y_axis_var,
   grouping_var,
   faceting = TRUE,
-  unique_color_by_group = TRUE
+  unique_color_by_group = TRUE,
+  interactive = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ draw_small_multiples(
 \item{faceting}{set whether to display each group in a separate plot. By default, it is set to TRUE (optional)}
 
 \item{unique_color_by_group}{set whether to display each group in a unique color. By default, it is set to TRUE (optional)}
+
+\item{interactive}{set plot interactivity. By default, it is set to FALSE (optional)}
 }
 \value{
 A ggplot Small Multiples object
