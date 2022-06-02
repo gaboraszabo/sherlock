@@ -9,13 +9,15 @@
 #' @param grouping_var set grouping variable (required)
 #' @param faceting set whether to display each group in a separate plot. By default, it is set to TRUE (optional)
 #' @param unique_color_by_group set whether to display each group in a unique color. By default, it is set to TRUE (optional)
+#' @param interactive set plot interactivity. By default, it is set to FALSE (optional)
 #'
 #' @return A ggplot Small Multiples object
 #'
 #' @export
 
 
-draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, faceting = TRUE, unique_color_by_group = TRUE) {
+draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, faceting = TRUE, unique_color_by_group = TRUE,
+                                 interactive = FALSE) {
 
   x_axis_var_expr <- rlang::enquo(x_axis_var)
   y_axis_var_expr <- rlang::enquo(y_axis_var)
@@ -70,6 +72,12 @@ draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, fac
       title = "Small Multiples Plot"
     ) +
   sherlock::scale_color_sherlock()
+
+
+  if (interactive) {
+    plot <- plotly::ggplotly(plot)
+  }
+
 
   return(plot)
 

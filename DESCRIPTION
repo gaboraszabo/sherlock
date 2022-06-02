@@ -19,7 +19,8 @@ Imports:
     cowplot,
     scales,
     ggh4x,
-    stringr
+    stringr,
+    plotly
 Suggests: 
     roxygen2
 Depends: 
