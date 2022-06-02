@@ -9,6 +9,7 @@ draw_small_multiples(
   x_axis_var,
   y_axis_var,
   grouping_var,
+  lowest_highest_units,
   faceting = TRUE,
   unique_color_by_group = TRUE,
   interactive = FALSE
@@ -22,6 +23,8 @@ draw_small_multiples(
 \item{y_axis_var}{variable to be plotted on x axis (required)}
 
 \item{grouping_var}{set grouping variable (required)}
+
+\item{lowest_highest_units}{takes a vector of strings corresponding to the lowest/ihghest units to be highlighted (optional)}
 
 \item{faceting}{set whether to display each group in a separate plot. By default, it is set to TRUE (optional)}
 

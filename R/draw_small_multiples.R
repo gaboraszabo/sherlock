@@ -30,9 +30,9 @@ draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, low
 
   if (!missing(lowest_highest_units)) {
     data <- data %>%
-      mutate(color = case_when(!!grouping_var_expr %in% lowest_highest_units ~ "darkblue",
+      dplyr::mutate(color = dplyr::case_when(!!grouping_var_expr %in% lowest_highest_units ~ "darkblue",
                                TRUE ~ "grey60")) %>%
-      mutate(size = case_when(!!grouping_var_expr %in% lowest_highest_units ~ 0.7,
+      dplyr::mutate(size = dplyr::case_when(!!grouping_var_expr %in% lowest_highest_units ~ 0.7,
                               TRUE ~ 0.5))
   }
 
