@@ -9,7 +9,7 @@
 #' @param grouping_var set grouping variable (required)
 #' @param lowest_highest_units takes a vector of strings corresponding to the lowest/ihghest units to be highlighted (optional)
 #' @param faceting set whether to display each group in a separate plot. By default, it is set to TRUE (optional)
-#' @param unique_color_by_group set whether to display each group in a unique color. By default, it is set to TRUE (optional)
+#' @param unique_color_by_group set whether to display each group in a unique color. By default, it is set to FALSE (optional)
 #' @param interactive set plot interactivity. By default, it is set to FALSE (optional)
 #'
 #' @return A ggplot Small Multiples object
@@ -17,8 +17,8 @@
 #' @export
 
 
-draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, lowest_highest_units, faceting = TRUE, unique_color_by_group = TRUE,
-                                 interactive = FALSE) {
+draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, lowest_highest_units, faceting = TRUE,
+                                 unique_color_by_group = FALSE, interactive = FALSE) {
 
   x_axis_var_expr <- rlang::enquo(x_axis_var)
   y_axis_var_expr <- rlang::enquo(y_axis_var)
