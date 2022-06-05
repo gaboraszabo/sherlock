@@ -11,7 +11,7 @@ draw_small_multiples(
   grouping_var,
   lowest_highest_units,
   faceting = TRUE,
-  unique_color_by_group = TRUE,
+  unique_color_by_group = FALSE,
   interactive = FALSE
 )
 }
@@ -28,7 +28,7 @@ draw_small_multiples(
 
 \item{faceting}{set whether to display each group in a separate plot. By default, it is set to TRUE (optional)}
 
-\item{unique_color_by_group}{set whether to display each group in a unique color. By default, it is set to TRUE (optional)}
+\item{unique_color_by_group}{set whether to display each group in a unique color. By default, it is set to FALSE (optional)}
 
 \item{interactive}{set plot interactivity. By default, it is set to FALSE (optional)}
 }
