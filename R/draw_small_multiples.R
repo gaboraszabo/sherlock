@@ -7,8 +7,8 @@
 #' @param x_axis_var variable to be plotted on x axis (required)
 #' @param y_axis_var variable to be plotted on x axis (required)
 #' @param grouping_var set grouping variable (required)
-#' @param lowest_highest_units takes a vector of strings corresponding to the lowest/ihghest units to be highlighted (optional)
-#' @param faceting set whether to display each group in a separate plot. By default, it is set to TRUE (optional)
+#' @param lowest_highest_units takes a vector of strings corresponding to the lowest/highest units to be highlighted (optional)
+#' @param faceting set whether to display each group in a separate plot. By default, it is set to FALSE (optional)
 #' @param unique_color_by_group set whether to display each group in a unique color. By default, it is set to FALSE (optional)
 #' @param interactive set plot interactivity. By default, it is set to FALSE (optional)
 #'
