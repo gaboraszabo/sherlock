@@ -1,4 +1,4 @@
-#' Read File
+#' Read Table
 #'
 #' @description
 #' Reads either an .xlsx or a .csv file into a table
@@ -10,7 +10,7 @@
 #'
 #' @export
 
-read_file <- function(path, filetype = ".xlsx") {
+read_table <- function(path, filetype = ".xlsx") {
 
   if (filetype == ".xlsx") {
     data <- openxlsx::read.xlsx(xlsxFile = path) %>% dplyr::as_tibble()
@@ -21,7 +21,7 @@ read_file <- function(path, filetype = ".xlsx") {
   }
 
 
-  if (filetype != ".xlsx" || filetype != ".csv") {
+  if (filetype != ".xlsx" | filetype != ".csv") {
     warning("Wrong filetype entered. You need to enter either '.xlsx' or '.csv'.")
   }
 
