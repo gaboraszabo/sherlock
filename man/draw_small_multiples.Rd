@@ -24,9 +24,9 @@ draw_small_multiples(
 
 \item{grouping_var}{set grouping variable (required)}
 
-\item{lowest_highest_units}{takes a vector of strings corresponding to the lowest/ihghest units to be highlighted (optional)}
+\item{lowest_highest_units}{takes a vector of strings corresponding to the lowest/highest units to be highlighted (optional)}
 
-\item{faceting}{set whether to display each group in a separate plot. By default, it is set to TRUE (optional)}
+\item{faceting}{set whether to display each group in a separate plot. By default, it is set to FALSE (optional)}
 
 \item{unique_color_by_group}{set whether to display each group in a unique color. By default, it is set to FALSE (optional)}
 

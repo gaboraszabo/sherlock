@@ -20,6 +20,7 @@
 draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, lowest_highest_units, faceting = FALSE,
                                  unique_color_by_group = FALSE, interactive = FALSE) {
 
+  # 1. Tidy Eval ----
   x_axis_var_expr <- rlang::enquo(x_axis_var)
   y_axis_var_expr <- rlang::enquo(y_axis_var)
   grouping_var_expr <- rlang::enquo(grouping_var)
@@ -28,16 +29,17 @@ draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, low
     dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr))
 
 
+  # 2. Color and size columns for lowest_highest_units arg ----
   if (!missing(lowest_highest_units)) {
     data <- data %>%
       dplyr::mutate(color = dplyr::case_when(!!grouping_var_expr %in% lowest_highest_units ~ "darkblue",
                                TRUE ~ "grey60")) %>%
-      dplyr::mutate(size = dplyr::case_when(!!grouping_var_expr %in% lowest_highest_units ~ 0.7,
-                              TRUE ~ 0.5))
+      dplyr::mutate(size = dplyr::case_when(!!grouping_var_expr %in% lowest_highest_units ~ 1,
+                              TRUE ~ 0.7))
   }
 
 
-  # Plotting
+  # 3. Plotting Function ----
   if (missing(lowest_highest_units)) {
 
     if (faceting && unique_color_by_group) {
@@ -98,7 +100,7 @@ draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, low
   }
 
 
-  # Plot theme and color scheme ----
+  # 4. Plot theme and color scheme ----
   plot <- plot +
     ggplot2::theme_light() +
     ggplot2::theme(
