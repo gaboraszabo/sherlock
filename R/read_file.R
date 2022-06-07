@@ -25,4 +25,6 @@ read_file <- function(path, filetype = ".xlsx") {
     warning("Wrong filetype entered. You need to enter either '.xlsx' or '.csv'.")
   }
 
+  return(data)
+
 }
