@@ -21,7 +21,7 @@ load_file <- function(path, filetype = ".xlsx") {
   }
 
 
-  if (filetype != ".xlsx") {
+  if (!(filetype %in% c(".xlsx", ".csv"))) {
     warning("Wrong filetype entered. You need to enter either '.xlsx' or '.csv'.")
   }
 
