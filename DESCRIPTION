@@ -20,7 +20,9 @@ Imports:
     scales,
     ggh4x,
     stringr,
-    plotly
+    plotly,
+    readr,
+    openxlsx
 Suggests: 
     roxygen2
 Depends: 
