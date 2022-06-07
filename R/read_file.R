@@ -13,11 +13,11 @@
 read_file <- function(path, filetype = ".xlsx") {
 
   if (filetype == ".xlsx") {
-    data <- openxlsx::read.xlsx(xlsxFile = path) %>% as_tibble()
+    data <- openxlsx::read.xlsx(xlsxFile = path) %>% dplyr::as_tibble()
   }
 
   if (filetype == ".csv") {
-    data <-  readr::read_csv(file = path) %>% as_tibble()
+    data <-  readr::read_csv(file = path) %>% dplyr::as_tibble()
   }
 
 
