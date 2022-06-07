@@ -11,14 +11,17 @@
 #' @param faceting set whether to display each group in a separate plot. By default, it is set to FALSE (optional)
 #' @param unique_color_by_group set whether to display each group in a unique color. By default, it is set to FALSE (optional)
 #' @param interactive set plot interactivity. By default, it is set to FALSE (optional)
+#' @param x_axis_label Label for x axis. By default, it is set to "Measurement 1"  (optional)
+#' @param y_axis_label Label for y axis. By default, it is set to "Measurement 2"  (optional)
 #'
 #' @return A ggplot Small Multiples object
 #'
 #' @export
 
 
-draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, lowest_highest_units, faceting = FALSE,
-                                 unique_color_by_group = FALSE, interactive = FALSE) {
+draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, lowest_highest_units,
+                                 faceting = FALSE, unique_color_by_group = FALSE, interactive = FALSE,
+                                 x_axis_label, y_axis_label) {
 
   # 1. Tidy Eval ----
   x_axis_var_expr <- rlang::enquo(x_axis_var)
@@ -121,6 +124,23 @@ draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, low
   sherlock::scale_color_sherlock()
 
 
+  # 5. Labels ----
+  if (!missing(x_axis_label)) {
+    plot <- plot +
+      ggplot2::labs(x = x_axis_label)
+  } else {
+    plot
+  }
+
+  if (!missing(y_axis_label)) {
+    plot <- plot +
+      ggplot2::labs(y = y_axis_label)
+  } else {
+    plot
+  }
+
+
+  # 6. Interactivity with ggplotly ----
   if (interactive) {
     plot <- plotly::ggplotly(plot)
   }
