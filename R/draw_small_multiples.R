@@ -10,7 +10,7 @@
 #' @param lowest_highest_units takes a vector of strings corresponding to the lowest/highest units to be highlighted (optional)
 #' @param faceting set whether to display each group in a separate plot. By default, it is set to FALSE (optional)
 #' @param unique_color_by_group set whether to display each group in a unique color. By default, it is set to FALSE (optional)
-#' @param interactive set plot interactivity. By default, it is set to FALSE (optional)
+#' @param interactive set plot interactivity. By default, it is set to TRUE (optional)
 #' @param x_axis_label Label for x axis. By default, it is set to "Measurement 1"  (optional)
 #' @param y_axis_label Label for y axis. By default, it is set to "Measurement 2"  (optional)
 #'
@@ -20,7 +20,7 @@
 
 
 draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, lowest_highest_units,
-                                 faceting = FALSE, unique_color_by_group = FALSE, interactive = FALSE,
+                                 faceting = FALSE, unique_color_by_group = FALSE, interactive = TRUE,
                                  x_axis_label, y_axis_label) {
 
   # 1. Tidy Eval ----
