@@ -9,6 +9,7 @@
 #' @param factor_2 mid-level factor (required)
 #' @param factor_3 top level factor (optional)
 #' @param plot_means logical. if FALSE, default, means for mid-level factor are not plotted (optional)
+#' @param x_axis_text set x axis text size. options are "normal" (default), "small" and "none" (optional)
 #'
 #' @return A ggplot multi-vari plot object
 #'
@@ -25,7 +26,7 @@
 #' @export
 
 
-draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, plot_means = FALSE) {
+draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, plot_means = FALSE, x_axis_text = "normal") {
 
   # 1. Tidy Eval ----
   response_expr <- rlang::enquo(response)
@@ -170,6 +171,24 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
   # 5. Scale color ----
   multi_vari_chart <- multi_vari_chart +
     sherlock::scale_color_sherlock()
+
+  # 6. X axis text ----
+  if(x_axis_text == "normal") {
+    multi_vari_chart <- multi_vari_chart +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 11, color = "grey70"))
+  }
+
+  if(x_axis_text == "small") {
+    multi_vari_chart <- multi_vari_chart +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7, color = "grey70"))
+  }
+
+  if(x_axis_text == "none") {
+    multi_vari_chart <- multi_vari_chart +
+      ggplot2::theme(axis.text.x = ggplot2::element_blank())
+  }
+
+
 
   return(multi_vari_chart)
 
