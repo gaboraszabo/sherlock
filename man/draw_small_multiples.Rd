@@ -12,7 +12,7 @@ draw_small_multiples(
   lowest_highest_units,
   faceting = FALSE,
   unique_color_by_group = FALSE,
-  interactive = FALSE,
+  interactive = TRUE,
   x_axis_label,
   y_axis_label
 )
@@ -32,7 +32,7 @@ draw_small_multiples(
 
 \item{unique_color_by_group}{set whether to display each group in a unique color. By default, it is set to FALSE (optional)}
 
-\item{interactive}{set plot interactivity. By default, it is set to FALSE (optional)}
+\item{interactive}{set plot interactivity. By default, it is set to TRUE (optional)}
 
 \item{x_axis_label}{Label for x axis. By default, it is set to "Measurement 1"  (optional)}
 
