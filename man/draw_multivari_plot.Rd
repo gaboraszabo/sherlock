@@ -10,7 +10,8 @@ draw_multivari_plot(
   factor_1,
   factor_2,
   factor_3,
-  plot_means = FALSE
+  plot_means = FALSE,
+  x_axis_text = "normal"
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ draw_multivari_plot(
 \item{factor_3}{top level factor (optional)}
 
 \item{plot_means}{logical. if FALSE, default, means for mid-level factor are not plotted (optional)}
+
+\item{x_axis_text}{set x axis text size. options are "normal" (default), "small" and "none" (optional)}
 }
 \value{
 A ggplot multi-vari plot object
