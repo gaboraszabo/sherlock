@@ -7,7 +7,7 @@
 scale_color_sherlock(palette = 1)
 }
 \arguments{
-\item{palette}{color palette to be used (required)}
+\item{palette}{color palette to be used (required). options are 1 and 2 (only one color for no grouping). by default it is set to 1.}
 }
 \value{
 Plot color scheme uses one of the Sherlock color palettes

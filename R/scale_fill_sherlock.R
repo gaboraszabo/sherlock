@@ -1,20 +1,20 @@
-#' Sherlock Color Palettes
+#' Sherlock Fill Color Palettes
 #'
 #' @description
-#' Set color scheme to one of the Sherlock color palettes
+#' Set fill color scheme to one of the Sherlock color palettes
 #'
-#' @param palette color palette to be used (required). options are 1, 2 and 3 (2 and 3 are only one color for no grouping). by default it is set to 1.
+#' @param palette fill color palette to be used (required). options are 1, 2 and 3 (2 and 3 are only one color for no grouping). by default it is set to 1.
 #'
-#' @return Plot color scheme that uses one of the Sherlock color palettes
+#' @return Plot color scheme that uses one of the Sherlock color fill palettes
 #'
 #' @export
 
 
-scale_color_sherlock <- function(palette = 1) {
+scale_fill_sherlock <- function(palette = 1) {
 
   if(palette == 1) {
 
-    color_scheme <- ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
+    fill_scheme <- ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
                                                            "#335F34", "#8E5816", "#624187", "#141B7A",
                                                            "#3971CB", "#D76213", "#111111", "#9A0000",
                                                            "#335F34", "#8E5816", "#624187", "#141B7A",
@@ -49,13 +49,13 @@ scale_color_sherlock <- function(palette = 1) {
   }
 
   if(palette == 2) {
-    color_scheme <- "#3971CB"
+    fill_scheme <- "#3971CB"
   }
 
   if(palette == 3) {
-    color_scheme <- "#304269"
+    fill_scheme <- "#304269"
   }
 
-  return(color_scheme)
+  return(fill_scheme)
 
 }
