@@ -1,7 +1,7 @@
 #' Draw horizontal reference line
 #'
 #' @description
-#' Draws horizontal reference line(s) to plots
+#' Draws a horizontal reference line or multiple reference lines to plots
 #'
 #' @param reference_line input y coordinate of reference line(s). for multiple reference lines, concatenate individual values into a vector  (required)
 #' @param color change reference line color. options are "grey", "blue" and "red". by default, it is set to "grey" (optional)
