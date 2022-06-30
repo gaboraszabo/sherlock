@@ -24,7 +24,7 @@ draw_horizontal_reference_line(
 A ggplot multi-vari plot object
 }
 \description{
-Draws horizontal reference line(s) to plots
+Draws a horizontal reference line or multiple reference lines to plots
 }
 \examples{
 library(ggh4x)
