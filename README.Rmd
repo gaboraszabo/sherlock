@@ -73,7 +73,7 @@ library(ggh4x)
 
 
 ```{r example}
-multi_vari_data %>% 
+multivari_data %>% 
   draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 ```
 
@@ -102,6 +102,7 @@ youden_plot_data %>%
   draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, 
                    grouping_var = location, x_axis_label = "Trial 1", y_axis_label = "Trial 2")
 ```
+
 
 
 

@@ -63,7 +63,7 @@ library(ggh4x)
 ```
 
 ``` r
-multi_vari_data %>% 
+multivari_data %>% 
   draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 ```
 
