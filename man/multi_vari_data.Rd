@@ -3,7 +3,7 @@
 \docType{data}
 \name{multi_vari_data}
 \alias{multi_vari_data}
-\title{Multi-Vari Plot Sample Dataset 1}
+\title{Multivari Plot Sample Dataset 1}
 \format{
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 18 rows and 4 columns.
 }
@@ -11,7 +11,7 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 multi_vari_data
 }
 \description{
-Contains a sample Multi-Vari Plot dataset
+Contains a sample Multivari Plot dataset
 }
 \examples{
 multi_vari_data
