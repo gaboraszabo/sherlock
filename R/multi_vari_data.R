@@ -3,7 +3,7 @@
 #'Contains a sample Multivari Plot dataset
 #'
 #' @examples
-#' multi_vari_data
+#' multivari_data
 #'
 
-"multi_vari_data"
+"multivari_data"
