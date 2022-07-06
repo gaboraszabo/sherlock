@@ -16,7 +16,7 @@
 #' @examples
 #' library(ggh4x)
 #'
-#' multivari_data %>%
+#' multi_vari_data %>%
 #'     draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 #'
 #' multi_vari_data_2 %>%
