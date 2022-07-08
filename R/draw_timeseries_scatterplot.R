@@ -37,7 +37,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
     if (!faceting) {
       data <- data %>%
         dplyr::mutate(avg = mean(!!y_var_expr, na.rm = TRUE)) %>%
-        dplyr::mutate(moving_range = abs(lag(!!y_var_expr) - !!y_var_expr)) %>%
+        dplyr::mutate(moving_range = abs(dplyr::lag(!!y_var_expr) - !!y_var_expr)) %>%
         dplyr::mutate(lcl = mean(avg) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
         dplyr::mutate(ucl = mean(avg) + 2.66 * mean(moving_range, na.rm = TRUE))
 
@@ -45,7 +45,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
       data <- data %>%
         dplyr::group_by(!!grouping_var_2_expr) %>%
         dplyr::mutate(avg = mean(!!y_var_expr, na.rm = TRUE)) %>%
-        dplyr::mutate(moving_range = abs(lag(!!y_var_expr) - !!y_var_expr)) %>%
+        dplyr::mutate(moving_range = abs(dplyr::lag(!!y_var_expr) - !!y_var_expr)) %>%
         dplyr::mutate(lcl = mean(avg) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
         dplyr::mutate(ucl = mean(avg) + 2.66 * mean(moving_range, na.rm = TRUE))
 
@@ -118,8 +118,8 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
 
         means_tbl <- data %>%
-          group_by(!!grouping_var_1_expr, !!grouping_var_2_expr) %>%
-          summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
+          dplyr::group_by(!!grouping_var_1_expr, !!grouping_var_2_expr) %>%
+          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
 
 
         plot <- data %>%
@@ -220,7 +220,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
   # 7. Interactivity with plotly ----
   if (interactive) {
-    plot <- ggplotly(plot)
+    plot <- plotly::ggplotly(plot)
   } else {
     plot
   }
