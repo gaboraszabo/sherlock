@@ -136,7 +136,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
         means_tbl <- data %>%
           dplyr::group_by(!!grouping_var_1_expr) %>%
-          summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
+          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
 
 
         plot <- data %>%
