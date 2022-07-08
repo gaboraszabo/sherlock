@@ -11,8 +11,8 @@
 #' @param usl upper specification limit (optional)
 #' @param median_line logical. If TRUE, a median bias line is plotted. By default, it is set to FALSE  (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
-#' @param x_axis_label Label for x axis. By default, it is set to "Measurement 1"  (optional)
-#' @param y_axis_label Label for y axis. By default, it is set to "Measurement 2"  (optional)
+#' @param x_axis_label Label for x axis. By default, it is set to "Horizontal axis values"  (optional)
+#' @param y_axis_label Label for y axis. By default, it is set to "Vertical axis values"  (optional)
 #'
 #' @return A ggplot Youden Plot object
 #'
@@ -30,7 +30,7 @@
 
 draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, usl,
                              median_line = FALSE, analysis_desc_label = NULL,
-                             x_axis_label = "Measurement 1", y_axis_label = "Measurement 2") {
+                             x_axis_label = "Horizontal axis values", y_axis_label = "Vertical axis values") {
 
   # 1. Tidy Eval ----
   meas_1_expr <- rlang::enquo(x_axis_var)
