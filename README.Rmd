@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -44,11 +45,18 @@ While the package is currently under development, a few functions are already av
 #### Plotting functions
 `draw_multivari_plot()`
 
+`draw_youden_plot()`
+
+`draw_small_multiples`
+
 `draw_cartesian_small_multiples()`
 
 `draw_polar_small_multiples()`
 
-`draw_youden_plot()`
+`draw_timeseries_scatterplot()`
+
+
+
 
 #### Helper functions
 `normalize_observations()`
@@ -57,7 +65,11 @@ While the package is currently under development, a few functions are already av
 
 `scale_color_sherlock()`
 
+`scale_fill_sherlock()`
+
 `draw_horizontal_reference_line()`
+
+`draw_vertical_referencew_line()`
 
 
 
@@ -103,6 +115,13 @@ youden_plot_data %>%
                    grouping_var = location, x_axis_label = "Trial 1", y_axis_label = "Trial 2")
 ```
 
+
+
+```{r}
+timeseries_scatterplot_data %>%
+  draw_timeseries_scatterplot(y_var = y, grouping_var_1 = date, grouping_var_2 = cavity, faceting = TRUE, 
+                              control_limits = TRUE, interactive = FALSE)
+```
 
 
 

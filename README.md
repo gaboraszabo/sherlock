@@ -34,11 +34,15 @@ follows:
 
 `draw_multivari_plot()`
 
+`draw_youden_plot()`
+
+`draw_small_multiples`
+
 `draw_cartesian_small_multiples()`
 
 `draw_polar_small_multiples()`
 
-`draw_youden_plot()`
+`draw_timeseries_scatterplot()`
 
 #### Helper functions
 
@@ -48,7 +52,11 @@ follows:
 
 `scale_color_sherlock()`
 
+`scale_fill_sherlock()`
+
 `draw_horizontal_reference_line()`
+
+`draw_vertical_referencew_line()`
 
 ## Examples
 
@@ -58,7 +66,6 @@ Here are a few examples:
 # Loading libraries
 library(sherlock)
 library(ggh4x)
-#> Warning: package 'ggh4x' was built under R version 4.1.3
 #> Loading required package: ggplot2
 ```
 
@@ -83,10 +90,6 @@ multi_vari_data_2 %>%
 youden_plot_data_2 %>% 
   draw_youden_plot(x_axis_var = gage_1, y_axis_var = gage_2, median_line = TRUE, 
                    x_axis_label = "Gage 1", y_axis_label = "Gage 2")
-#> Warning in .recacheSubclasses(def@className, def, env): undefined subclass
-#> "packedMatrix" of class "replValueSp"; definition not updated
-#> Warning in .recacheSubclasses(def@className, def, env): undefined subclass
-#> "packedMatrix" of class "mMatrix"; definition not updated
 #> Smoothing formula not specified. Using: y ~ x
 ```
 
@@ -99,6 +102,15 @@ youden_plot_data %>%
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+``` r
+timeseries_scatterplot_data %>%
+  draw_timeseries_scatterplot(y_var = y, grouping_var_1 = date, grouping_var_2 = cavity, faceting = TRUE, 
+                              control_limits = TRUE, interactive = FALSE)
+#> Warning: Removed 6 rows containing missing values (geom_point).
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ## References
 
