@@ -106,7 +106,7 @@ youden_plot_data %>%
 ``` r
 timeseries_scatterplot_data %>%
   draw_timeseries_scatterplot(y_var = y, grouping_var_1 = date, grouping_var_2 = cavity, faceting = TRUE, 
-                              control_limits = TRUE, interactive = FALSE)
+                              control_limits = TRUE, alpha = 0.1, interactive = FALSE)
 #> Warning: Removed 6 rows containing missing values (geom_point).
 ```
 
