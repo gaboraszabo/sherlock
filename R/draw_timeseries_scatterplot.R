@@ -1,7 +1,7 @@
 #' Draw Timeseries Scatterplot
 #'
 #' @description
-#' Draws a Youden Plot
+#' Draws a Timeseries Scatterplot
 #'
 #' @param data input dataset to be plotted (required)
 #' @param y_var Y variable to be plotted on Y axis (required)
@@ -173,7 +173,6 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
   # 4. Plot theme ----
   plot <- plot +
-    ggplot2::theme_light() +
     ggplot2::theme(
       panel.grid       = ggplot2::element_blank(),
       strip.background = ggplot2::element_blank(),
