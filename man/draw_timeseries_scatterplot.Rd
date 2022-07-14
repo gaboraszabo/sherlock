@@ -48,5 +48,5 @@ draw_timeseries_scatterplot(
 Either a ggplot or plotly Timeseries Scatterplot object
 }
 \description{
-Draws a Youden Plot
+Draws a Timeseries Scatterplot
 }

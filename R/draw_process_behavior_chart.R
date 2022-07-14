@@ -28,7 +28,7 @@ draw_process_behavior_chart <- function(data, y_var, grouping_var, control_limit
         dplyr::mutate(moving_range = abs(dplyr::lag(!!y_var_expr) - !!y_var_expr)) %>%
         dplyr::mutate(lcl = mean(avg) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
         dplyr::mutate(ucl = mean(avg) + 2.66 * mean(moving_range, na.rm = TRUE)) %>%
-        dplyr::mutate(index = 1:n())
+        dplyr::mutate(index = 1:dplyr::n())
     } else {
       data <- data %>%
         dplyr::group_by(!!grouping_var_expr) %>%
@@ -36,9 +36,9 @@ draw_process_behavior_chart <- function(data, y_var, grouping_var, control_limit
         dplyr::mutate(moving_range = abs(dplyr::lag(!!y_var_expr) - !!y_var_expr)) %>%
         dplyr::mutate(lcl = mean(avg) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
         dplyr::mutate(ucl = mean(avg) + 2.66 * mean(moving_range, na.rm = TRUE)) %>%
-        dplyr::mutate(index = 1:n()) %>%
+        dplyr::mutate(index = 1:dplyr::n()) %>%
         dplyr::ungroup() %>%
-        dplyr::mutate(n = 1:n())
+        dplyr::mutate(n = 1:dplyr::n())
     }
 
   } else {
@@ -60,14 +60,14 @@ draw_process_behavior_chart <- function(data, y_var, grouping_var, control_limit
   # Plotting function ----
   if (missing(grouping_var)) {
     plot <- data %>%
-      ggplot(aes(index, !!y_var_expr)) +
-      geom_line(color = "#304269", size = 0.5, alpha = 0.4) +
-      geom_point(color = "#304269", size = 1, alpha = 0.6)
+      ggplot2::ggplot(ggplot2::aes(index, !!y_var_expr)) +
+      ggplot2::geom_line(color = "#304269", size = 0.5, alpha = 0.4) +
+      ggplot2::geom_point(color = "#304269", size = 1, alpha = 0.6)
   } else {
     plot <- data %>%
-      ggplot(aes(n, !!y_var_expr)) +
-      geom_line(color = "#304269", size = 0.5, alpha = 0.4) +
-      geom_point(color = "#304269", size = 1, alpha = 0.6) +
+      ggplot2::ggplot(ggplot2::aes(n, !!y_var_expr)) +
+      ggplot2::geom_line(color = "#304269", size = 0.5, alpha = 0.4) +
+      ggplot2::geom_point(color = "#304269", size = 1, alpha = 0.6) +
 
       ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_expr), scales = "free_x")
   }
