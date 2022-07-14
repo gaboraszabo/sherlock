@@ -69,7 +69,7 @@ draw_process_behavior_chart <- function(data, y_var, grouping_var, control_limit
       ggplot2::geom_line(color = "#304269", size = 0.5, alpha = 0.4) +
       ggplot2::geom_point(color = "#304269", size = 1, alpha = 0.6) +
 
-      ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_expr), scales = "free_x")
+      ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_expr), scales = "free_x", space = "free_x")
   }
 
 
