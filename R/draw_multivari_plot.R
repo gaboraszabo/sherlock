@@ -54,7 +54,8 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
       axis.line.y.right = ggplot2::element_line(color = "grey70", size = 0.5),
       axis.text.y.right = ggplot2::element_blank(),
       legend.position   = "none",
-      plot.caption      = ggplot2::element_text(color = "grey50")
+      plot.caption      = ggplot2::element_text(color = "grey50"),
+      axis.ticks        = element_blank()
     )
 
   # 3. Warning messages ----
