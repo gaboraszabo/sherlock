@@ -113,8 +113,8 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
   if (missing(grouping_var_1)) {
     plot <- plot +
       sherlock::theme_sherlock() +
-      ggplot2::theme(axis.title.x = element_blank(),
-            axis.text.x  = element_blank())
+      ggplot2::theme(axis.title.x = ggplot2::element_blank(),
+                     axis.text.x  = ggplot2::element_blank())
   }
 
   if (!missing(grouping_var_1)) {
