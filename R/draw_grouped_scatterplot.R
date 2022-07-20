@@ -124,7 +124,7 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
 
 
   paneled_theme_element <-
-    ggplot2::ggplot2::theme(
+    ggplot2::theme(
       panel.grid.major  = ggplot2::ggplot2::element_blank(),
       panel.grid.minor  = ggplot2::ggplot2::element_blank(),
       panel.spacing     = ggplot2::ggplot2::unit(0, "lines"),
