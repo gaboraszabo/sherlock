@@ -33,17 +33,17 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
 
   if (!missing(grouping_var_1)) {
     data <- data %>%
-      dplyr::mutate(!!grouping_var_1_expr := !!grouping_var_1_expr %>% as_factor())
+      dplyr::mutate(!!grouping_var_1_expr := !!grouping_var_1_expr %>% forcats::as_factor())
   }
 
   if (!missing(grouping_var_2)) {
     data <- data %>%
-      dplyr::mutate(!!grouping_var_2_expr := !!grouping_var_2_expr %>% as_factor())
+      dplyr::mutate(!!grouping_var_2_expr := !!grouping_var_2_expr %>% forcats::as_factor())
   }
 
   if (!missing(grouping_var_3)) {
     data <- data %>%
-      dplyr::mutate(!!grouping_var_3_expr := !!grouping_var_3_expr %>% as_factor())
+      dplyr::mutate(!!grouping_var_3_expr := !!grouping_var_3_expr %>% forcats::as_factor())
   }
 
 
@@ -113,7 +113,7 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
   if (missing(grouping_var_1)) {
     plot <- plot +
       sherlock::theme_sherlock() +
-      theme(axis.title.x = element_blank(),
+      ggplot2::theme(axis.title.x = element_blank(),
             axis.text.x  = element_blank())
   }
 
@@ -143,7 +143,7 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
       axis.text.y.right = ggplot2::element_blank(),
       legend.position   = "none",
       plot.caption      = ggplot2::element_text(color = "grey50"),
-      axis.ticks        = element_blank()
+      axis.ticks        = ggplot2::element_blank()
     )
 
 
