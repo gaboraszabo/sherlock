@@ -160,10 +160,10 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
   if (missing(grouping_var_1) && missing(grouping_var_2) && missing(grouping_var_2)) {
     plot <- plot +
       ggplot2::labs(title = "Scatterplot")
+  } else {
+    plot <- plot +
+      ggplot2::labs(title = "Grouped Scatterplot")
   }
-
-  plot <- plot +
-    ggplot2::labs(title = "Grouped Scatterplot")
 
 
 
