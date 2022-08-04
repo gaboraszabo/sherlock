@@ -146,6 +146,8 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
       axis.ticks        = ggplot2::element_blank()
     )
 
+  plot <- plot + paneled_theme_element
+
 
   # if(!missing(grouping_var_2) && missing(grouping_var_3)) {
   #   plot <- plot + paneled_theme_element
