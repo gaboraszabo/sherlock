@@ -131,8 +131,8 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
       panel.border      = ggh4x::element_part_rect(color = "grey95", size = 0.2),
       strip.background  = ggplot2::element_rect(fill = "white", color = "grey70", size = 0.5),
       strip.text        = ggplot2::element_text(size = 11, color = "grey50"),
-      plot.title        = ggplot2::element_text(size = 16, color = "grey50"),
-      plot.subtitle     = ggplot2::element_text(size = 12, color = "grey70"),
+      plot.title        = ggplot2::element_text(size = 20, color = "grey50"),
+      plot.subtitle     = ggplot2::element_text(size = 14, color = "grey70"),
       axis.title.x      = ggplot2::element_text(size = 12, color = "grey70"),
       axis.title.y      = ggplot2::element_text(size = 12, color = "grey70"),
       axis.text.x       = ggplot2::element_text(size = 11, color = "grey70"),
@@ -157,13 +157,40 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
 
 
   # 4. Labs ----
-  if (missing(grouping_var_1) && missing(grouping_var_2) && missing(grouping_var_2)) {
+
+  if (missing(grouping_var_1) && missing(grouping_var_2) && missing(grouping_var_3)) {
     plot <- plot +
       ggplot2::labs(title = "Scatterplot")
-  } else {
-    plot <- plot +
-      ggplot2::labs(title = "Grouped Scatterplot")
   }
+
+  if (missing(grouping_var_2) && missing(grouping_var_3)) {
+    plot <- plot +
+      ggplot2::labs(title = "Scatterplot",
+                    subtitle = stringr::str_glue("by {as_label(grouping_var_1_expr)}"))
+  }
+
+  if (missing(grouping_var_3)) {
+    plot <- plot +
+      ggplot2::labs(title = "Scatterplot",
+                    subtitle = stringr::str_glue("{as_label(grouping_var_1_expr)} by {as_label(grouping_var_2_expr)}"))
+  }
+
+  if (!missing(grouping_var_1) && !missing(grouping_var_2) && !missing(grouping_var_3)) {
+    plot <- plot +
+      ggplot2::labs(title = "Scatterplot",
+                    subtitle = stringr::str_glue("{as_label(grouping_var_1_expr)} by {as_label(grouping_var_2_expr)} by {as_label(grouping_var_3_expr)}"))
+  }
+
+
+
+
+  # if (missing(grouping_var_1) && missing(grouping_var_2) && missing(grouping_var_3)) {
+  #   plot <- plot +
+  #     ggplot2::labs(title = "Scatterplot")
+  # } else {
+  #   plot <- plot +
+  #     ggplot2::labs(title = "Grouped Scatterplot")
+  # }
 
 
 
