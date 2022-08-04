@@ -10,13 +10,14 @@
 #' @param grouping_var_3 Third, highest-level grouping variable (optional)
 #' @param group_color  Set whether to color by grouping_var_1. By default, it is set to FALSE (optional)
 #' @param alpha Set transparency. By default, it is set to 0.5  (optional)
+#' @param jitter Set whether to add jitter. By default, it is set to TRUE  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
 #' @return Either a ggplot2::ggplot or plotly Grouped Scatterplot object
 #'
 #' @export
 
-draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3, group_color = FALSE, alpha = 0.5, interactive = FALSE) {
+draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3, group_color = FALSE, alpha = 0.5, jitter = TRUE, interactive = FALSE) {
 
   # 1. Tidy Eval ----
   y_var_expr <- rlang::enquo(y_var)
@@ -53,19 +54,21 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
   if (missing(grouping_var_1) && missing(grouping_var_2)) {
     plot <- data %>%
       ggplot2::ggplot(ggplot2::aes(variable, !!y_var_expr)) +
-      ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha, width = 0.015, shape = 21, size = 2)
+      ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha,
+                           width = if (jitter) 0.015 else 0, shape = 21, size = 2)
   }
 
   if (!missing(grouping_var_1)) {
     if (!group_color) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, group = !!grouping_var_1_expr)) +
-        ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha, width = 0.03, shape = 21, size = 2)
+        ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha,
+                             width = if (jitter) 0.03 else 0, shape = 21, size = 2)
     }
     if (group_color) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_1_expr)) +
-        ggplot2::geom_jitter(alpha = alpha, width = 0.03, size = 2) +
+        ggplot2::geom_jitter(alpha = alpha, width = if (jitter) 0.03 else 0, size = 2) +
         sherlock::scale_color_sherlock() +
         sherlock::scale_fill_sherlock()
     }
@@ -76,13 +79,14 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
     if (!group_color) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, group = !!grouping_var_1_expr)) +
-        ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha, width = 0.03, shape = 21, size = 2) +
+        ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha,
+                             width = if (jitter) 0.03 else 0, shape = 21, size = 2) +
         ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_2_expr))
     }
     if (group_color) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_1_expr)) +
-        ggplot2::geom_jitter(alpha = alpha, width = 0.03, size = 2) +
+        ggplot2::geom_jitter(alpha = alpha, width = if (jitter) 0.03 else 0, size = 2) +
         ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_2_expr)) +
         sherlock::scale_color_sherlock() +
         sherlock::scale_fill_sherlock()
@@ -94,13 +98,14 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
     if (!group_color) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, group = !!grouping_var_1_expr)) +
-        ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha, width = 0.03, shape = 21, size = 2) +
+        ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha,
+                             width = if (jitter) 0.03 else 0, shape = 21, size = 2) +
         ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_3_expr, !!grouping_var_2_expr))
     }
     if (group_color) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_1_expr)) +
-        ggplot2::geom_jitter(alpha = alpha, width = 0.03, size = 2) +
+        ggplot2::geom_jitter(alpha = alpha, width = if (jitter) 0.03 else 0, size = 2) +
         ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_3_expr, !!grouping_var_2_expr)) +
         sherlock::scale_color_sherlock() +
         sherlock::scale_fill_sherlock()
