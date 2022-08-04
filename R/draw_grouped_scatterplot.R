@@ -146,16 +146,16 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
       axis.ticks        = ggplot2::element_blank()
     )
 
-  plot <- plot + paneled_theme_element
+  #plot <- plot + paneled_theme_element
 
 
-  # if(!missing(grouping_var_2) && missing(grouping_var_3)) {
-  #   plot <- plot + paneled_theme_element
-  # }
-  #
-  # if(!missing(grouping_var_2) && !missing(grouping_var_3)) {
-  #   plot <- plot + paneled_theme_element
-  # }
+  if(!missing(grouping_var_2) && missing(grouping_var_3)) {
+    plot <- plot + paneled_theme_element
+  }
+
+  if(!missing(grouping_var_2) && !missing(grouping_var_3)) {
+    plot <- plot + paneled_theme_element
+  }
 
 
   # 4. Labs ----
@@ -165,13 +165,13 @@ draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2
       ggplot2::labs(title = "Scatterplot")
   }
 
-  if (missing(grouping_var_2) && missing(grouping_var_3)) {
+  if (!missing(grouping_var_1) && missing(grouping_var_2) && missing(grouping_var_3)) {
     plot <- plot +
       ggplot2::labs(title = "Grouped Scatterplot",
                     subtitle = stringr::str_glue("by {as_label(grouping_var_1_expr)}"))
   }
 
-  if (missing(grouping_var_3)) {
+  if (!missing(grouping_var_1) && !missing(grouping_var_2) && missing(grouping_var_3)) {
     plot <- plot +
       ggplot2::labs(title = "Grouped Scatterplot",
                     subtitle = stringr::str_glue("{as_label(grouping_var_1_expr)} by {as_label(grouping_var_2_expr)}"))
