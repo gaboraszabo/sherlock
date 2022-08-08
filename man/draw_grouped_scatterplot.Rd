@@ -12,6 +12,7 @@ draw_grouped_scatterplot(
   grouping_var_3,
   group_color = FALSE,
   alpha = 0.5,
+  jitter = TRUE,
   interactive = FALSE
 )
 }
@@ -29,6 +30,8 @@ draw_grouped_scatterplot(
 \item{group_color}{Set whether to color by grouping_var_1. By default, it is set to FALSE (optional)}
 
 \item{alpha}{Set transparency. By default, it is set to 0.5  (optional)}
+
+\item{jitter}{Set whether to add jitter. By default, it is set to TRUE  (optional)}
 
 \item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
 }

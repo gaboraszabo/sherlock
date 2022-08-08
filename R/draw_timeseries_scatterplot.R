@@ -9,7 +9,7 @@
 #' @param grouping_var_1_type Time variable type. Options are "date-time" or "factor"
 #' @param grouping_var_2 Additional variable for faceting (optional)
 #' @param faceting Set whether to display each group in a separate plot. By default, it is set to FALSE (optional)
-#' @param control_limits Logical. If TRUE, process behavior chart (I-MR chart) control limits are plotted. By default, it is set to FALSE  (optional)
+#' @param limits Logical. If TRUE, process behavior chart control limits for the individual group means are plotted. By default, it is set to FALSE  (optional)
 #' @param date_breaks Set date breaks. Takes a string, for example "1 week" or "2 days". By default, it is set to "1 month" (optional)
 #' @param date_labels Set date labels. Identical to the date labels argument of the scale_x_date() ggplot function (optional)
 #' @param x_axis_text X axis text size. The two options are "normal" and "small" (optional)
@@ -21,7 +21,7 @@
 #' @export
 
 draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_1_type = "date-time",
-                                        grouping_var_2, faceting = FALSE, control_limits = FALSE,
+                                        grouping_var_2, faceting = FALSE, limits = FALSE,
                                         date_breaks = "1 month", date_labels = "%b %y",
                                         x_axis_text = "normal", alpha = 0.3, interactive = TRUE) {
 
@@ -32,7 +32,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
 
   # 2. Adding avg, lcl and ucl columns for control limits ----
-  if (control_limits) {
+  if (limits) {
 
     if (!faceting) {
       data <- data %>%
@@ -209,7 +209,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
 
   # 6. Plotting control limits ----
-  if (control_limits) {
+  if (limits) {
     plot <- plot +
       ggplot2::geom_line(ggplot2::aes(!!grouping_var_1_expr, avg), color = "grey60", size = 0.5, alpha = 0.7, linetype = "dashed") +
       ggplot2::geom_line(ggplot2::aes(!!grouping_var_1_expr, lcl), color = "#700808", size = 0.5, alpha = 0.3) +

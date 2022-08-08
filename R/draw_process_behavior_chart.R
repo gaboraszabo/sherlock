@@ -6,21 +6,21 @@
 #' @param data input dataset to be plotted (required)
 #' @param y_var Y variable to be plotted on Y axis (required)
 #' @param grouping_var Variable to group by (optional)
-#' @param control_limits Logical. If TRUE, control limits are plotted. By default, it is set to FALSE  (optional)
+#' @param limits Logical. If TRUE, natural process limits (control limits) are plotted. By default, it is set to FALSE  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to TRUE (optional)
 #'
 #' @return Either a ggplot or plotly Process Behavior Chart object
 #'
 #' @export
 
-draw_process_behavior_chart <- function(data, y_var, grouping_var, control_limits = TRUE, interactive = TRUE) {
+draw_process_behavior_chart <- function(data, y_var, grouping_var, limits = TRUE, interactive = TRUE) {
 
   # 1. Tidy Eval ----
   y_var_expr        <- rlang::enquo(y_var)
   grouping_var_expr <- rlang::enquo(grouping_var)
 
 
-  if (control_limits) {
+  if (limits) {
 
     if (missing(grouping_var)) {
       data <- data %>%
@@ -85,7 +85,7 @@ draw_process_behavior_chart <- function(data, y_var, grouping_var, control_limit
 
 
   # Control Limits ----
-  if (control_limits) {
+  if (limits) {
 
     if (missing(grouping_var)) {
       plot <- plot +
