@@ -46,7 +46,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
         dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
 
       data <- data %>%
-        left_join(means_tbl) %>%
+        dplyr::left_join(means_tbl) %>%
         dplyr::mutate(overall_mean = mean(!!y_var_expr, na.rm = TRUE))
 
 
@@ -80,14 +80,14 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
         dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
 
       data <- data %>%
-        left_join(means_tbl)
+        dplyr::left_join(means_tbl)
 
 
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, group = 1)) +
         ggplot2::geom_jitter(color = "#304269", width = 0.05, alpha = alpha, size = 1) +
         #stat_summary(fun = mean, geom = "point") +
-        stat_summary(fun = mean, geom = "line", color = "#304269", color = "#304269", size = 1, alpha = 1) +
+        ggplot2::stat_summary(fun = mean, geom = "line", color = "#304269", color = "#304269", size = 1, alpha = 1) +
         #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
         sherlock::theme_sherlock()
     }
@@ -107,7 +107,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
         dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
 
       data <- data %>%
-        left_join(means_tbl)
+        dplyr::left_join(means_tbl)
 
 
       plot <- data %>%
@@ -127,7 +127,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
       if (grouping_var_1_type == "date-time") {
 
         overall_mean_tbl <- data %>%
-          group_by(!!grouping_var_2_expr) %>%
+          dplyr::group_by(!!grouping_var_2_expr) %>%
           dplyr::mutate(overall_mean = mean(!!y_var_expr, na.rm = TRUE))
 
 
@@ -141,10 +141,10 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
 
         data <- data %>%
-          left_join(means_tbl) %>%
-          group_by(!!grouping_var_2_expr) %>%
+          dplyr::left_join(means_tbl) %>%
+          dplyr::group_by(!!grouping_var_2_expr) %>%
           dplyr::mutate(overall_mean = mean(!!y_var_expr, na.rm = TRUE)) %>%
-          ungroup() %>%
+          dplyr::ungroup() %>%
           dplyr::mutate(lcl = overall_mean - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
           dplyr::mutate(ucl = overall_mean + 2.66 * mean(moving_range, na.rm = TRUE))
 
@@ -180,7 +180,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
           dplyr::ungroup()
 
         data <- data %>%
-          left_join(means_tbl)
+          dplyr::left_join(means_tbl)
 
         plot <- data %>%
           ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr)) +
@@ -206,7 +206,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
           dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
 
         data <- data %>%
-          left_join(means_tbl) %>%
+          dplyr::left_join(means_tbl) %>%
           dplyr::mutate(overall_mean = mean(!!y_var_expr, na.rm = TRUE))
 
         plot <- data %>%
@@ -240,7 +240,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
           dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
 
         data <- data %>%
-          left_join(means_tbl)
+          dplyr::left_join(means_tbl)
 
         plot <- data %>%
           ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr)) +
