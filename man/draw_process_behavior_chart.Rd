@@ -8,7 +8,7 @@ draw_process_behavior_chart(
   data,
   y_var,
   grouping_var,
-  control_limits = TRUE,
+  limits = TRUE,
   interactive = TRUE
 )
 }
@@ -19,7 +19,7 @@ draw_process_behavior_chart(
 
 \item{grouping_var}{Variable to group by (optional)}
 
-\item{control_limits}{Logical. If TRUE, control limits are plotted. By default, it is set to FALSE  (optional)}
+\item{limits}{Logical. If TRUE, natural process limits (control limits) are plotted. By default, it is set to FALSE  (optional)}
 
 \item{interactive}{Set plot interactivity. By default, it is set to TRUE (optional)}
 }

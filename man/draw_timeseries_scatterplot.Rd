@@ -11,7 +11,7 @@ draw_timeseries_scatterplot(
   grouping_var_1_type = "date-time",
   grouping_var_2,
   faceting = FALSE,
-  control_limits = FALSE,
+  limits = FALSE,
   date_breaks = "1 month",
   date_labels = "\%b \%y",
   x_axis_text = "normal",
@@ -32,7 +32,7 @@ draw_timeseries_scatterplot(
 
 \item{faceting}{Set whether to display each group in a separate plot. By default, it is set to FALSE (optional)}
 
-\item{control_limits}{Logical. If TRUE, process behavior chart (I-MR chart) control limits are plotted. By default, it is set to FALSE  (optional)}
+\item{limits}{Logical. If TRUE, process behavior chart control limits for the individual group means are plotted. By default, it is set to FALSE  (optional)}
 
 \item{date_breaks}{Set date breaks. Takes a string, for example "1 week" or "2 days". By default, it is set to "1 month" (optional)}
 

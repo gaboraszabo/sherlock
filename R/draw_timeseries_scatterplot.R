@@ -26,46 +26,40 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
                                         x_axis_text = "normal", alpha = 0.3, interactive = TRUE) {
 
   # 1. Tidy Eval ----
-  y_var_expr        <- rlang::enquo(y_var)
+  y_var_expr          <- rlang::enquo(y_var)
   grouping_var_1_expr <- rlang::enquo(grouping_var_1)
   grouping_var_2_expr <- rlang::enquo(grouping_var_2)
 
 
-  # 2. Adding avg, lcl and ucl columns for control limits ----
-  if (limits) {
-
-    if (!faceting) {
-      data <- data %>%
-        dplyr::mutate(avg = mean(!!y_var_expr, na.rm = TRUE)) %>%
-        dplyr::mutate(moving_range = abs(dplyr::lag(!!y_var_expr) - !!y_var_expr)) %>%
-        dplyr::mutate(lcl = mean(avg) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
-        dplyr::mutate(ucl = mean(avg) + 2.66 * mean(moving_range, na.rm = TRUE))
-
-    } else {
-      data <- data %>%
-        dplyr::group_by(!!grouping_var_2_expr) %>%
-        dplyr::mutate(avg = mean(!!y_var_expr, na.rm = TRUE)) %>%
-        dplyr::mutate(moving_range = abs(dplyr::lag(!!y_var_expr) - !!y_var_expr)) %>%
-        dplyr::mutate(lcl = mean(avg) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
-        dplyr::mutate(ucl = mean(avg) + 2.66 * mean(moving_range, na.rm = TRUE))
-
-    }
-  }
-
-  # 3. Plotting function - ggplot2::geom_jitter and ggplot2::geom_line
+  # 2. Plotting function - ggplot2::geom_jitter and ggplot2::geom_line ----
+  # 2.1 Only grouping_var_1 ----
   if (missing(grouping_var_2)) {
 
     if (grouping_var_1_type == "date-time") {
 
       means_tbl <- data %>%
         dplyr::group_by(!!grouping_var_1_expr) %>%
-        dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
+        dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE)) %>%
+        dplyr::ungroup() %>%
+        dplyr::mutate(moving_range = abs(dplyr::lag(mean) - mean)) %>%
+        dplyr::mutate(lcl = mean(mean) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
+        dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
+
+      data <- data %>%
+        left_join(means_tbl) %>%
+        dplyr::mutate(overall_mean = mean(!!y_var_expr, na.rm = TRUE))
 
 
       plot <- data %>%
-        ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr)) +
+        ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr))
+
+      if (limits) {
+        plot <- plot + ggplot2::geom_line(ggplot2::aes(!!grouping_var_1_expr, overall_mean), color = "grey60", size = 0.5, alpha = 0.7, linetype = "dashed")
+      }
+
+      plot <- plot +
         ggplot2::geom_jitter(color = "#304269", width = 2, alpha = alpha, size = 1) +
-        ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = 0.5, alpha = 0.6) +
+        ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = 1, alpha = 1) +
         #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
         ggplot2::scale_x_date(date_breaks = date_breaks, date_labels = date_labels) +
         sherlock::theme_sherlock()
@@ -74,12 +68,46 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
     if (grouping_var_1_type == "factor") {
 
       data <- data %>%
-        dplyr::mutate(!!grouping_var_1_expr := (!!grouping_var_1_expr) %>% as.factor() %>% forcats::as_factor())
+        dplyr::mutate(!!grouping_var_1_expr := (!!grouping_var_1_expr) %>% as.factor() %>% forcats::fct_inorder())
 
 
       means_tbl <- data %>%
         dplyr::group_by(!!grouping_var_1_expr) %>%
-        dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
+        dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE)) %>%
+        dplyr::ungroup() %>%
+        dplyr::mutate(moving_range = abs(dplyr::lag(mean) - mean)) %>%
+        dplyr::mutate(lcl = mean(mean) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
+        dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
+
+      data <- data %>%
+        left_join(means_tbl)
+
+
+      plot <- data %>%
+        ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, group = 1)) +
+        ggplot2::geom_jitter(color = "#304269", width = 0.05, alpha = alpha, size = 1) +
+        #stat_summary(fun = mean, geom = "point") +
+        stat_summary(fun = mean, geom = "line", color = "#304269", color = "#304269", size = 1, alpha = 1) +
+        #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
+        sherlock::theme_sherlock()
+    }
+
+    if (grouping_var_1_type == "numeric") {
+
+      data <- data %>%
+        dplyr::group_by(!!grouping_var_1_expr) %>%
+        dplyr::mutate(index = n())
+
+      means_tbl <- data %>%
+        dplyr::group_by(!!grouping_var_1_expr) %>%
+        dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE)) %>%
+        dplyr::ungroup() %>%
+        dplyr::mutate(moving_range = abs(dplyr::lag(mean) - mean)) %>%
+        dplyr::mutate(lcl = mean(mean) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
+        dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
+
+      data <- data %>%
+        left_join(means_tbl)
 
 
       plot <- data %>%
@@ -89,21 +117,48 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
         sherlock::theme_sherlock()
     }
 
-  } else {
 
+
+  } else {
+    # 2.2 Grouping_var_1 and grouping_var_2 ----
+    # 2.2.1 Faceting ----
     if (faceting) {
 
       if (grouping_var_1_type == "date-time") {
 
+        overall_mean_tbl <- data %>%
+          group_by(!!grouping_var_2_expr) %>%
+          dplyr::mutate(overall_mean = mean(!!y_var_expr, na.rm = TRUE))
+
+
         means_tbl <- data %>%
           dplyr::group_by(!!grouping_var_1_expr, !!grouping_var_2_expr) %>%
-          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
+          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE)) %>%
+          dplyr::ungroup() %>%
+          dplyr::mutate(moving_range = abs(dplyr::lag(mean) - mean))
+        # dplyr::mutate(lcl = overall_mean - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
+        # dplyr::mutate(ucl = overall_mean + 2.66 * mean(moving_range, na.rm = TRUE))
+
+
+        data <- data %>%
+          left_join(means_tbl) %>%
+          group_by(!!grouping_var_2_expr) %>%
+          dplyr::mutate(overall_mean = mean(!!y_var_expr, na.rm = TRUE)) %>%
+          ungroup() %>%
+          dplyr::mutate(lcl = overall_mean - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
+          dplyr::mutate(ucl = overall_mean + 2.66 * mean(moving_range, na.rm = TRUE))
 
 
         plot <- data %>%
-          ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr)) +
+          ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr))
+
+        if (limits) {
+          plot <- plot + ggplot2::geom_line(ggplot2::aes(!!grouping_var_1_expr, overall_mean), color = "grey60", size = 0.5, alpha = 0.7, linetype = "dashed")
+        }
+
+        plot <- plot +
           ggplot2::geom_jitter(color = "#304269", width = 2, alpha = alpha, size = 1) +
-          ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = 0.5, alpha = 0.6) +
+          ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = 1, alpha = 1) +
           #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
           ggplot2::facet_grid(rows = ggplot2::vars(!!grouping_var_2_expr)) +
           ggplot2::scale_x_date(date_breaks = date_breaks, date_labels = date_labels) +
@@ -114,13 +169,18 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
       if (grouping_var_1_type == "factor") {
 
         data <- data %>%
-          dplyr::mutate(!!grouping_var_1_expr := (!!grouping_var_1_expr) %>% as.factor() %>% forcats::as_factor())
-
+          dplyr::mutate(!!grouping_var_1_expr := (!!grouping_var_1_expr) %>% as.factor() %>% forcats::fct_inorder())
 
         means_tbl <- data %>%
           dplyr::group_by(!!grouping_var_1_expr, !!grouping_var_2_expr) %>%
-          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
+          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE)) %>%
+          dplyr::mutate(moving_range = abs(dplyr::lag(mean) - mean)) %>%
+          dplyr::mutate(lcl = mean(mean) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
+          dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE)) %>%
+          dplyr::ungroup()
 
+        data <- data %>%
+          left_join(means_tbl)
 
         plot <- data %>%
           ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr)) +
@@ -131,18 +191,34 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
           sherlock::scale_color_sherlock()
       }
 
+
+
+      # 2.2.2 No faceting ----
     } else {
       if (grouping_var_1_type == "date-time") {
 
         means_tbl <- data %>%
           dplyr::group_by(!!grouping_var_1_expr) %>%
-          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
+          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE)) %>%
+          dplyr::ungroup() %>%
+          dplyr::mutate(moving_range = abs(dplyr::lag(mean) - mean)) %>%
+          dplyr::mutate(lcl = mean(mean) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
+          dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
 
+        data <- data %>%
+          left_join(means_tbl) %>%
+          dplyr::mutate(overall_mean = mean(!!y_var_expr, na.rm = TRUE))
 
         plot <- data %>%
-          ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr)) +
+          ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr))
+
+        if (limits) {
+          plot <- plot + ggplot2::geom_line(ggplot2::aes(!!grouping_var_1_expr, overall_mean), color = "grey60", size = 0.5, alpha = 0.7, linetype = "dashed")
+        }
+
+        plot <- plot +
           ggplot2::geom_jitter(width = 2, alpha = alpha, size = 1) +
-          ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = 0.5, alpha = 0.6) +
+          ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = 1, alpha = 1) +
           #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
           ggplot2::scale_x_date(date_breaks = date_breaks, date_labels = date_labels) +
           sherlock::theme_sherlock() +
@@ -152,13 +228,19 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
       if (grouping_var_1_type == "factor") {
 
         data <- data %>%
-          dplyr::mutate(!!grouping_var_1_expr := (!!grouping_var_1_expr) %>% as.factor() %>% forcats::as_factor())
+          dplyr::mutate(!!grouping_var_1_expr := (!!grouping_var_1_expr) %>% as.factor() %>% forcats::fct_inorder())
 
 
         means_tbl <- data %>%
           dplyr::group_by(!!grouping_var_1_expr) %>%
-          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE))
+          dplyr::summarize(mean = mean(!!y_var_expr, na.rm = TRUE)) %>%
+          dplyr::ungroup() %>%
+          dplyr::mutate(moving_range = abs(dplyr::lag(mean) - mean)) %>%
+          dplyr::mutate(lcl = mean(mean) - 2.66 * mean(moving_range, na.rm = TRUE)) %>%
+          dplyr::mutate(ucl = mean(mean) + 2.66 * mean(moving_range, na.rm = TRUE))
 
+        data <- data %>%
+          left_join(means_tbl)
 
         plot <- data %>%
           ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr)) +
@@ -171,7 +253,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
   }
 
 
-  # 4. Plot theme ----
+  # 3. Plot theme ----
   plot <- plot +
     ggplot2::theme(
       panel.grid       = ggplot2::element_blank(),
@@ -193,12 +275,12 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
   # 5. X axis text ----
   if(x_axis_text == "normal") {
     plot <- plot +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 11, color = "grey70"))
+      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 11, color = "grey50"))
   }
 
   if(x_axis_text == "small") {
     plot <- plot +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7, color = "grey70"))
+      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7, color = "grey50"))
   }
 
   if(x_axis_text == "none") {
@@ -208,10 +290,10 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
 
 
-  # 6. Plotting control limits ----
+  # 6. Plotting limits ----
   if (limits) {
+
     plot <- plot +
-      ggplot2::geom_line(ggplot2::aes(!!grouping_var_1_expr, avg), color = "grey60", size = 0.5, alpha = 0.7, linetype = "dashed") +
       ggplot2::geom_line(ggplot2::aes(!!grouping_var_1_expr, lcl), color = "#700808", size = 0.5, alpha = 0.3) +
       ggplot2::geom_line(ggplot2::aes(!!grouping_var_1_expr, ucl), color = "#700808", size = 0.5, alpha = 0.3)
   }
@@ -224,5 +306,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
     plot
   }
 
+  # only used for debugging
+  # return(data)
   return(plot)
 }

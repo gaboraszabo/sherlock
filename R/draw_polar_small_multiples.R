@@ -24,7 +24,7 @@ draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, group
     dplyr::mutate(!! grouping_var_expr := forcats::as_factor(!! grouping_var_expr)) %>%
 
     ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_expr)) +
-    ggplot2::geom_point(alpha = 0.6) +
+    ggplot2::geom_point(size = 2, alpha = 0.6) +
     ggplot2::coord_polar(theta = "x") +
     ggplot2::scale_x_continuous(breaks = c(0, 90, 180, 270),
                                 limits = c(0, 360),
@@ -50,7 +50,7 @@ draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, group
     sherlock::scale_color_sherlock()
 
   if (connect_with_lines) {
-    plot <- plot + ggplot2::geom_line()
+    plot <- plot + ggplot2::geom_path(alpha = 0.6)
   }
 
   return(plot)
