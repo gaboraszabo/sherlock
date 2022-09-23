@@ -16,21 +16,21 @@
 save_analysis <- function(data, plot, filename, filepath) {
 
   # 1. CREATE EXCEL WORKBOOK
-  wb <- createWorkbook()
+  wb <- openxlsx::createWorkbook()
 
   # 2. CREATE WORKSHEET(S)
-  addWorksheet(wb = wb, sheetName = "data")
+  openxlsx::addWorksheet(wb = wb, sheetName = "data")
   if (!missing(plot)) {
-    addWorksheet(wb = wb, sheetName = "plot")
+    openxlsx::addWorksheet(wb = wb, sheetName = "plot")
   }
 
   # 3. ADD IMAGE TO WORKSHEET "PLOT"
   if (!missing(plot)) {
     print(plot)
-    insertPlot(wb = wb, sheet = "plot")
+    openxlsx::insertPlot(wb = wb, sheet = "plot")
   }
 
   # 4. ADD DATA TO WORKSHEET "DATA"
-  writeData(wb = wb, sheet = "data", x = data)
-  saveWorkbook(wb = wb, file = paste0(filepath, filename, ".xlsx"), overwrite = TRUE)
+  openxlsx::writeData(wb = wb, sheet = "data", x = data)
+  openxlsx::saveWorkbook(wb = wb, file = paste0(filepath, filename, ".xlsx"), overwrite = TRUE)
 }
