@@ -7,10 +7,10 @@
 draw_interaction_plot(
   data,
   y_var,
-  x_var_1,
-  x_var_2,
+  x_var_1_levels,
+  x_var_2_levels,
   alpha = 0.5,
-  analysis_desc
+  analysis_desc_label = NULL
 )
 }
 \arguments{
@@ -18,13 +18,13 @@ draw_interaction_plot(
 
 \item{y_var}{Y variable to be plotted on Y axis (required)}
 
-\item{x_var_1}{First grouping variable (optional)}
-
-\item{x_var_2}{Second, higher-level grouping variable  (optional)}
-
 \item{alpha}{Set transparency. By default, it is set to 0.5  (optional)}
 
-\item{analysis_desc}{Set whether to add jitter. By default, it is set to TRUE  (optional)}
+\item{analysis_desc_label}{analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
+
+\item{x_var_1}{First grouping variable levels, e.g. -1/1 or "low"/"high" (required)}
+
+\item{x_var_2}{Second grouping variable levels, e.g. -1/1 or "low"/"high" (required)}
 }
 \value{
 A ggplot Interaction Plot object

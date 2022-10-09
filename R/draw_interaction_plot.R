@@ -5,8 +5,8 @@
 #'
 #' @param data input dataset to be plotted (required)
 #' @param y_var Y variable to be plotted on Y axis (required)
-#' @param x_var_1 First grouping variable levels, e.g. -1/1 or "low"/"high" (required)
-#' @param x_var_2 Second grouping variable levels, e.g. -1/1 or "low"/"high" (required)
+#' @param x_var_1_levels First grouping variable levels, e.g. -1/1 or "low"/"high" (required)
+#' @param x_var_2_levels Second grouping variable levels, e.g. -1/1 or "low"/"high" (required)
 #' @param alpha Set transparency. By default, it is set to 0.5  (optional)
 #' @param analysis_desc_label analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #'
