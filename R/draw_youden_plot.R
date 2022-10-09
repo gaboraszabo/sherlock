@@ -10,6 +10,7 @@
 #' @param lsl lower specification limit (optional)
 #' @param usl upper specification limit (optional)
 #' @param median_line logical. If TRUE, a median bias line is plotted. By default, it is set to FALSE  (optional)
+#' @param alpha Set transparency. By default, it is set to 0.4  (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #' @param x_axis_label Label for x axis. By default, it is set to "Horizontal axis values"  (optional)
 #' @param y_axis_label Label for y axis. By default, it is set to "Vertical axis values"  (optional)
@@ -29,7 +30,7 @@
 #' @export
 
 draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, usl,
-                             median_line = FALSE, analysis_desc_label = NULL,
+                             median_line = FALSE, alpha = 0.4, analysis_desc_label = NULL,
                              x_axis_label = "Horizontal axis values", y_axis_label = "Vertical axis values") {
 
   # 1. Tidy Eval ----
@@ -71,7 +72,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
     plot <- data %>%
 
       ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
-      ggplot2::geom_point(color  = "#3971CB", alpha  = 0.4, size = 2) +
+      ggplot2::geom_point(color  = "#3971CB", alpha  = alpha, size = 2) +
 
       ggplot2::theme_light() +
       ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
@@ -105,7 +106,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
       dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr)) %>%
 
       ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
-      ggplot2::geom_point(ggplot2::aes(color = !!(grouping_var_expr)), alpha  = 0.4, size = 2) +
+      ggplot2::geom_point(ggplot2::aes(color = !!(grouping_var_expr)), alpha  = alpha, size = 2) +
 
       ggplot2::theme_light() +
       ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
@@ -140,7 +141,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
       dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr)) %>%
 
       ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
-      ggplot2::geom_point(ggplot2::aes(color = !!(grouping_var_expr)), alpha  = 0.4, size = 1.5) +
+      ggplot2::geom_point(ggplot2::aes(color = !!(grouping_var_expr)), alpha  = alpha, size = 1.5) +
       ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr), ncol = 4) +
 
       ggplot2::theme_light() +
