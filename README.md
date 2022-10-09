@@ -26,13 +26,15 @@ devtools::install_github("gaborszabo11/sherlock")
 
 ## Functions
 
-While the package is currently under development, a few functions are
-already available and ready to be used. Available functions are as
+While the package is currently under development, quite a few functions
+are already available and ready to be used. Available functions are as
 follows:
 
 #### Plotting functions
 
 `draw_multivari_plot()`
+
+`draw_grouped_scatterplot()`
 
 `draw_youden_plot()`
 
@@ -42,9 +44,17 @@ follows:
 
 `draw_polar_small_multiples()`
 
+`draw_interaction_plot()`
+
+`draw_process_behavior_chart()`
+
 `draw_timeseries_scatterplot()`
 
 #### Helper functions
+
+`load_file()`
+
+`save_analysis()`
 
 `normalize_observations()`
 
@@ -106,7 +116,8 @@ youden_plot_data %>%
 ``` r
 timeseries_scatterplot_data %>%
   draw_timeseries_scatterplot(y_var = y, grouping_var_1 = date, grouping_var_2 = cavity, faceting = TRUE, 
-                              control_limits = TRUE, alpha = 0.07, interactive = FALSE)
+                              limits = TRUE, alpha = 0.15, interactive = FALSE)
+#> Joining, by = c("date", "cavity")
 #> Warning: Removed 6 rows containing missing values (geom_point).
 ```
 
