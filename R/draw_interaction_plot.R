@@ -14,7 +14,7 @@
 #'
 #' @export
 
-draw_interaction_plot <- function(data, y_var, x_var_1, x_var_2, alpha = 0.5, analysis_desc) {
+draw_interaction_plot <- function(data, y_var, x_var_1, x_var_2, alpha = 0.5, analysis_desc = "") {
 
   # 1. TIDY EVAL
   y_var_expr          <- rlang::enquo(y_var)
