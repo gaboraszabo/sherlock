@@ -42,7 +42,7 @@ draw_cartesian_small_multiples(
 \item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
 }
 \value{
-A ggplot cartesian small multiples object
+A ggplot or plotly Cartesian Small Multiples object
 }
 \description{
 Draws a cartesian small multiples plot

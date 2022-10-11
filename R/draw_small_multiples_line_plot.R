@@ -1,7 +1,7 @@
-#' Draw Small Multiples
+#' Draw Small Multiples Line Plot
 #'
 #' @description
-#' Draws a Small Multiples Plot
+#' Draws a Small Multiples Line Plot
 #'
 #' @param data input dataset to be plotted (required)
 #' @param x_axis_var variable to be plotted on x axis (required)
@@ -14,14 +14,14 @@
 #' @param x_axis_label Label for x axis. By default, it is set to "Measurement 1"  (optional)
 #' @param y_axis_label Label for y axis. By default, it is set to "Measurement 2"  (optional)
 #'
-#' @return A ggplot Small Multiples object
+#' @return A ggplot or plotly Small Multiples Line Plot object
 #'
 #' @export
 
 
-draw_small_multiples <- function(data, x_axis_var, y_axis_var, grouping_var, lowest_highest_units,
-                                 faceting = FALSE, unique_color_by_group = FALSE, interactive = TRUE,
-                                 x_axis_label, y_axis_label) {
+draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lowest_highest_units,
+                                          faceting = FALSE, unique_color_by_group = FALSE, interactive = TRUE,
+                                          x_axis_label, y_axis_label) {
 
   # 1. Tidy Eval ----
   x_axis_var_expr <- rlang::enquo(x_axis_var)

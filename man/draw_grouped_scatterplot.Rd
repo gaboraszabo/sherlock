@@ -36,7 +36,7 @@ draw_grouped_scatterplot(
 \item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
 }
 \value{
-Either a ggplot2::ggplot or plotly Grouped Scatterplot object
+Either a ggplot or plotly Grouped Scatterplot object
 }
 \description{
 Draws a Grouped Scatterplot
