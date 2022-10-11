@@ -19,6 +19,16 @@
 
 draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3, group_color = FALSE, alpha = 0.5, jitter = TRUE, interactive = FALSE) {
 
+  # 0. MESSAGES AND WARNINGS ----
+  if (missing(y_var)) {
+    stop("You must specify y_var!")
+  }
+
+  if (!missing(grouping_var_1) && missing(grouping_var_2) && !missing(grouping_var_3)) {
+    stop("Did you mean to specify grouping_var_2 instead of grouping_var_3?\nYou must specify grouping variables in the right order, i.e. grouping_var_1, grouping_var_2 and then grouping_var_3.")
+  }
+
+
   # 1. Tidy Eval ----
   y_var_expr <- rlang::enquo(y_var)
   grouping_var_1_expr <- rlang::enquo(grouping_var_1)
