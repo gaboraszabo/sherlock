@@ -8,7 +8,7 @@
 #' @param y_coord y coordinate values (required)
 #' @param grouping_var_1 Grouping variable 1 (required)
 #' @param grouping_var_2 Grouping variable 2 (optional)
-#' @param axes_start_at_zero Logical. Set whether axes start at zero. By default, it is set to FALSE (optional)
+#' @param four_quadrants Logical. Set whether to display four quadrant with both axes starting at zero. By default, it is set to FALSE (optional)
 #' @param show_axis_values Logical. if FALSE, default, axis values are not shown (optional)
 #' @param faceted logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)
 #'
@@ -17,7 +17,7 @@
 #' @export
 
 
-draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, axes_start_at_zero = FALSE,
+draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, four_quadrants = FALSE,
                                            show_axis_values = FALSE, faceted = TRUE) {
 
   # 1. Tidy Eval ----
@@ -60,13 +60,20 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
   # 4. Plot ----
   plot <- data %>%
 
-    ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_1_expr)) +
-    ggplot2::geom_hline(yintercept = 0, color = "grey70") +
-    ggplot2::geom_vline(xintercept = 0, color = "grey70") +
+    ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_1_expr))
+
+  # 4.1 four_quadrants arg ----
+  if (four_quadrants) {
+    plot <- plot +
+      ggplot2::geom_hline(yintercept = 0, color = "grey70") +
+      ggplot2::geom_vline(xintercept = 0, color = "grey70")
+  }
+
+  plot <- plot +
     ggplot2::geom_point(size = 2, alpha = 0.4)
 
-  # 4.1 axes_start_at_zero arg ----
-  if (axes_start_at_zero) {
+  # 4.2 four_quadrants arg ----
+  if (four_quadrants) {
     plot <- plot +
       ggplot2::coord_fixed(
         ratio = 1,

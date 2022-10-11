@@ -10,6 +10,7 @@ draw_cartesian_small_multiples(
   y_coord,
   grouping_var_1,
   grouping_var_2,
+  axes_start_at_zero = FALSE,
   show_axis_values = FALSE,
   faceted = TRUE
 )
@@ -25,7 +26,9 @@ draw_cartesian_small_multiples(
 
 \item{grouping_var_2}{Grouping variable 2 (optional)}
 
-\item{show_axis_values}{logical. if FALSE, default, axis values are not shown (optional)}
+\item{axes_start_at_zero}{Logical. Set whether axes start at zero. By default, it is set to FALSE (optional)}
+
+\item{show_axis_values}{Logical. if FALSE, default, axis values are not shown (optional)}
 
 \item{faceted}{logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)}
 }
