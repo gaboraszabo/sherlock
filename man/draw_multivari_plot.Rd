@@ -38,11 +38,11 @@ Draws a multivari small multiples plot
 \examples{
 library(ggh4x)
 
-multi_vari_data \%>\%
-    draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
+multivari_data \%>\%
+    draw_multi_vari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
 
-multi_vari_data_2 \%>\%
-    draw_multivari_plot(response = Length, factor_1 = Trial, factor_2 = Part,
+multivari_data_2 \%>\%
+    draw_multi_vari_plot(response = Length, factor_1 = Trial, factor_2 = Part,
                          factor_3 = Operator, plot_means = TRUE)
 
 }
