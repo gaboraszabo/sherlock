@@ -126,6 +126,10 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
 
   }
 
+  if (missing(grouping_var_1)) {
+    warning("You must select at least one grouping variable.")
+  }
+
 
   if (show_axis_values) {
     plot <- plot + ggplot2::theme(axis.text = ggplot2::element_text(size = 8, color = "grey70"))

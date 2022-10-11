@@ -13,6 +13,8 @@ draw_cartesian_small_multiples(
   four_quadrants = FALSE,
   show_axis_values = FALSE,
   faceted = TRUE,
+  size = 2,
+  alpha = 0.4,
   interactive = FALSE
 )
 }
@@ -32,6 +34,10 @@ draw_cartesian_small_multiples(
 \item{show_axis_values}{Logical. if FALSE, default, axis values are not shown (optional)}
 
 \item{faceted}{Logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)}
+
+\item{size}{Set point size. By default, it is set to 2  (optional)}
+
+\item{alpha}{Set transparency. By default, it is set to 0.4  (optional)}
 
 \item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
 }
