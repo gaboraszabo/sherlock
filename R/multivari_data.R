@@ -6,4 +6,4 @@
 #' multi_vari_data
 #'
 
-"multi_vari_data"
+"multivari_data"
