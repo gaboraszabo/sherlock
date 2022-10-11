@@ -13,7 +13,7 @@
 #' @param jitter Set whether to add jitter. By default, it is set to TRUE  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
-#' @return Either a ggplot2::ggplot or plotly Grouped Scatterplot object
+#' @return Either a ggplot or plotly Grouped Scatterplot object
 #'
 #' @export
 

@@ -15,7 +15,7 @@
 #' @param alpha Set transparency. By default, it is set to 0.4  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
-#' @return A ggplot cartesian small multiples object
+#' @return A ggplot or plotly Cartesian Small Multiples object
 #'
 #' @export
 
