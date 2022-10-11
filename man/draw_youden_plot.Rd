@@ -12,6 +12,7 @@ draw_youden_plot(
   lsl,
   usl,
   median_line = FALSE,
+  alpha = 0.4,
   analysis_desc_label = NULL,
   x_axis_label = "Horizontal axis values",
   y_axis_label = "Vertical axis values"
@@ -31,6 +32,8 @@ draw_youden_plot(
 \item{usl}{upper specification limit (optional)}
 
 \item{median_line}{logical. If TRUE, a median bias line is plotted. By default, it is set to FALSE  (optional)}
+
+\item{alpha}{Set transparency. By default, it is set to 0.4  (optional)}
 
 \item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
 

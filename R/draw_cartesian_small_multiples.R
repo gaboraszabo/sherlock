@@ -8,7 +8,8 @@
 #' @param y_coord y coordinate values (required)
 #' @param grouping_var_1 Grouping variable 1 (required)
 #' @param grouping_var_2 Grouping variable 2 (optional)
-#' @param show_axis_values logical. if FALSE, default, axis values are not shown (optional)
+#' @param axes_start_at_zero Logical. Set whether axes start at zero. By default, it is set to FALSE (optional)
+#' @param show_axis_values Logical. if FALSE, default, axis values are not shown (optional)
 #' @param faceted logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)
 #'
 #' @return A ggplot cartesian small multiples object
@@ -16,7 +17,7 @@
 #' @export
 
 
-draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2,
+draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, axes_start_at_zero = FALSE,
                                            show_axis_values = FALSE, faceted = TRUE) {
 
   # 1. Tidy Eval ----
@@ -62,11 +63,18 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
     ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_1_expr)) +
     ggplot2::geom_hline(yintercept = 0, color = "grey70") +
     ggplot2::geom_vline(xintercept = 0, color = "grey70") +
-    ggplot2::geom_point(size = 2, alpha = 0.4) +
-    ggplot2::coord_fixed(
-      ratio = 1,
-      xlim = x_and_y_limits,
-      ylim = x_and_y_limits) +
+    ggplot2::geom_point(size = 2, alpha = 0.4)
+
+  # 4.1 axes_start_at_zero arg ----
+  if (axes_start_at_zero) {
+    plot <- plot +
+      ggplot2::coord_fixed(
+        ratio = 1,
+        xlim = x_and_y_limits,
+        ylim = x_and_y_limits)
+  }
+
+  plot <- plot +
     ggplot2::theme_light() +
     ggplot2::theme(
       panel.grid       = ggplot2::element_blank(),
