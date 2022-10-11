@@ -23,6 +23,11 @@
 draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, four_quadrants = FALSE,
                                            show_axis_values = FALSE, faceted = TRUE, size = 2, alpha = 0.4, interactive = FALSE) {
 
+
+  if (missing(grouping_var_1)) {
+    warning("You must select at least one grouping variable.")
+  }
+
   # 1. Tidy Eval ----
   x_expr <- rlang::enquo(x_coord)
   y_expr <- rlang::enquo(y_coord)
@@ -124,10 +129,6 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
                                          cols = ggplot2::vars(!!grouping_var_1_expr))
     }
 
-  }
-
-  if (missing(grouping_var_1)) {
-    message("You must select at least one grouping variable.")
   }
 
 
