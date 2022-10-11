@@ -11,6 +11,8 @@
 #' @param four_quadrants Logical. Set whether to display four quadrant with both axes starting at zero. By default, it is set to FALSE (optional)
 #' @param show_axis_values Logical. if FALSE, default, axis values are not shown (optional)
 #' @param faceted Logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)
+#' @param size Set point size. By default, it is set to 2  (optional)
+#' @param alpha Set transparency. By default, it is set to 0.4  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
 #' @return A ggplot cartesian small multiples object
@@ -19,7 +21,7 @@
 
 
 draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, four_quadrants = FALSE,
-                                           show_axis_values = FALSE, faceted = TRUE, interactive = FALSE) {
+                                           show_axis_values = FALSE, faceted = TRUE, size = 2, alpha = 0.4, interactive = FALSE) {
 
   # 1. Tidy Eval ----
   x_expr <- rlang::enquo(x_coord)
@@ -71,7 +73,7 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
   }
 
   plot <- plot +
-    ggplot2::geom_point(size = 2, alpha = 0.4)
+    ggplot2::geom_point(size = size, alpha = alpha)
 
   # 4.2 four_quadrants arg ----
   if (four_quadrants) {

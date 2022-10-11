@@ -12,11 +12,12 @@ draw_cartesian_small_multiples(
   grouping_var_2,
   four_quadrants = FALSE,
   show_axis_values = FALSE,
-  faceted = TRUE
+  faceted = TRUE,
+  interactive = FALSE
 )
 }
 \arguments{
-\item{data}{input dataset to be plotted (required)}
+\item{data}{Input dataset to be plotted (required)}
 
 \item{x_coord}{x coordinate values (required)}
 
@@ -30,7 +31,9 @@ draw_cartesian_small_multiples(
 
 \item{show_axis_values}{Logical. if FALSE, default, axis values are not shown (optional)}
 
-\item{faceted}{logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)}
+\item{faceted}{Logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)}
+
+\item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
 }
 \value{
 A ggplot cartesian small multiples object
