@@ -10,7 +10,7 @@ draw_cartesian_small_multiples(
   y_coord,
   grouping_var_1,
   grouping_var_2,
-  axes_start_at_zero = FALSE,
+  four_quadrants = FALSE,
   show_axis_values = FALSE,
   faceted = TRUE
 )
@@ -26,7 +26,7 @@ draw_cartesian_small_multiples(
 
 \item{grouping_var_2}{Grouping variable 2 (optional)}
 
-\item{axes_start_at_zero}{Logical. Set whether axes start at zero. By default, it is set to FALSE (optional)}
+\item{four_quadrants}{Logical. Set whether to display four quadrant with both axes starting at zero. By default, it is set to FALSE (optional)}
 
 \item{show_axis_values}{Logical. if FALSE, default, axis values are not shown (optional)}
 

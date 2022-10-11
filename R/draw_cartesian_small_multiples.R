@@ -3,14 +3,15 @@
 #' @description
 #' Draws a cartesian small multiples plot
 #'
-#' @param data input dataset to be plotted (required)
+#' @param data Input dataset to be plotted (required)
 #' @param x_coord x coordinate values (required)
 #' @param y_coord y coordinate values (required)
 #' @param grouping_var_1 Grouping variable 1 (required)
 #' @param grouping_var_2 Grouping variable 2 (optional)
 #' @param four_quadrants Logical. Set whether to display four quadrant with both axes starting at zero. By default, it is set to FALSE (optional)
 #' @param show_axis_values Logical. if FALSE, default, axis values are not shown (optional)
-#' @param faceted logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)
+#' @param faceted Logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)
+#' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
 #' @return A ggplot cartesian small multiples object
 #'
@@ -18,7 +19,7 @@
 
 
 draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, four_quadrants = FALSE,
-                                           show_axis_values = FALSE, faceted = TRUE) {
+                                           show_axis_values = FALSE, faceted = TRUE, interactive = FALSE) {
 
   # 1. Tidy Eval ----
   x_expr <- rlang::enquo(x_coord)
@@ -126,6 +127,12 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
 
   if (show_axis_values) {
     plot <- plot + ggplot2::theme(axis.text = ggplot2::element_text(size = 8, color = "grey70"))
+  }
+
+
+  # 6. Interactivity ----
+  if (interactive) {
+    plot <- plotly::ggplotly(plot)
   }
 
 
