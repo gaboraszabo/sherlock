@@ -13,7 +13,7 @@ draw_polar_small_multiples(
   faceting_var_2,
   connect_with_lines = FALSE,
   point_size = 2,
-  line_size = 1,
+  line_size = 0.6,
   point_alpha = 0.6,
   line_alpha = 0.5,
   analysis_desc_label = ""
@@ -36,7 +36,7 @@ draw_polar_small_multiples(
 
 \item{point_size}{Set point size. By default, it is set to 2  (optional)}
 
-\item{line_size}{Set line size. By default, it is set to 1  (optional)}
+\item{line_size}{Set line size. By default, it is set to 0.6  (optional)}
 
 \item{point_alpha}{Set point transparency. By default, it is set to 0.6  (optional)}
 

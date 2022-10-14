@@ -11,7 +11,11 @@ draw_multivari_plot(
   factor_2,
   factor_3,
   plot_means = FALSE,
-  x_axis_text = "normal"
+  x_axis_text = "normal",
+  panel_text = 14,
+  point_size = 2.5,
+  line_size = 0.7,
+  alpha = 0.6
 )
 }
 \arguments{
@@ -28,6 +32,14 @@ draw_multivari_plot(
 \item{plot_means}{logical. if FALSE, default, means for mid-level factor are not plotted (optional)}
 
 \item{x_axis_text}{set x axis text size. options are "normal" (default), "small" and "none" (optional)}
+
+\item{panel_text}{set panel text size. By default, it is set to 14 (optional)}
+
+\item{point_size}{Set point size. By default, it is set to 2.5  (optional)}
+
+\item{line_size}{Set line size. By default, it is set to 0.7  (optional)}
+
+\item{alpha}{Set transparency. By default, it is set to 0.6  (optional)}
 }
 \value{
 A ggplot multi-vari plot object
