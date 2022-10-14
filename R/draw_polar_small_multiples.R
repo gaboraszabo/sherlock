@@ -7,24 +7,35 @@
 #' @param angular_axis angular coordinate values (required)
 #' @param x_y_coord_axis x-y coordinate values (required)
 #' @param grouping_var grouping variable (required)
+#' @param faceting_var_1 set first faceting variable (optional)
+#' @param faceting_var_2 set second faceting variable (optional)
 #' @param connect_with_lines logical. if FALSE, default, values within each group are not connected with a line (optional)
+#' @param point_size Set point size. By default, it is set to 2  (optional)
+#' @param line_size Set line size. By default, it is set to 1  (optional)
+#' @param point_alpha Set point transparency. By default, it is set to 0.6  (optional)
+#' @param line_alpha Set line transparency. By default, it is set to 0.5  (optional)
+#' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #'
 #' @return A ggplot polar small multiples object
 #' @export
 #'
 
-draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, grouping_var, connect_with_lines = FALSE) {
+draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, grouping_var, faceting_var_1, faceting_var_2,
+                                       connect_with_lines = FALSE, point_size = 2, line_size = 1,
+                                       point_alpha = 0.6, line_alpha = 0.5, analysis_desc_label) {
 
   x_expr            <- rlang::enquo(angular_axis)
   y_expr            <- rlang::enquo(x_y_coord_axis)
   grouping_var_expr <- rlang::enquo(grouping_var)
+  faceting_var_1_expr <- rlang::enquo(faceting_var_1)
+  faceting_var_2_expr <- rlang::enquo(faceting_var_2)
 
 
   plot <- data %>%
     dplyr::mutate(!! grouping_var_expr := forcats::as_factor(!! grouping_var_expr)) %>%
 
     ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_expr)) +
-    ggplot2::geom_point(size = 2, alpha = 0.6) +
+    ggplot2::geom_point(size = point_size, alpha = point_alpha) +
     ggplot2::coord_polar(theta = "x") +
     ggplot2::scale_x_continuous(breaks = c(0, 90, 180, 270),
                                 limits = c(0, 360),
@@ -45,12 +56,23 @@ draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, group
       plot.subtitle    = ggplot2::element_text(color = "grey50", size = 11, hjust = 0),
       plot.caption     = ggplot2::element_text(color = "grey50", size = 8)) +
     ggplot2::labs(
-      title = "Polar Small Multiples Plot"
+      title    = "Polar Small Multiples Plot",
+      subtitle = analysis_desc_label
     ) +
     sherlock::scale_color_sherlock()
 
   if (connect_with_lines) {
-    plot <- plot + ggplot2::geom_path(alpha = 0.6)
+    plot <- plot + ggplot2::geom_path(size = line_size, alpha = line_alpha)
+  }
+
+  if (!missing(faceting_var_1) & missing(faceting_var_2)) {
+    plot <- plot + ggplot2::facet_wrap(ggplot2::vars(!!faceting_var_1_expr))
+  }
+
+
+  if (!missing(faceting_var_1) & !missing(faceting_var_2)) {
+    plot <- plot + ggplot2::facet_grid(rows = ggplot2::vars(!!faceting_var_1_expr),
+                                       cols = ggplot2::vars(!!faceting_var_2_expr))
   }
 
   return(plot)
