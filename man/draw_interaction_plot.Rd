@@ -9,6 +9,8 @@ draw_interaction_plot(
   y_var,
   x_var_1_levels,
   x_var_2_levels,
+  point_size = 4,
+  line_size = 1,
   alpha = 0.5,
   analysis_desc_label = NULL
 )
@@ -21,6 +23,10 @@ draw_interaction_plot(
 \item{x_var_1_levels}{First grouping variable levels, e.g. -1/1 or "low"/"high" (required)}
 
 \item{x_var_2_levels}{Second grouping variable levels, e.g. -1/1 or "low"/"high" (required)}
+
+\item{point_size}{Set point size. By default, it is set to 4  (optional)}
+
+\item{line_size}{Set line size. By default, it is set to 1  (optional)}
 
 \item{alpha}{Set transparency. By default, it is set to 0.5  (optional)}
 
