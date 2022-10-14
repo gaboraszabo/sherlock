@@ -9,7 +9,14 @@ draw_polar_small_multiples(
   angular_axis,
   x_y_coord_axis,
   grouping_var,
-  connect_with_lines = FALSE
+  faceting_var_1,
+  faceting_var_2,
+  connect_with_lines = FALSE,
+  point_size = 2,
+  line_size = 1,
+  point_alpha = 0.6,
+  line_alpha = 0.5,
+  analysis_desc_label
 )
 }
 \arguments{
@@ -21,7 +28,21 @@ draw_polar_small_multiples(
 
 \item{grouping_var}{grouping variable (required)}
 
+\item{faceting_var_1}{set first faceting variable (optional)}
+
+\item{faceting_var_2}{set second faceting variable (optional)}
+
 \item{connect_with_lines}{logical. if FALSE, default, values within each group are not connected with a line (optional)}
+
+\item{point_size}{Set point size. By default, it is set to 2  (optional)}
+
+\item{line_size}{Set line size. By default, it is set to 1  (optional)}
+
+\item{point_alpha}{Set point transparency. By default, it is set to 0.6  (optional)}
+
+\item{line_alpha}{Set line transparency. By default, it is set to 0.5  (optional)}
+
+\item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
 }
 \value{
 A ggplot polar small multiples object

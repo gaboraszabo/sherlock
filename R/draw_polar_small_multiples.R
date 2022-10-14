@@ -22,7 +22,7 @@
 
 draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, grouping_var, faceting_var_1, faceting_var_2,
                                        connect_with_lines = FALSE, point_size = 2, line_size = 1,
-                                       point_alpha = 0.6, line_alpha = 0.5, analysis_desc_label) {
+                                       point_alpha = 0.6, line_alpha = 0.5, analysis_desc_label = "") {
 
   x_expr            <- rlang::enquo(angular_axis)
   y_expr            <- rlang::enquo(x_y_coord_axis)
