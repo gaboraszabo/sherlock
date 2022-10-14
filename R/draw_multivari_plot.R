@@ -9,7 +9,11 @@
 #' @param factor_2 mid-level factor (required)
 #' @param factor_3 top level factor (optional)
 #' @param plot_means logical. if FALSE, default, means for mid-level factor are not plotted (optional)
+#' @param point_size Set point size. By default, it is set to 2.5  (optional)
+#' @param line_size Set line size. By default, it is set to 0.7  (optional)
+#' @param alpha Set transparency. By default, it is set to 0.6  (optional)
 #' @param x_axis_text set x axis text size. options are "normal" (default), "small" and "none" (optional)
+#' @param panel_text set panel text size. By default, it is set to 14 (optional)
 #'
 #' @return A ggplot multi-vari plot object
 #'
@@ -26,7 +30,8 @@
 #' @export
 
 
-draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, plot_means = FALSE, x_axis_text = "normal") {
+draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, plot_means = FALSE,
+                                x_axis_text = "normal", panel_text = 14, point_size = 2.5, line_size = 0.7, alpha = 0.6) {
 
   # 1. Tidy Eval ----
   response_expr <- rlang::enquo(response)
@@ -42,7 +47,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
       panel.spacing     = ggplot2::unit(0, "lines"),
       panel.border      = ggh4x::element_part_rect(color = "grey95", size = 0.2),
       strip.background  = ggplot2::element_rect(fill = "white", color = "grey70", size = 0.5),
-      strip.text        = ggplot2::element_text(size = 14, color = "grey50"),
+      strip.text        = ggplot2::element_text(size = panel_text, color = "grey50"),
       plot.title        = ggplot2::element_text(size = 20, color = "grey50"),
       plot.subtitle     = ggplot2::element_text(size = 14, color = "grey70"),
       axis.title.x      = ggplot2::element_text(size = 13, color = "grey70"),
@@ -102,8 +107,8 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
         ggplot2::labs(caption  = stringr::str_glue("Blue data points represent averages for factor {as_label(factor_1_expr)}"))
     } else {
       multi_vari_chart <- multi_vari_chart +
-        ggplot2::geom_point(size = 2.5, alpha = 0.6) +
-        ggplot2::geom_line(ggplot2::aes(group = !!factor_1_expr), size = 0.7, alpha = 0.6)
+        ggplot2::geom_point(size = point_size, alpha = alpha) +
+        ggplot2::geom_line(ggplot2::aes(group = !!factor_1_expr), size = line_size, alpha = alpha)
     }
 
 
@@ -151,8 +156,8 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
       multi_vari_chart <- multi_vari_tbl %>%
 
         ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr, color = !!factor_2_expr)) +
-        ggplot2::geom_point(size = 2.5, alpha = 0.6) +
-        ggplot2::geom_line(size = 0.7, group = 1, alpha = 0.6) +
+        ggplot2::geom_point(size = point_size, alpha = alpha) +
+        ggplot2::geom_line(size = line_size, group = 1, alpha = alpha) +
 
         ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_3_expr, !!factor_2_expr)) +
         ggplot2::guides(y.sec = "axis") +

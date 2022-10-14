@@ -11,7 +11,7 @@
 #' @param faceting_var_2 set second faceting variable (optional)
 #' @param connect_with_lines logical. if FALSE, default, values within each group are not connected with a line (optional)
 #' @param point_size Set point size. By default, it is set to 2  (optional)
-#' @param line_size Set line size. By default, it is set to 1  (optional)
+#' @param line_size Set line size. By default, it is set to 0.6  (optional)
 #' @param point_alpha Set point transparency. By default, it is set to 0.6  (optional)
 #' @param line_alpha Set line transparency. By default, it is set to 0.5  (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
@@ -21,7 +21,7 @@
 #'
 
 draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, grouping_var, faceting_var_1, faceting_var_2,
-                                       connect_with_lines = FALSE, point_size = 2, line_size = 1,
+                                       connect_with_lines = FALSE, point_size = 2, line_size = 0.6,
                                        point_alpha = 0.6, line_alpha = 0.5, analysis_desc_label = "") {
 
   x_expr            <- rlang::enquo(angular_axis)

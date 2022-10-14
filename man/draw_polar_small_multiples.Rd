@@ -16,7 +16,7 @@ draw_polar_small_multiples(
   line_size = 1,
   point_alpha = 0.6,
   line_alpha = 0.5,
-  analysis_desc_label
+  analysis_desc_label = ""
 )
 }
 \arguments{
