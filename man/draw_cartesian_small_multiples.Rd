@@ -15,6 +15,7 @@ draw_cartesian_small_multiples(
   faceted = TRUE,
   size = 2,
   alpha = 0.4,
+  analysis_desc_label = NULL,
   interactive = FALSE
 )
 }
@@ -38,6 +39,8 @@ draw_cartesian_small_multiples(
 \item{size}{Set point size. By default, it is set to 2  (optional)}
 
 \item{alpha}{Set transparency. By default, it is set to 0.4  (optional)}
+
+\item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
 
 \item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
 }

@@ -155,8 +155,8 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
         xlim  = c(min-limit_scalar, max+limit_scalar),
         ylim  = c(min-limit_scalar, max+limit_scalar)) +
       ggplot2::labs(
-        x        = x_axis_label,
-        y        = y_axis_label) +
+        x        = "",
+        y        = "") +
       ggplot2::theme(
         axis.title.x  = ggplot2::element_text(size = 8, color = "grey50"),
         axis.title.y  = ggplot2::element_text(size = 8, color = "grey50"),
