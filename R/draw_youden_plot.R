@@ -10,10 +10,11 @@
 #' @param lsl lower specification limit (optional)
 #' @param usl upper specification limit (optional)
 #' @param median_line logical. If TRUE, a median bias line is plotted. By default, it is set to FALSE  (optional)
+#' @param size Set point size. By default, it is set to 2  (optional)
 #' @param alpha Set transparency. By default, it is set to 0.4  (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
-#' @param x_axis_label Label for x axis. By default, it is set to "Horizontal axis values"  (optional)
-#' @param y_axis_label Label for y axis. By default, it is set to "Vertical axis values"  (optional)
+#' @param x_axis_label Label for x axis. By default, it is set to display x axis column name  (optional)
+#' @param y_axis_label Label for y axis. By default, it is set to display y axis column name  (optional)
 #'
 #' @return A ggplot Youden Plot object
 #'
@@ -30,8 +31,8 @@
 #' @export
 
 draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, usl,
-                             median_line = FALSE, alpha = 0.4, analysis_desc_label = NULL,
-                             x_axis_label = "Horizontal axis values", y_axis_label = "Vertical axis values") {
+                             median_line = FALSE, size = 2, alpha = 0.4, analysis_desc_label = NULL,
+                             x_axis_label = NULL, y_axis_label = NULL) {
 
   # 1. Tidy Eval ----
   meas_1_expr <- rlang::enquo(x_axis_var)
@@ -84,8 +85,8 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
       ggplot2::labs(
         title    = "Youden Plot",
         subtitle = analysis_desc_label,
-        x        = x_axis_label,
-        y        = y_axis_label) +
+        x        = ifelse(is.null(x_axis_label), stringr::str_glue("{as_label(x_axis_var)}"), x_axis_label),
+        y        = ifelse(is.null(y_axis_label), stringr::str_glue("{as_label(y_axis_var)}"), y_axis_label)) +
       ggplot2::theme(
         plot.title    = ggplot2::element_text(hjust = 0.5, size = 18, color = "grey50"),
         plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 12, color = "grey50"),
@@ -106,7 +107,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
       dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr)) %>%
 
       ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
-      ggplot2::geom_point(ggplot2::aes(color = !!(grouping_var_expr)), alpha  = alpha, size = 2) +
+      ggplot2::geom_point(ggplot2::aes(color = !!(grouping_var_expr)), alpha  = alpha, size = size) +
 
       ggplot2::theme_light() +
       ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
@@ -141,7 +142,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
       dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr)) %>%
 
       ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
-      ggplot2::geom_point(ggplot2::aes(color = !!(grouping_var_expr)), alpha  = alpha, size = 1.5) +
+      ggplot2::geom_point(ggplot2::aes(color = !!(grouping_var_expr)), alpha  = alpha, size = 3/4*size) +
       ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_expr), ncol = 4) +
 
       ggplot2::theme_light() +
