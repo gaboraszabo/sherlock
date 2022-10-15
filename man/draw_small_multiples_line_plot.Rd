@@ -12,9 +12,12 @@ draw_small_multiples_line_plot(
   lowest_highest_units,
   faceting = FALSE,
   unique_color_by_group = FALSE,
+  size = 0.7,
+  alpha = 0.4,
   interactive = TRUE,
-  x_axis_label,
-  y_axis_label
+  analysis_desc_label = NULL,
+  x_axis_label = NULL,
+  y_axis_label = NULL
 )
 }
 \arguments{
@@ -32,11 +35,17 @@ draw_small_multiples_line_plot(
 
 \item{unique_color_by_group}{set whether to display each group in a unique color. By default, it is set to FALSE (optional)}
 
+\item{size}{Set line size. By default, it is set to 0.7  (optional)}
+
+\item{alpha}{Set transparency. By default, it is set to 0.4  (optional)}
+
 \item{interactive}{set plot interactivity. By default, it is set to TRUE (optional)}
 
-\item{x_axis_label}{Label for x axis. By default, it is set to "Measurement 1"  (optional)}
+\item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
 
-\item{y_axis_label}{Label for y axis. By default, it is set to "Measurement 2"  (optional)}
+\item{x_axis_label}{Label for x axis. By default, it is set to display x axis column name  (optional)}
+
+\item{y_axis_label}{Label for y axis. By default, it is set to display y axis column name  (optional)}
 }
 \value{
 A ggplot or plotly Small Multiples Line Plot object

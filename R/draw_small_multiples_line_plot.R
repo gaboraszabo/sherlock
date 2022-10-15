@@ -120,7 +120,8 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
       axis.text        = ggplot2::element_text(size = 9, color = "grey50"),
       legend.title     = ggplot2::element_text(color = "grey50", size = 11),
       legend.text      = ggplot2::element_text(color = "grey50", size = 11),
-      plot.title       = ggplot2::element_text(hjust = 0, size = 16, color = "grey50")) +
+      plot.title       = ggplot2::element_text(hjust = 0, size = 16, color = "grey50"),
+      plot.subtitle    = ggplot2::element_text(hjust = 0, size = 12, color = "grey50")) +
     ggplot2::labs(
       title = "Small Multiples Plot",
       subtitle = analysis_desc_label,
