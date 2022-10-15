@@ -11,6 +11,7 @@ draw_grouped_scatterplot(
   grouping_var_2,
   grouping_var_3,
   group_color = FALSE,
+  size = 2,
   alpha = 0.5,
   jitter = TRUE,
   interactive = FALSE
@@ -28,6 +29,8 @@ draw_grouped_scatterplot(
 \item{grouping_var_3}{Third, highest-level grouping variable (optional)}
 
 \item{group_color}{Set whether to color by grouping_var_1. By default, it is set to FALSE (optional)}
+
+\item{size}{Set point size. By default, it is set to 2  (optional)}
 
 \item{alpha}{Set transparency. By default, it is set to 0.5  (optional)}
 
