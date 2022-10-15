@@ -12,8 +12,11 @@
 #' @param limits Logical. If TRUE, process behavior chart control limits for the individual group means are plotted. By default, it is set to FALSE  (optional)
 #' @param date_breaks Set date breaks. Takes a string, for example "1 week" or "2 days". By default, it is set to "1 month" (optional)
 #' @param date_labels Set date labels. Identical to the date labels argument of the scale_x_date() ggplot function (optional)
+#' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #' @param x_axis_text X axis text size. The two options are "normal" and "small" (optional)
-#' @param alpha Set transparency for the individual observation. Identical to the alpha ggplot argument. By default, it is set to 0.3 (optional)
+#' @param point_size Set point size. By default, it is set to 1  (optional)
+#' @param alpha Set transparency for individual observations. Identical to the alpha ggplot argument. By default, it is set to 0.3 (optional)
+#' @param line_size Set line size. By default, it is set to 1  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to TRUE (optional)
 #'
 #' @return Either a ggplot or plotly Timeseries Scatterplot object
@@ -22,8 +25,8 @@
 
 draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_1_type = "date-time",
                                         grouping_var_2, faceting = FALSE, limits = FALSE,
-                                        date_breaks = "1 month", date_labels = "%b %y",
-                                        x_axis_text = "normal", alpha = 0.3, interactive = TRUE) {
+                                        date_breaks = "1 month", date_labels = "%b %y", analysis_desc_label = NULL,
+                                        x_axis_text = "normal", point_size = 1, alpha = 0.3, line_size = 1,  interactive = TRUE) {
 
   # 1. Tidy Eval ----
   y_var_expr          <- rlang::enquo(y_var)
@@ -58,8 +61,8 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
       }
 
       plot <- plot +
-        ggplot2::geom_jitter(color = "#304269", width = 2, alpha = alpha, size = 1) +
-        ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = 1, alpha = 1) +
+        ggplot2::geom_jitter(color = "#304269", width = 2, alpha = alpha, size = point_size) +
+        ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = line_size, alpha = 1) +
         #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
         ggplot2::scale_x_date(date_breaks = date_breaks, date_labels = date_labels) +
         sherlock::theme_sherlock()
@@ -85,9 +88,9 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, group = 1)) +
-        ggplot2::geom_jitter(color = "#304269", width = 0.05, alpha = alpha, size = 1) +
+        ggplot2::geom_jitter(color = "#304269", width = 0.05, alpha = alpha, size = point_size) +
         #stat_summary(fun = mean, geom = "point") +
-        ggplot2::stat_summary(fun = mean, geom = "line", color = "#304269", color = "#304269", size = 1, alpha = 1) +
+        ggplot2::stat_summary(fun = mean, geom = "line", color = "#304269", color = "#304269", size = line_size, alpha = 1) +
         #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
         sherlock::theme_sherlock()
     }
@@ -112,7 +115,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr)) +
-        ggplot2::geom_jitter(color = "#304269", width = 0.05, alpha = alpha, size = 1) +
+        ggplot2::geom_jitter(color = "#304269", width = 0.05, alpha = alpha, size = point_size) +
         #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
         sherlock::theme_sherlock()
     }
@@ -157,8 +160,8 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
         }
 
         plot <- plot +
-          ggplot2::geom_jitter(color = "#304269", width = 2, alpha = alpha, size = 1) +
-          ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = 1, alpha = 1) +
+          ggplot2::geom_jitter(color = "#304269", width = 2, alpha = alpha, size = point_size) +
+          ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = line_size, alpha = 1) +
           #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
           ggplot2::facet_grid(rows = ggplot2::vars(!!grouping_var_2_expr)) +
           ggplot2::scale_x_date(date_breaks = date_breaks, date_labels = date_labels) +
@@ -184,7 +187,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
         plot <- data %>%
           ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr)) +
-          ggplot2::geom_jitter(color = "#304269", width = 0.05, alpha = alpha, size = 1) +
+          ggplot2::geom_jitter(color = "#304269", width = 0.05, alpha = alpha, size = point_size) +
           #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
           ggplot2::facet_grid(rows = ggplot2::vars(!!grouping_var_2_expr)) +
           sherlock::theme_sherlock() +
@@ -217,8 +220,8 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
         }
 
         plot <- plot +
-          ggplot2::geom_jitter(width = 2, alpha = alpha, size = 1) +
-          ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = 1, alpha = 1) +
+          ggplot2::geom_jitter(width = 2, alpha = alpha, size = point_size) +
+          ggplot2::geom_line(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#304269", size = line_size, alpha = 1) +
           #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
           ggplot2::scale_x_date(date_breaks = date_breaks, date_labels = date_labels) +
           sherlock::theme_sherlock() +
@@ -244,7 +247,7 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
 
         plot <- data %>%
           ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_2_expr)) +
-          ggplot2::geom_jitter(width = 0.05, alpha = alpha, size = 1) +
+          ggplot2::geom_jitter(width = 0.05, alpha = alpha, size = point_size) +
           #geom_point(data = means_tbl, ggplot2::aes(!!grouping_var_1_expr, mean), color = "#700808", size = 1.5, alpha = 0.5) +
           sherlock::theme_sherlock() +
           sherlock::scale_color_sherlock()
@@ -268,7 +271,8 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
       legend.text      = ggplot2::element_text(color = "grey50", size = 11),
       plot.title       = ggplot2::element_text(hjust = 0, size = 16, color = "grey50")) +
     ggplot2::labs(
-      title = "Timeseries Scatterplot"
+      title    = "Timeseries Scatterplot",
+      subtitle = analysis_desc_label
     )
 
 
