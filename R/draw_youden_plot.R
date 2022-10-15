@@ -85,8 +85,8 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
       ggplot2::labs(
         title    = "Youden Plot",
         subtitle = analysis_desc_label,
-        x        = ifelse(is.null(x_axis_label), stringr::str_glue("{as_label(x_axis_var)}"), x_axis_label),
-        y        = ifelse(is.null(y_axis_label), stringr::str_glue("{as_label(y_axis_var)}"), y_axis_label)) +
+        x        = ifelse(is.null(x_axis_label), stringr::str_glue("{as_label(meas_1_expr)}"), x_axis_label),
+        y        = ifelse(is.null(y_axis_label), stringr::str_glue("{as_label(meas_2_expr)}"), y_axis_label)) +
       ggplot2::theme(
         plot.title    = ggplot2::element_text(hjust = 0.5, size = 18, color = "grey50"),
         plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 12, color = "grey50"),

@@ -12,10 +12,11 @@ draw_youden_plot(
   lsl,
   usl,
   median_line = FALSE,
+  size = 2,
   alpha = 0.4,
   analysis_desc_label = NULL,
-  x_axis_label = "Horizontal axis values",
-  y_axis_label = "Vertical axis values"
+  x_axis_label = NULL,
+  y_axis_label = NULL
 )
 }
 \arguments{
@@ -33,13 +34,15 @@ draw_youden_plot(
 
 \item{median_line}{logical. If TRUE, a median bias line is plotted. By default, it is set to FALSE  (optional)}
 
+\item{size}{Set point size. By default, it is set to 2  (optional)}
+
 \item{alpha}{Set transparency. By default, it is set to 0.4  (optional)}
 
 \item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
 
-\item{x_axis_label}{Label for x axis. By default, it is set to "Horizontal axis values"  (optional)}
+\item{x_axis_label}{Label for x axis. By default, it is set to display x axis column name  (optional)}
 
-\item{y_axis_label}{Label for y axis. By default, it is set to "Vertical axis values"  (optional)}
+\item{y_axis_label}{Label for y axis. By default, it is set to display y axis column name  (optional)}
 }
 \value{
 A ggplot Youden Plot object
