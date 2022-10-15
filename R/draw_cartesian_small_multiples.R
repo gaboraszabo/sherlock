@@ -13,6 +13,7 @@
 #' @param faceted Logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)
 #' @param size Set point size. By default, it is set to 2  (optional)
 #' @param alpha Set transparency. By default, it is set to 0.4  (optional)
+#' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
 #' @return A ggplot or plotly Cartesian Small Multiples object
@@ -21,7 +22,8 @@
 
 
 draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, four_quadrants = FALSE,
-                                           show_axis_values = FALSE, faceted = TRUE, size = 2, alpha = 0.4, interactive = FALSE) {
+                                           show_axis_values = FALSE, faceted = TRUE, size = 2, alpha = 0.4, analysis_desc_label = NULL,
+                                           interactive = FALSE) {
 
 
   if (missing(grouping_var_1)) {
@@ -104,7 +106,8 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
       legend.text      = ggplot2::element_text(color = "grey50", size = 11),
       plot.title    = ggplot2::element_text(hjust = 0.5, size = 16, color = "grey50")) +
     ggplot2::labs(
-      title = "Cartesian Small Multiples Plot"
+      title = "Cartesian Small Multiples Plot",
+      subtitle = analysis_desc_label
     ) +
     sherlock::scale_color_sherlock()
 
