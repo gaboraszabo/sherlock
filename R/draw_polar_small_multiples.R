@@ -51,8 +51,8 @@ draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, group
       axis.title.x     = ggplot2::element_text(size = label_text_size, color = "grey50"),
       axis.title.y     = ggplot2::element_text(size = label_text_size, color = "grey50"),
       axis.text        = ggplot2::element_text(size = label_text_size, color = "grey50"),
-      legend.title     = ggplot2::element_text(color = "grey50", size = 11),
-      legend.text      = ggplot2::element_text(color = "grey50", size = 11),
+      legend.title     = ggplot2::element_text(color = "grey50", size = label_text_size),
+      legend.text      = ggplot2::element_text(color = "grey50", size = label_text_size),
       plot.title       = ggplot2::element_text(color = "grey50", size = 16, hjust = 0),
       plot.subtitle    = ggplot2::element_text(color = "grey50", size = 11, hjust = 0),
       plot.caption     = ggplot2::element_text(color = "grey50", size = 8)) +

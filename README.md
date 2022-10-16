@@ -83,7 +83,10 @@ library(ggh4x)
 
 ``` r
 multi_vari_data %>% 
-  draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
+  draw_multivari_plot(response = force, 
+                      factor_1 = cycle, 
+                      factor_2 = fixture, 
+                      factor_3 = line)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -93,7 +96,9 @@ library(sherlock)
 library(ggh4x)
 
 multi_vari_data_2 %>% 
-  draw_multivari_plot(response = Length, factor_1 = Part, factor_2 = Operator, plot_means = TRUE)
+  draw_multivari_plot(response = Length, 
+                      factor_1 = Part, 
+                      factor_2 = Operator, plot_means = TRUE)
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
@@ -105,7 +110,8 @@ polar_small_multiples_data %>%
                              grouping_var   = Tip_Bottom, 
                              faceting_var_1 = Mold_Cavity_Number,
                              point_size     = 0.5, 
-                             connect_with_lines = TRUE)
+                             connect_with_lines = TRUE, 
+                             label_text_size = 5)
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
