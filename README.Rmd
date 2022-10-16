@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The __{sherlock} R package__ provides powerful graphical displays and statistical tools to aid structured problem solving and diagnosis. It is designed to seamlessly work with the `tidyverse` set of packages.
+The __{sherlock} R package__ provides powerful graphical displays and statistical tools to aid structured problem solving and diagnosis. The functions of the package are especially useful for applying the process of elimination as a problem diagnosis technique. __{sherlock}__ was designed to seamlessly work with the `tidyverse` set of packages.
 
 
 _"That is to say, nature's laws are causal; they reveal themselves by comparison and difference, and they operate at every multi-variate space-time point" - Edward Tufte_
@@ -30,7 +30,7 @@ _"That is to say, nature's laws are causal; they reveal themselves by comparison
 
 ## Installation
 
-You can install the development version of sherlock from [GitHub](https://github.com/) with:
+You can install the development version of `sherlock` from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -108,6 +108,36 @@ multi_vari_data_2 %>%
   draw_multivari_plot(response = Length, factor_1 = Part, factor_2 = Operator, plot_means = TRUE)
 ```
 
+
+```{r}
+
+polar_small_multiples_data %>% 
+  draw_polar_small_multiples(angular_axis   = ID_Measurement_Angle, 
+                             x_y_coord_axis = ID_2, 
+                             grouping_var   = Tip_Bottom, 
+                             faceting_var_1 = Mold_Cavity_Number,
+                             point_size     = 0.5, 
+                             connect_with_lines = TRUE)
+```
+
+
+```{r}
+library(sherlock)
+library(dplyr)
+library(ggh4x)
+
+polar_small_multiples_data %>% 
+  filter(ID_Measurement_Angle %in% c(0, 45, 90, 135)) %>% 
+  normalize_observations(response = ID, grouping_var = Tip_Bottom, ref_values = c(0.2075, 0.2225)) %>% 
+  draw_multivari_plot(response    = ID_normalized, 
+                      factor_1    = ID_Measurement_Angle, 
+                      factor_2    = Mold_Cavity_Number, 
+                      factor_3    = Tip_Bottom, 
+                      x_axis_text = "small") +
+  draw_horizontal_reference_line(reference_line = 0)
+
+
+```
 
 
 
