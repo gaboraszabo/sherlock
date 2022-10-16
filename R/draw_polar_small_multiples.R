@@ -14,6 +14,7 @@
 #' @param line_size Set line size. By default, it is set to 0.6  (optional)
 #' @param point_alpha Set point transparency. By default, it is set to 0.6  (optional)
 #' @param line_alpha Set line transparency. By default, it is set to 0.5  (optional)
+#' @param label_text_size Size of text for labels. By default, it is set to 11  (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #'
 #' @return A ggplot polar small multiples object
@@ -22,7 +23,7 @@
 
 draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, grouping_var, faceting_var_1, faceting_var_2,
                                        connect_with_lines = FALSE, point_size = 2, line_size = 0.6,
-                                       point_alpha = 0.6, line_alpha = 0.5, analysis_desc_label = "") {
+                                       point_alpha = 0.6, line_alpha = 0.5, label_text_size = 11, analysis_desc_label = "") {
 
   x_expr            <- rlang::enquo(angular_axis)
   y_expr            <- rlang::enquo(x_y_coord_axis)
@@ -47,9 +48,9 @@ draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, group
       strip.text       = ggplot2::element_text(color = "grey70", face = "bold", size = 11),
       panel.border     = ggplot2::element_blank(),
       panel.spacing    = ggplot2::unit(1, "lines"),
-      axis.title.x     = ggplot2::element_text(size = 11, color = "grey50"),
-      axis.title.y     = ggplot2::element_text(size = 11, color = "grey50"),
-      axis.text        = ggplot2::element_text(size = 11, color = "grey50"),
+      axis.title.x     = ggplot2::element_text(size = label_text_size, color = "grey50"),
+      axis.title.y     = ggplot2::element_text(size = label_text_size, color = "grey50"),
+      axis.text        = ggplot2::element_text(size = label_text_size, color = "grey50"),
       legend.title     = ggplot2::element_text(color = "grey50", size = 11),
       legend.text      = ggplot2::element_text(color = "grey50", size = 11),
       plot.title       = ggplot2::element_text(color = "grey50", size = 16, hjust = 0),
