@@ -31,7 +31,7 @@
 
 
 draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, plot_means = FALSE,
-                                x_axis_text_size = "normal", panel_text_size = 14, point_size = 2.5, line_size = 0.7, alpha = 0.6) {
+                                x_axis_text_size = 11, panel_text_size = 14, point_size = 2.5, line_size = 0.7, alpha = 0.6) {
 
   # 1. Tidy Eval ----
   response_expr <- rlang::enquo(response)
@@ -52,7 +52,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
       plot.subtitle     = ggplot2::element_text(size = 14, color = "grey70"),
       axis.title.x      = ggplot2::element_text(size = 13, color = "grey70"),
       axis.title.y      = ggplot2::element_text(size = 13, color = "grey70"),
-      axis.text.x       = ggplot2::element_text(size = 11, color = "grey70"),
+      axis.text.x       = ggplot2::element_text(size = x_axis_text_size, color = "grey70"),
       axis.text.y       = ggplot2::element_text(size = 12, color = "grey70"),
       axis.line.x.bottom        = ggplot2::element_line(color = "grey70", size = 0.5),
       axis.line.y.left  = ggplot2::element_line(color = "grey70", size = 0.5),
@@ -178,26 +178,26 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
   multi_vari_chart <- multi_vari_chart +
     sherlock::scale_color_sherlock()
 
-  # 6. X axis text ----
-  if(x_axis_text_size == "normal") {
-    multi_vari_chart <- multi_vari_chart +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 11, color = "grey70"))
-  }
-
-  if(x_axis_text_size == "small") {
-    multi_vari_chart <- multi_vari_chart +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7, color = "grey70"))
-  }
-
-  if(x_axis_text_size == "xs") {
-    multi_vari_chart <- multi_vari_chart +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 5, color = "grey70"))
-  }
-
-  if(x_axis_text_size == "none") {
-    multi_vari_chart <- multi_vari_chart +
-      ggplot2::theme(axis.text.x = ggplot2::element_blank())
-  }
+  # # 6. X axis text ----
+  # if(x_axis_text_size == "normal") {
+  #   multi_vari_chart <- multi_vari_chart +
+  #     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 11, color = "grey70"))
+  # }
+  #
+  # if(x_axis_text_size == "small") {
+  #   multi_vari_chart <- multi_vari_chart +
+  #     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7, color = "grey70"))
+  # }
+  #
+  # if(x_axis_text_size == "xs") {
+  #   multi_vari_chart <- multi_vari_chart +
+  #     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 5, color = "grey70"))
+  # }
+  #
+  # if(x_axis_text_size == "none") {
+  #   multi_vari_chart <- multi_vari_chart +
+  #     ggplot2::theme(axis.text.x = ggplot2::element_blank())
+  # }
 
 
 
