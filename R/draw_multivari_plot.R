@@ -12,8 +12,8 @@
 #' @param point_size Set point size. By default, it is set to 2.5  (optional)
 #' @param line_size Set line size. By default, it is set to 0.7  (optional)
 #' @param alpha Set transparency. By default, it is set to 0.6  (optional)
-#' @param x_axis_text set x axis text size. options are "normal" (default), "small" and "none" (optional)
-#' @param panel_text set panel text size. By default, it is set to 14 (optional)
+#' @param x_axis_text_size set x axis text size. options are "normal" (default), "small", "xs" and "none" (optional)
+#' @param panel_text_size set panel text size. By default, it is set to 14 (optional)
 #'
 #' @return A ggplot multi-vari plot object
 #'
@@ -31,7 +31,7 @@
 
 
 draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, plot_means = FALSE,
-                                x_axis_text = "normal", panel_text = 14, point_size = 2.5, line_size = 0.7, alpha = 0.6) {
+                                x_axis_text_size = "normal", panel_text_size = 14, point_size = 2.5, line_size = 0.7, alpha = 0.6) {
 
   # 1. Tidy Eval ----
   response_expr <- rlang::enquo(response)
@@ -47,7 +47,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
       panel.spacing     = ggplot2::unit(0, "lines"),
       panel.border      = ggh4x::element_part_rect(color = "grey95", size = 0.2),
       strip.background  = ggplot2::element_rect(fill = "white", color = "grey70", size = 0.5),
-      strip.text        = ggplot2::element_text(size = panel_text, color = "grey50"),
+      strip.text        = ggplot2::element_text(size = panel_text_size, color = "grey50"),
       plot.title        = ggplot2::element_text(size = 20, color = "grey50"),
       plot.subtitle     = ggplot2::element_text(size = 14, color = "grey70"),
       axis.title.x      = ggplot2::element_text(size = 13, color = "grey70"),
@@ -179,17 +179,22 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
     sherlock::scale_color_sherlock()
 
   # 6. X axis text ----
-  if(x_axis_text == "normal") {
+  if(x_axis_text_size == "normal") {
     multi_vari_chart <- multi_vari_chart +
       ggplot2::theme(axis.text.x = ggplot2::element_text(size = 11, color = "grey70"))
   }
 
-  if(x_axis_text == "small") {
+  if(x_axis_text_size == "small") {
     multi_vari_chart <- multi_vari_chart +
       ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7, color = "grey70"))
   }
 
-  if(x_axis_text == "none") {
+  if(x_axis_text_size == "xs") {
+    multi_vari_chart <- multi_vari_chart +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 5, color = "grey70"))
+  }
+
+  if(x_axis_text_size == "none") {
     multi_vari_chart <- multi_vari_chart +
       ggplot2::theme(axis.text.x = ggplot2::element_blank())
   }

@@ -10,7 +10,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  dpi = 300
 )
 ```
 
@@ -115,15 +116,18 @@ multi_vari_data_2 %>%
 
 
 ```{r}
+library(sherlock)
+library(dplyr)
 
 polar_small_multiples_data %>% 
+  filter(Mold_Cavity_Number %in% c(4, 6)) %>% 
   draw_polar_small_multiples(angular_axis   = ID_Measurement_Angle, 
                              x_y_coord_axis = ID_2, 
                              grouping_var   = Tip_Bottom, 
                              faceting_var_1 = Mold_Cavity_Number,
                              point_size     = 0.5, 
                              connect_with_lines = TRUE, 
-                             label_text_size = 5)
+                             label_text_size = 7)
 ```
 
 
@@ -149,23 +153,32 @@ polar_small_multiples_data %>%
 
 ```{r}
 youden_plot_data_2 %>% 
-  draw_youden_plot(x_axis_var = gage_1, y_axis_var = gage_2, median_line = TRUE, 
-                   x_axis_label = "Gage 1", y_axis_label = "Gage 2")
+  draw_youden_plot(x_axis_var  = gage_1, 
+                   y_axis_var  = gage_2, 
+                   median_line = TRUE)
 ```
 
 
 ```{r}
 youden_plot_data %>% 
-  draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, 
-                   grouping_var = location, x_axis_label = "Trial 1", y_axis_label = "Trial 2")
+  draw_youden_plot(x_axis_var   = measurement_1, 
+                   y_axis_var   = measurement_2, 
+                   grouping_var = location, 
+                   x_axis_label = "Trial 1", 
+                   y_axis_label = "Trial 2")
 ```
 
 
 
 ```{r}
 timeseries_scatterplot_data %>%
-  draw_timeseries_scatterplot(y_var = y, grouping_var_1 = date, grouping_var_2 = cavity, faceting = TRUE, 
-                              limits = TRUE, alpha = 0.15, interactive = FALSE)
+  draw_timeseries_scatterplot(y_var = y, 
+                              grouping_var_1 = date, 
+                              grouping_var_2 = cavity, 
+                              faceting       = TRUE, 
+                              limits         = TRUE, 
+                              alpha          = 0.15, 
+                              interactive    = FALSE)
 ```
 
 

@@ -104,19 +104,6 @@ multi_vari_data_2 %>%
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 ``` r
-polar_small_multiples_data %>% 
-  draw_polar_small_multiples(angular_axis   = ID_Measurement_Angle, 
-                             x_y_coord_axis = ID_2, 
-                             grouping_var   = Tip_Bottom, 
-                             faceting_var_1 = Mold_Cavity_Number,
-                             point_size     = 0.5, 
-                             connect_with_lines = TRUE, 
-                             label_text_size = 5)
-```
-
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
-
-``` r
 library(sherlock)
 library(dplyr)
 #> 
@@ -127,6 +114,23 @@ library(dplyr)
 #> The following objects are masked from 'package:base':
 #> 
 #>     intersect, setdiff, setequal, union
+
+polar_small_multiples_data %>% 
+  filter(Mold_Cavity_Number %in% c(4, 6)) %>% 
+  draw_polar_small_multiples(angular_axis   = ID_Measurement_Angle, 
+                             x_y_coord_axis = ID_2, 
+                             grouping_var   = Tip_Bottom, 
+                             faceting_var_1 = Mold_Cavity_Number,
+                             point_size     = 0.5, 
+                             connect_with_lines = TRUE, 
+                             label_text_size = 7)
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+``` r
+library(sherlock)
+library(dplyr)
 library(ggh4x)
 
 polar_small_multiples_data %>% 
@@ -145,8 +149,9 @@ polar_small_multiples_data %>%
 
 ``` r
 youden_plot_data_2 %>% 
-  draw_youden_plot(x_axis_var = gage_1, y_axis_var = gage_2, median_line = TRUE, 
-                   x_axis_label = "Gage 1", y_axis_label = "Gage 2")
+  draw_youden_plot(x_axis_var  = gage_1, 
+                   y_axis_var  = gage_2, 
+                   median_line = TRUE)
 #> Smoothing formula not specified. Using: y ~ x
 ```
 
@@ -154,16 +159,24 @@ youden_plot_data_2 %>%
 
 ``` r
 youden_plot_data %>% 
-  draw_youden_plot(x_axis_var = measurement_1, y_axis_var = measurement_2, 
-                   grouping_var = location, x_axis_label = "Trial 1", y_axis_label = "Trial 2")
+  draw_youden_plot(x_axis_var   = measurement_1, 
+                   y_axis_var   = measurement_2, 
+                   grouping_var = location, 
+                   x_axis_label = "Trial 1", 
+                   y_axis_label = "Trial 2")
 ```
 
 <img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
 ``` r
 timeseries_scatterplot_data %>%
-  draw_timeseries_scatterplot(y_var = y, grouping_var_1 = date, grouping_var_2 = cavity, faceting = TRUE, 
-                              limits = TRUE, alpha = 0.15, interactive = FALSE)
+  draw_timeseries_scatterplot(y_var = y, 
+                              grouping_var_1 = date, 
+                              grouping_var_2 = cavity, 
+                              faceting       = TRUE, 
+                              limits         = TRUE, 
+                              alpha          = 0.15, 
+                              interactive    = FALSE)
 #> Joining, by = c("date", "cavity")
 #> Warning: Removed 6 rows containing missing values (geom_point).
 ```
