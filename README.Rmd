@@ -94,7 +94,7 @@ library(ggh4x)
 
 
 
-```{r example}
+```{r out.width = "80%", fig.align = "center"}
 multi_vari_data %>% 
   draw_multivari_plot(response = force, 
                       factor_1 = cycle, 
@@ -104,7 +104,7 @@ multi_vari_data %>%
 
 
 
-```{r}
+```{r out.width = "80%", fig.align = "center"}
 library(sherlock)
 library(ggh4x)
 
@@ -131,7 +131,7 @@ polar_small_multiples_data %>%
 ```
 
 
-```{r}
+```{r out.width = "80%", fig.align = "center"}
 library(sherlock)
 library(dplyr)
 library(ggh4x)
@@ -143,7 +143,7 @@ polar_small_multiples_data %>%
                       factor_1    = ID_Measurement_Angle, 
                       factor_2    = Mold_Cavity_Number, 
                       factor_3    = Tip_Bottom, 
-                      x_axis_text = "small") +
+                      x_axis_text = 6) +
   draw_horizontal_reference_line(reference_line = 0)
 
 
@@ -151,7 +151,7 @@ polar_small_multiples_data %>%
 
 
 
-```{r}
+```{r out.width = "80%", fig.align = "center"}
 youden_plot_data_2 %>% 
   draw_youden_plot(x_axis_var  = gage_1, 
                    y_axis_var  = gage_2, 
@@ -177,7 +177,9 @@ timeseries_scatterplot_data %>%
                               grouping_var_2 = cavity, 
                               faceting       = TRUE, 
                               limits         = TRUE, 
-                              alpha          = 0.15, 
+                              alpha          = 0.15,
+                              line_size      = 0.5, 
+                              x_axis_text = "small",
                               interactive    = FALSE)
 ```
 

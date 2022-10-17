@@ -13,7 +13,7 @@
 #' @param date_breaks Set date breaks. Takes a string, for example "1 week" or "2 days". By default, it is set to "1 month" (optional)
 #' @param date_labels Set date labels. Identical to the date labels argument of the scale_x_date() ggplot function (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
-#' @param x_axis_text X axis text size. The two options are "normal" and "small" (optional)
+#' @param x_axis_text_size X axis text size. By default, it is set to 11. (optional)
 #' @param point_size Set point size. By default, it is set to 1  (optional)
 #' @param alpha Set transparency for individual observations. Identical to the alpha ggplot argument. By default, it is set to 0.3 (optional)
 #' @param line_size Set line size. By default, it is set to 1  (optional)
@@ -26,7 +26,7 @@
 draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_1_type = "date-time",
                                         grouping_var_2, faceting = FALSE, limits = FALSE,
                                         date_breaks = "1 month", date_labels = "%b %y", analysis_desc_label = NULL,
-                                        x_axis_text = "normal", point_size = 1, alpha = 0.3, line_size = 1,  interactive = TRUE) {
+                                        x_axis_text_size = 11, point_size = 1, alpha = 0.3, line_size = 1,  interactive = TRUE) {
 
   # 1. Tidy Eval ----
   y_var_expr          <- rlang::enquo(y_var)
@@ -266,7 +266,8 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
       panel.spacing    = ggplot2::unit(1, "lines"),
       axis.title.x     = ggplot2::element_text(size = 11, color = "grey50"),
       axis.title.y     = ggplot2::element_text(size = 11, color = "grey50"),
-      axis.text        = ggplot2::element_text(size = 11, color = "grey50"),
+      axis.text.x      = ggplot2::element_text(size = x_axis_text_size, color = "grey50"),
+      axis.text.y      = ggplot2::element_text(size = 11, color = "grey50"),
       legend.title     = ggplot2::element_text(color = "grey50", size = 11),
       legend.text      = ggplot2::element_text(color = "grey50", size = 11),
       plot.title       = ggplot2::element_text(hjust = 0, size = 16, color = "grey50")) +
@@ -276,21 +277,21 @@ draw_timeseries_scatterplot <- function(data, y_var, grouping_var_1, grouping_va
     )
 
 
-  # 5. X axis text ----
-  if(x_axis_text == "normal") {
-    plot <- plot +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 11, color = "grey50"))
-  }
-
-  if(x_axis_text == "small") {
-    plot <- plot +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7, color = "grey50"))
-  }
-
-  if(x_axis_text == "none") {
-    plot <- plot +
-      ggplot2::theme(axis.text.x = ggplot2::element_blank())
-  }
+  # # 5. X axis text ----
+  # if(x_axis_text == "normal") {
+  #   plot <- plot +
+  #     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 11, color = "grey50"))
+  # }
+  #
+  # if(x_axis_text == "small") {
+  #   plot <- plot +
+  #     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7, color = "grey50"))
+  # }
+  #
+  # if(x_axis_text == "none") {
+  #   plot <- plot +
+  #     ggplot2::theme(axis.text.x = ggplot2::element_blank())
+  # }
 
 
 

@@ -89,7 +89,7 @@ multi_vari_data %>%
                       factor_3 = line)
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" />
 
 ``` r
 library(sherlock)
@@ -101,7 +101,7 @@ multi_vari_data_2 %>%
                       factor_2 = Operator, plot_means = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;" />
 
 ``` r
 library(sherlock)
@@ -126,7 +126,7 @@ polar_small_multiples_data %>%
                              label_text_size = 7)
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 ``` r
 library(sherlock)
@@ -140,12 +140,12 @@ polar_small_multiples_data %>%
                       factor_1    = ID_Measurement_Angle, 
                       factor_2    = Mold_Cavity_Number, 
                       factor_3    = Tip_Bottom, 
-                      x_axis_text = "small") +
+                      x_axis_text = 6) +
   draw_horizontal_reference_line(reference_line = 0)
 #> Joining, by = "Tip_Bottom"
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="80%" style="display: block; margin: auto;" />
 
 ``` r
 youden_plot_data_2 %>% 
@@ -155,7 +155,7 @@ youden_plot_data_2 %>%
 #> Smoothing formula not specified. Using: y ~ x
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="80%" style="display: block; margin: auto;" />
 
 ``` r
 youden_plot_data %>% 
@@ -166,7 +166,7 @@ youden_plot_data %>%
                    y_axis_label = "Trial 2")
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 ``` r
 timeseries_scatterplot_data %>%
@@ -175,13 +175,15 @@ timeseries_scatterplot_data %>%
                               grouping_var_2 = cavity, 
                               faceting       = TRUE, 
                               limits         = TRUE, 
-                              alpha          = 0.15, 
+                              alpha          = 0.15,
+                              line_size      = 0.5, 
+                              x_axis_text = "small",
                               interactive    = FALSE)
 #> Joining, by = c("date", "cavity")
 #> Warning: Removed 6 rows containing missing values (geom_point).
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
 
 ## References
 
