@@ -50,7 +50,7 @@ While the package is currently under development, quite a few functions are alre
 
 `draw_youden_plot()`
 
-`draw_small_multiples`
+`draw_small_multiples_line_plot()`
 
 `draw_cartesian_small_multiples()`
 
@@ -78,7 +78,7 @@ While the package is currently under development, quite a few functions are alre
 
 `draw_horizontal_reference_line()`
 
-`draw_vertical_referencew_line()`
+`draw_vertical_reference_line()`
 
 
 

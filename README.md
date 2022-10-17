@@ -40,7 +40,7 @@ follows:
 
 `draw_youden_plot()`
 
-`draw_small_multiples`
+`draw_small_multiples_line_plot()`
 
 `draw_cartesian_small_multiples()`
 
@@ -68,7 +68,7 @@ follows:
 
 `draw_horizontal_reference_line()`
 
-`draw_vertical_referencew_line()`
+`draw_vertical_reference_line()`
 
 ## Examples
 
