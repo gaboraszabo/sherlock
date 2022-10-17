@@ -177,7 +177,7 @@ timeseries_scatterplot_data %>%
                               limits         = TRUE, 
                               alpha          = 0.15,
                               line_size      = 0.5, 
-                              x_axis_text = "small",
+                              x_axis_text    = 7,
                               interactive    = FALSE)
 #> Joining, by = c("date", "cavity")
 #> Warning: Removed 6 rows containing missing values (geom_point).

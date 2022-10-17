@@ -15,7 +15,7 @@ draw_timeseries_scatterplot(
   date_breaks = "1 month",
   date_labels = "\%b \%y",
   analysis_desc_label = NULL,
-  x_axis_text = "normal",
+  x_axis_text_size = 11,
   point_size = 1,
   alpha = 0.3,
   line_size = 1,
@@ -43,7 +43,7 @@ draw_timeseries_scatterplot(
 
 \item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
 
-\item{x_axis_text}{X axis text size. The two options are "normal" and "small" (optional)}
+\item{x_axis_text_size}{X axis text size. By default, it is set to 11. (optional)}
 
 \item{point_size}{Set point size. By default, it is set to 1  (optional)}
 
