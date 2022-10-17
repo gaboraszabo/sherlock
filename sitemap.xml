@@ -1,99 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/404.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/index.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_cartesian_small_multiples.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_cartesian_small_multiples.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_grouped_scatterplot.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_grouped_scatterplot.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_horizontal_reference_line.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_horizontal_reference_line.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_interaction_plot.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_interaction_plot.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_multivari_plot.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_multivari_plot.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_polar_small_multiples.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_polar_small_multiples.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_process_behavior_chart.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_process_behavior_chart.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_small_multiples_line_plot.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_small_multiples_line_plot.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_timeseries_scatterplot.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_timeseries_scatterplot.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_vertical_reference_line.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_vertical_reference_line.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_youden_plot.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/draw_youden_plot.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/load_file.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/load_file.html</loc>
   </url>
   <url>
-    <loc>/reference/multi_vari_data.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/multi_vari_data.html</loc>
   </url>
   <url>
-    <loc>/reference/multi_vari_data_2.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/multi_vari_data_2.html</loc>
   </url>
   <url>
-    <loc>/reference/normalize_observations.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/normalize_observations.html</loc>
   </url>
   <url>
-    <loc>/reference/pipe.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>/reference/polar_small_multiples_data.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/polar_small_multiples_data.html</loc>
   </url>
   <url>
-    <loc>/reference/save_analysis.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/save_analysis.html</loc>
   </url>
   <url>
-    <loc>/reference/scale_color_sherlock.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/scale_color_sherlock.html</loc>
   </url>
   <url>
-    <loc>/reference/scale_fill_sherlock.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/scale_fill_sherlock.html</loc>
   </url>
   <url>
-    <loc>/reference/small_multiples_data.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/small_multiples_data.html</loc>
   </url>
   <url>
-    <loc>/reference/theme_sherlock.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/theme_sherlock.html</loc>
   </url>
   <url>
-    <loc>/reference/tidyeval.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/tidyeval.html</loc>
   </url>
   <url>
-    <loc>/reference/timeseries_scatterplot_data.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/timeseries_scatterplot_data.html</loc>
   </url>
   <url>
-    <loc>/reference/youden_plot_data.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/youden_plot_data.html</loc>
   </url>
   <url>
-    <loc>/reference/youden_plot_data_2.html</loc>
+    <loc>https://gaboraszabo.github.io/sherlock/reference/youden_plot_data_2.html</loc>
   </url>
 </urlset>
