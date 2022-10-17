@@ -2,8 +2,5 @@ pandoc: 2.17.1.1
 pkgdown: 2.0.5
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-07-12T00:57Z
-urls:
-  reference: https://gaboraszabo.github.io/sherlock/reference
-  article: https://gaboraszabo.github.io/sherlock/articles
+last_built: 2022-10-17T14:06Z
 
