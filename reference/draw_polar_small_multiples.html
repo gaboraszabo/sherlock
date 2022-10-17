@@ -53,7 +53,15 @@
 <span>  <span class="va">angular_axis</span>,</span>
 <span>  <span class="va">x_y_coord_axis</span>,</span>
 <span>  <span class="va">grouping_var</span>,</span>
-<span>  connect_with_lines <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="va">faceting_var_1</span>,</span>
+<span>  <span class="va">faceting_var_2</span>,</span>
+<span>  connect_with_lines <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  point_size <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  line_size <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>  point_alpha <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>  line_alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  label_text_size <span class="op">=</span> <span class="fl">11</span>,</span>
+<span>  analysis_desc_label <span class="op">=</span> <span class="st">""</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -75,8 +83,40 @@
 <dd><p>grouping variable (required)</p></dd>
 
 
+<dt>faceting_var_1</dt>
+<dd><p>set first faceting variable (optional)</p></dd>
+
+
+<dt>faceting_var_2</dt>
+<dd><p>set second faceting variable (optional)</p></dd>
+
+
 <dt>connect_with_lines</dt>
 <dd><p>logical. if FALSE, default, values within each group are not connected with a line (optional)</p></dd>
+
+
+<dt>point_size</dt>
+<dd><p>Set point size. By default, it is set to 2  (optional)</p></dd>
+
+
+<dt>line_size</dt>
+<dd><p>Set line size. By default, it is set to 0.6  (optional)</p></dd>
+
+
+<dt>point_alpha</dt>
+<dd><p>Set point transparency. By default, it is set to 0.6  (optional)</p></dd>
+
+
+<dt>line_alpha</dt>
+<dd><p>Set line transparency. By default, it is set to 0.5  (optional)</p></dd>
+
+
+<dt>label_text_size</dt>
+<dd><p>Size of text for labels. By default, it is set to 11  (optional)</p></dd>
+
+
+<dt>analysis_desc_label</dt>
+<dd><p>Label (subtitle) for analysis description. By default, it is set to NULL  (optional)</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -84,6 +124,21 @@
     
 
 <p>A ggplot polar small multiples object</p>
+
+
+<p>#' @examples
+library(dplyr)</p>
+
+
+<p>polar_small_multiples_data %&gt;%
+filter(Mold_Cavity_Number %in% c(4, 6)) %&gt;%
+draw_polar_small_multiples(angular_axis   = ID_Measurement_Angle,
+x_y_coord_axis = ID_2,
+grouping_var   = Tip_Bottom,
+faceting_var_1 = Mold_Cavity_Number,
+point_size     = 0.5,
+connect_with_lines = TRUE,
+label_text_size = 7)</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

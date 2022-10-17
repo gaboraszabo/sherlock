@@ -54,15 +54,20 @@
 <span>  <span class="va">y_coord</span>,</span>
 <span>  <span class="va">grouping_var_1</span>,</span>
 <span>  <span class="va">grouping_var_2</span>,</span>
+<span>  four_quadrants <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  show_axis_values <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  faceted <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  faceted <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  size <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  alpha <span class="op">=</span> <span class="fl">0.4</span>,</span>
+<span>  analysis_desc_label <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  interactive <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
-<dd><p>input dataset to be plotted (required)</p></dd>
+<dd><p>Input dataset to be plotted (required)</p></dd>
 
 
 <dt>x_coord</dt>
@@ -81,19 +86,39 @@
 <dd><p>Grouping variable 2 (optional)</p></dd>
 
 
+<dt>four_quadrants</dt>
+<dd><p>Logical. Set whether to display four quadrant with both axes starting at zero. By default, it is set to FALSE (optional)</p></dd>
+
+
 <dt>show_axis_values</dt>
-<dd><p>logical. if FALSE, default, axis values are not shown (optional)</p></dd>
+<dd><p>Logical. if FALSE, default, axis values are not shown (optional)</p></dd>
 
 
 <dt>faceted</dt>
-<dd><p>logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)</p></dd>
+<dd><p>Logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)</p></dd>
+
+
+<dt>size</dt>
+<dd><p>Set point size. By default, it is set to 2  (optional)</p></dd>
+
+
+<dt>alpha</dt>
+<dd><p>Set transparency. By default, it is set to 0.4  (optional)</p></dd>
+
+
+<dt>analysis_desc_label</dt>
+<dd><p>Label (subtitle) for analysis description. By default, it is set to NULL  (optional)</p></dd>
+
+
+<dt>interactive</dt>
+<dd><p>Set plot interactivity. By default, it is set to FALSE (optional)</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A ggplot cartesian small multiples object</p>
+<p>A ggplot or plotly Cartesian Small Multiples object</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
