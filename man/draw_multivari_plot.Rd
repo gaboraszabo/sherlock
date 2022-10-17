@@ -11,7 +11,7 @@ draw_multivari_plot(
   factor_2,
   factor_3,
   plot_means = FALSE,
-  x_axis_text_size = "normal",
+  x_axis_text_size = 11,
   panel_text_size = 14,
   point_size = 2.5,
   line_size = 0.7,

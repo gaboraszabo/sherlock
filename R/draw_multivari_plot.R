@@ -178,28 +178,6 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
   multi_vari_chart <- multi_vari_chart +
     sherlock::scale_color_sherlock()
 
-  # # 6. X axis text ----
-  # if(x_axis_text_size == "normal") {
-  #   multi_vari_chart <- multi_vari_chart +
-  #     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 11, color = "grey70"))
-  # }
-  #
-  # if(x_axis_text_size == "small") {
-  #   multi_vari_chart <- multi_vari_chart +
-  #     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 7, color = "grey70"))
-  # }
-  #
-  # if(x_axis_text_size == "xs") {
-  #   multi_vari_chart <- multi_vari_chart +
-  #     ggplot2::theme(axis.text.x = ggplot2::element_text(size = 5, color = "grey70"))
-  # }
-  #
-  # if(x_axis_text_size == "none") {
-  #   multi_vari_chart <- multi_vari_chart +
-  #     ggplot2::theme(axis.text.x = ggplot2::element_blank())
-  # }
-
-
 
   return(multi_vari_chart)
 

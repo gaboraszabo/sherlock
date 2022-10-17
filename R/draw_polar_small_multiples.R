@@ -18,6 +18,20 @@
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #'
 #' @return A ggplot polar small multiples object
+#'
+#' #' @examples
+#' library(dplyr)
+#'
+#'polar_small_multiples_data %>%
+#'  filter(Mold_Cavity_Number %in% c(4, 6)) %>%
+#'  draw_polar_small_multiples(angular_axis   = ID_Measurement_Angle,
+#'                             x_y_coord_axis = ID_2,
+#'                             grouping_var   = Tip_Bottom,
+#'                             faceting_var_1 = Mold_Cavity_Number,
+#'                             point_size     = 0.5,
+#'                             connect_with_lines = TRUE,
+#'                             label_text_size = 7)
+#'
 #' @export
 #'
 
