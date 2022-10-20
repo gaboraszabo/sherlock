@@ -34,8 +34,6 @@ draw_pareto_chart(
 \item{scale}{(optional)}
 
 \item{axis_text_size}{(optional)}
-
-\item{alpha}{(optional)}
 }
 \value{
 A Pareto Chart ggplot object

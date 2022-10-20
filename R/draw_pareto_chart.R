@@ -25,8 +25,8 @@ draw_pareto_chart <- function(data, cat_var, y_var, highlight_first_n_items = 3,
   y_var_expr <- rlang::enquo(y_var)
 
   data <- data %>%
-    dplyr::arrange(desc(!!y_var_expr)) %>%
-    dplyr::mutate(rank = row_number()) %>%
+    dplyr::arrange(dplyr::desc(!!y_var_expr)) %>%
+    dplyr::mutate(rank = dplyr::row_number()) %>%
     dplyr::mutate(!!(cat_var_expr)   := !!(cat_var_expr) %>% forcats::as_factor() %>% forcats::fct_rev()) %>%
     dplyr::mutate(!!(y_var_expr) := !!(y_var_expr) %>% as.numeric()) %>%
     dplyr::mutate(fill = column_fill) %>%
@@ -35,7 +35,7 @@ draw_pareto_chart <- function(data, cat_var, y_var, highlight_first_n_items = 3,
 
   if (lump_last_n_items > 0) {
     data <- data %>%
-      dplyr::mutate(!!(cat_var_expr) := !!(cat_var_expr) %>% forcats::fct_lump(n = (data %>% pull(!!(cat_var_expr)) %>% length()) - lump_last_n_items,
+      dplyr::mutate(!!(cat_var_expr) := !!(cat_var_expr) %>% forcats::fct_lump(n = (data %>% dplyr::pull(!!(cat_var_expr)) %>% length()) - lump_last_n_items,
                                                                                w = !!(y_var_expr),
                                                                                other_level = lumped_cat_name)) %>%
       dplyr::mutate(!!(cat_var_expr) := !!(cat_var_expr) %>% forcats::fct_reorder(!!(y_var_expr))) %>%
