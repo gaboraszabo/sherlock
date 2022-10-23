@@ -36,7 +36,7 @@ follows:
 
 `draw_multivari_plot()`
 
-`draw_grouped_scatterplot()`
+`draw_categorical_scatterplot()`
 
 `draw_youden_plot()`
 

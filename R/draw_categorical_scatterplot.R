@@ -1,7 +1,7 @@
-#' Draw Grouped Scatterplot
+#' Draw Categorical Scatterplot
 #'
 #' @description
-#' Draws a Grouped Scatterplot
+#' Draws a Categorical Scatterplot
 #'
 #' @param data input dataset to be plotted (required)
 #' @param y_var Y variable to be plotted on Y axis (required)
@@ -14,11 +14,11 @@
 #' @param jitter Set whether to add jitter. By default, it is set to TRUE  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
-#' @return Either a ggplot or plotly Grouped Scatterplot object
+#' @return Either a ggplot or plotly Categorical Scatterplot object
 #'
 #' @export
 
-draw_grouped_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3,
+draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3,
                                      group_color = FALSE, size = 2, alpha = 0.5, jitter = TRUE, interactive = FALSE) {
 
   # 0. MESSAGES AND WARNINGS ----
