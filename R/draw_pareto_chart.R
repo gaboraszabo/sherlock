@@ -17,7 +17,7 @@
 #'
 #' @export
 
-draw_pareto_chart <- function(data, cat_var, y_var, highlight_first_n_items = 3, lump_last_n_items = 0,
+draw_pareto_chart <- function(data, cat_var, y_var, highlight_first_n_items = 0, lump_last_n_items = 0,
                               lumped_cat_name = "Other", column_fill = scale_fill_sherlock(3), scale = "numeric", axis_text_size = 10) {
 
 
