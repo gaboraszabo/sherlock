@@ -8,7 +8,7 @@ draw_pareto_chart(
   data,
   cat_var,
   y_var,
-  highlight_first_n_items = 3,
+  highlight_first_n_items = 0,
   lump_last_n_items = 0,
   lumped_cat_name = "Other",
   column_fill = scale_fill_sherlock(3),
