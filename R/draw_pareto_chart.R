@@ -24,6 +24,11 @@ draw_pareto_chart <- function(data, cat_var, y_var, highlight_first_n_items = 0,
                               title_label = "Pareto Chart", analysis_desc_label = NULL, axis_text_size = 10) {
 
 
+  if (!(scale %in% c("numeric", "percent", "dollar", "dollar-k", "dollar-M"))) {
+    warning('Specify an acceptable argument for scale. Acceptable arguments are "numeric", "percent", "dollar", "dollar-k" or "dollar-M"')
+  }
+
+
   cat_var_expr   <- rlang::enquo(cat_var)
   y_var_expr <- rlang::enquo(y_var)
 

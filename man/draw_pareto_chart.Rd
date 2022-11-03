@@ -13,6 +13,8 @@ draw_pareto_chart(
   lumped_cat_name = "Other",
   column_fill = scale_fill_sherlock(3),
   scale = "numeric",
+  title_label = "Pareto Chart",
+  analysis_desc_label = NULL,
   axis_text_size = 10
 )
 }
@@ -32,6 +34,10 @@ draw_pareto_chart(
 \item{column_fill}{(optional)}
 
 \item{scale}{(optional)}
+
+\item{title_label}{(optional)}
+
+\item{analysis_desc_label}{(optional)}
 
 \item{axis_text_size}{(optional)}
 }
