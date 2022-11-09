@@ -21,7 +21,7 @@ draw_vertical_reference_line(
 \item{size}{change line thickness. identical to size ggplot2 aesthetic. by default, it is set to 0.7 (optional)}
 }
 \value{
-A ggplot multi-vari plot object
+A vertical reference line plotted on top of ggplot2 object
 }
 \description{
 Draws a vertical reference line or multiple reference lines to plots

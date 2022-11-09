@@ -21,15 +21,8 @@ draw_horizontal_reference_line(
 \item{size}{change line thickness. identical to size ggplot2 aesthetic. by default, it is set to 0.7 (optional)}
 }
 \value{
-A ggplot multi-vari plot object
+A horizontal reference line plotted on top of ggplot2 object
 }
 \description{
 Draws a horizontal reference line or multiple reference lines to plots
-}
-\examples{
-
-multi_vari_data \%>\%
-    draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line) +
-    draw_horizontal_reference_line(reference_line = c(19.3, 23.5))
-
 }
