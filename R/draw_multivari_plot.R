@@ -18,7 +18,6 @@
 #' @return A ggplot multi-vari plot object
 #'
 #' @examples
-#' library(ggh4x)
 #'
 #' multi_vari_data %>%
 #'     draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
