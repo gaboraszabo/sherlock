@@ -17,15 +17,6 @@
 #'
 #' @return A ggplot multi-vari plot object
 #'
-#' @examples
-#'
-#' multi_vari_data %>%
-#'     draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line)
-#'
-#' multi_vari_data_2 %>%
-#'     draw_multivari_plot(response = Length, factor_1 = Trial, factor_2 = Part,
-#'                          factor_3 = Operator, plot_means = TRUE)
-#'
 #' @export
 
 

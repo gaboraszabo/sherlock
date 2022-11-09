@@ -8,13 +8,7 @@
 #' @param linetype change line type. identical to linetype ggplot2 aesthetic. by default, it is set to "dashed" (optional)
 #' @param size change line thickness. identical to size ggplot2 aesthetic. by default, it is set to 0.7 (optional)
 #'
-#' @return A ggplot multi-vari plot object
-#'
-#' @examples
-#'
-#' multi_vari_data %>%
-#'     draw_multivari_plot(response = force, factor_1 = cycle, factor_2 = fixture, factor_3 = line) +
-#'     draw_horizontal_reference_line(reference_line = c(19.3, 23.5))
+#' @return A horizontal reference line plotted on top of ggplot2 object
 #'
 #' @export
 

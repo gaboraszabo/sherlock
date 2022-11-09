@@ -8,7 +8,7 @@
 #' @param linetype change line type. identical to linetype ggplot2 aesthetic. by default, it is set to "dashed" (optional)
 #' @param size change line thickness. identical to size ggplot2 aesthetic. by default, it is set to 0.7 (optional)
 #'
-#' @return A ggplot multi-vari plot object
+#' @return A vertical reference line plotted on top of ggplot2 object
 #'
 #' @export
 
