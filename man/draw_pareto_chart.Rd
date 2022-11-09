@@ -7,7 +7,7 @@
 draw_pareto_chart(
   data,
   cat_var,
-  y_var,
+  continuous_var,
   highlight_first_n_items = 0,
   lump_last_n_items = 0,
   lumped_cat_name = "Other",
@@ -21,25 +21,25 @@ draw_pareto_chart(
 \arguments{
 \item{data}{input dataset to be plotted (required)}
 
-\item{cat_var}{categorical variable, Y (required)}
+\item{cat_var}{Categorical variable (required)}
 
-\item{y_var}{(required)}
+\item{continuous_var}{Continuous variable to rank by (e.g. sum, frequency etc.)  (required)}
 
-\item{highlight_first_n_items}{(required)}
+\item{highlight_first_n_items}{Specify the top n items to be highlighted. By default, it is set to 0. (optional)}
 
-\item{lump_last_n_items}{(optional)}
+\item{lump_last_n_items}{Specify the last n items to be lumped into one category. By default, it is set to 0. (optional)}
 
-\item{lumped_cat_name}{(optional)}
+\item{lumped_cat_name}{Name lumped category. By default, it is set to "Other". (optional)}
 
-\item{column_fill}{(optional)}
+\item{column_fill}{Column fill color. By default, it is set to scale_fill_sherlock(3) (optional)}
 
-\item{scale}{(optional)}
+\item{scale}{Specify an acceptable argument for scale. Acceptable arguments are "numeric", "percent", "dollar", "dollar-k" or "dollar-M". By default, it is set to "numeric" (optional)}
 
-\item{title_label}{(optional)}
+\item{title_label}{Specify plot title. By default, it is set to display "Pareto Chart" (optional)}
 
-\item{analysis_desc_label}{(optional)}
+\item{analysis_desc_label}{Specify plot analysis desc label (subtitle). By default, it is set to display CONTINUOUS VARIABLE COLUMN NAME "by" CATEGORICAL VARIABLE COLUMN NAME (optional)}
 
-\item{axis_text_size}{(optional)}
+\item{axis_text_size}{Set axis text size. By default, it is set at 10. (optional)}
 }
 \value{
 A Pareto Chart ggplot object

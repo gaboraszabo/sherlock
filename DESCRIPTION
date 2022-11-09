@@ -1,6 +1,6 @@
 Package: sherlock
 Title: Graphical Displays to Aid Structured Problem Solving and Diagnosis
-Version: 0.0.0.9000
+Version: 0.5.1
 Authors@R: c( 
     person(given = "Gabor", family = "Szabo", email = "gabor.attila.szabo@gmail.com", role = c("aut", "cre")))
 Description: What the package does (one paragraph).
