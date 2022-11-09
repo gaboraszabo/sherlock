@@ -45,7 +45,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
       panel.grid.major  = ggplot2::element_blank(),
       panel.grid.minor  = ggplot2::element_blank(),
       panel.spacing     = ggplot2::unit(0, "lines"),
-      panel.border      = ggh4x::element_part_rect(color = "grey95", size = 0.2),
+      panel.border      = ggh4x::element_part_rect(color = "grey95", linewidth = 0.2),
       strip.background  = ggplot2::element_rect(fill = "white", color = "grey70", size = 0.5),
       strip.text        = ggplot2::element_text(size = panel_text_size, color = "grey50"),
       plot.title        = ggplot2::element_text(size = 20, color = "grey50"),
