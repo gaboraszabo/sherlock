@@ -117,6 +117,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
 
     # Mean tbl for plotting averages ----
     mean_tbl <- data %>%
+      dplyr::mutate(!!(factor_3_expr) := forcats::as_factor(!!factor_3_expr)) %>%
       dplyr::mutate(!!as_label(factor_2_expr) := forcats::as_factor(!!factor_2_expr)) %>%
       dplyr::mutate(!!as_label(factor_1_expr) := forcats::as_factor(!!factor_1_expr)) %>%
       dplyr::group_by(!!factor_3_expr, !!factor_2_expr) %>%
