@@ -22,6 +22,8 @@ A \code{tibble} object with observations normalized and saved in a new column.
 This function takes an input dataset and normalizes observations
 }
 \examples{
+library(dplyr)
+
 polar_small_multiples_data \%>\%
     filter(ID_Measurement_Angle \%in\% c(0, 45, 90, 135)) \%>\%
     normalize_observations(response = ID,
