@@ -10,7 +10,7 @@ theme_sherlock(axis_text_size = "normal")
 \item{axis_text_size}{set axis text and axis title size. options are "normal" or "small". by default, it is set to "normal"}
 }
 \value{
-Plot object with Sherlock plot theme
+A 'theme' object with Sherlock plot theme
 }
 \description{
 Set Sherlock plot theme

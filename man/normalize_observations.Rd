@@ -16,7 +16,7 @@ normalize_observations(data, response, grouping_var, ref_values)
 \item{ref_values}{add reference (nominal) values. takes a string of values with values appearing in the same order as in grouping variable. string length must be equal to unique values in grouping variable (required)}
 }
 \value{
-A tibble with observations normalized and saved in a new column
+A \code{tibble} object with observations normalized and saved in a new column.
 }
 \description{
 This function takes an input dataset and normalizes observations

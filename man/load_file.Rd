@@ -12,7 +12,7 @@ load_file(path, filetype = ".xlsx")
 \item{filetype}{set whether to read an .xlsx file or a .csv file. It takes either ".xlsx" or ".csv". By default, it is set to ".xlsx" (optional)}
 }
 \value{
-A tibble
+Returns data in the form of a \code{tibble} object.
 }
 \description{
 Reads either an .xlsx or a .csv file into a table

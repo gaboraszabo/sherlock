@@ -45,7 +45,7 @@ draw_youden_plot(
 \item{y_axis_label}{Label for y axis. By default, it is set to display y axis column name  (optional)}
 }
 \value{
-A ggplot Youden Plot object
+A 'ggplot' object
 }
 \description{
 Draws a Youden Plot

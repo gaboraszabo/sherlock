@@ -21,7 +21,7 @@ draw_horizontal_reference_line(
 \item{size}{change line thickness. identical to size ggplot2 aesthetic. by default, it is set to 0.7 (optional)}
 }
 \value{
-A horizontal reference line plotted on top of ggplot2 object
+A horizontal reference line plotted on top of a 'ggplot' object
 }
 \description{
 Draws a horizontal reference line or multiple reference lines to plots

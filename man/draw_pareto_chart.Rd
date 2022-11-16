@@ -42,7 +42,7 @@ draw_pareto_chart(
 \item{axis_text_size}{Set axis text size. By default, it is set at 10. (optional)}
 }
 \value{
-A Pareto Chart ggplot object
+A 'ggplot' object
 }
 \description{
 Draws a Pareto Chart

@@ -33,7 +33,7 @@ draw_interaction_plot(
 \item{analysis_desc_label}{analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
 }
 \value{
-A ggplot Interaction Plot object
+A 'ggplot' object
 }
 \description{
 Draws an Interaction Plot

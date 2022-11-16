@@ -48,7 +48,7 @@ draw_small_multiples_line_plot(
 \item{y_axis_label}{Label for y axis. By default, it is set to display y axis column name  (optional)}
 }
 \value{
-A ggplot or plotly Small Multiples Line Plot object
+A 'ggplot' or 'plotly' object
 }
 \description{
 Draws a Small Multiples Line Plot

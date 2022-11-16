@@ -24,7 +24,7 @@ draw_process_behavior_chart(
 \item{interactive}{Set plot interactivity. By default, it is set to TRUE (optional)}
 }
 \value{
-Either a ggplot or plotly Process Behavior Chart object
+A 'ggplot' or 'plotly' object
 }
 \description{
 Draws a Process Behavior Chart

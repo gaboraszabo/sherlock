@@ -10,7 +10,7 @@ scale_color_sherlock(palette = 1)
 \item{palette}{color palette to be used (required). options are 1, 2 and 3 (2 and 3 are only one color for no grouping). by default it is set to 1.}
 }
 \value{
-Plot color scheme that uses one of the Sherlock color palettes
+A 'ggplot' color scheme that uses one of the Sherlock color palettes
 }
 \description{
 Set color scheme to one of the Sherlock color palettes

@@ -54,7 +54,7 @@ draw_timeseries_scatterplot(
 \item{interactive}{Set plot interactivity. By default, it is set to TRUE (optional)}
 }
 \value{
-Either a ggplot or plotly Timeseries Scatterplot object
+A 'ggplot' or 'plotly' object
 }
 \description{
 Draws a Timeseries Scatterplot

@@ -48,7 +48,7 @@ draw_polar_small_multiples(
 \item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
 }
 \value{
-A ggplot polar small multiples object
+A 'ggplot' object
 }
 \description{
 Draws a Polar Small Multiple Plot

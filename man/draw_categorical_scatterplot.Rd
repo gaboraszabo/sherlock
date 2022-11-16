@@ -39,7 +39,7 @@ draw_categorical_scatterplot(
 \item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
 }
 \value{
-Either a ggplot or plotly Categorical Scatterplot object
+A 'ggplot' or 'plotly' object
 }
 \description{
 Draws a Categorical Scatterplot

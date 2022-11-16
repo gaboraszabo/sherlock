@@ -9,8 +9,8 @@ Description: Powerful graphical displays and statistical tools for structured pr
     built on top of the 'ggplot' and 'plotly' packages, such as different kinds small multiple plots as well as helper functions such as 
     adding reference lines, normalizing observations, reading in data or saving analysis results in an Excel file. 
     References: 
-    David Hartshorne (2019, ISBN: 978-1-5272-5139-7)
-    Stefan H. Steiner, R. Jock MacKay (2005, ISBN: 0873896467)
+    David Hartshorne (2019, ISBN: 978-1-5272-5139-7).
+    Stefan H. Steiner, R. Jock MacKay (2005, ISBN: 0873896467).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

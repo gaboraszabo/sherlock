@@ -42,7 +42,7 @@ draw_multivari_plot(
 \item{alpha}{Set transparency. By default, it is set to 0.6  (optional)}
 }
 \value{
-A ggplot multi-vari plot object
+A 'ggplot' object
 }
 \description{
 Draws a multivari small multiples plot
