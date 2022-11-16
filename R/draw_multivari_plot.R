@@ -23,7 +23,9 @@
 #'
 #' polar_small_multiples_data %>%
 #'   filter(ID_Measurement_Angle %in% c(0, 45, 90, 135)) %>%
-#'   normalize_observations(response = ID, grouping_var = Tip_Bottom, ref_values = c(0.2075, 0.2225)) %>%
+#'   normalize_observations(response = ID,
+#'                          grouping_var = Tip_Bottom,
+#'                          ref_values = c(0.2075, 0.2225)) %>%
 #'   draw_multivari_plot(response    = ID_normalized,
 #'                      factor_1    = ID_Measurement_Angle,
 #'                      factor_2    = Mold_Cavity_Number,

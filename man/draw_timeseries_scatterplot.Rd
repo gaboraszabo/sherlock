@@ -59,3 +59,16 @@ A 'ggplot' or 'plotly' object
 \description{
 Draws a Timeseries Scatterplot
 }
+\examples{
+timeseries_scatterplot_data \%>\%
+   draw_timeseries_scatterplot(y_var = y,
+                               grouping_var_1 = date,
+                               grouping_var_2 = cavity,
+                               faceting       = TRUE,
+                               limits         = TRUE,
+                               alpha          = 0.15,
+                               line_size      = 0.5,
+                               x_axis_text    = 7,
+                               interactive    = FALSE)
+
+}
