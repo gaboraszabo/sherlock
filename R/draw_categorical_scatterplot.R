@@ -19,9 +19,9 @@
 #' @examples
 #' multi_vari_data_2 %>%
 #'    draw_categorical_scatterplot(y_var = Length,
-#'                                 grouping_var_1 = Trial,
-#'                                 grouping_var_2 = Part,
-#'                                 grouping_var_3 = Operator)
+#'                                 grouping_var_1 = Part,
+#'                                 grouping_var_2 = Operator,
+#'                                 jitter = FALSE)
 #'
 #' @export
 
