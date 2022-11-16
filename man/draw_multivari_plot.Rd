@@ -52,7 +52,6 @@ library(dplyr)
 library(ggh4x)
 
 polar_small_multiples_data \%>\%
-  filter(ID_Measurement_Angle \%in\% c(0, 45, 90, 135)) \%>\%
   normalize_observations(response = ID,
                          grouping_var = Tip_Bottom,
                          ref_values = c(0.2075, 0.2225)) \%>\%
