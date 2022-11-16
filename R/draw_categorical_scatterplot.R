@@ -16,6 +16,10 @@
 #'
 #' @return A 'ggplot' or 'plotly' object
 #'
+#' @examples
+#'
+#'
+#'
 #' @export
 
 draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3,
@@ -145,7 +149,7 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
       panel.grid.major  = ggplot2::element_blank(),
       panel.grid.minor  = ggplot2::element_blank(),
       panel.spacing     = ggplot2::unit(0, "lines"),
-      panel.border      = ggh4x::element_part_rect(color = "grey95", size = 0.2),
+      panel.border      = ggh4x::element_part_rect(color = "grey95", linewidth = 0.2),
       strip.background  = ggplot2::element_rect(fill = "white", color = "grey70", size = 0.5),
       strip.text        = ggplot2::element_text(size = 11, color = "grey50"),
       plot.title        = ggplot2::element_text(size = 14, color = "grey50"),
