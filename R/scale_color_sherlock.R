@@ -5,7 +5,7 @@
 #'
 #' @param palette color palette to be used (required). options are 1, 2 and 3 (2 and 3 are only one color for no grouping). by default it is set to 1.
 #'
-#' @return Plot color scheme that uses one of the Sherlock color palettes
+#' @return A 'ggplot' color scheme that uses one of the Sherlock color palettes
 #'
 #' @export
 

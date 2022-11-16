@@ -15,7 +15,7 @@
 #' @param analysis_desc_label  Specify plot analysis desc label (subtitle). By default, it is set to display CONTINUOUS VARIABLE COLUMN NAME "by" CATEGORICAL VARIABLE COLUMN NAME (optional)
 #' @param axis_text_size Set axis text size. By default, it is set at 10. (optional)
 #'
-#' @return A Pareto Chart ggplot object
+#' @return A 'ggplot' object
 #'
 #' @export
 

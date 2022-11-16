@@ -15,7 +15,7 @@
 #' @param x_axis_text_size set x axis text size. options are "normal" (default), "small", "xs" and "none" (optional)
 #' @param panel_text_size set panel text size. By default, it is set to 14 (optional)
 #'
-#' @return A ggplot multi-vari plot object
+#' @return A 'ggplot' object
 #'
 #' @export
 

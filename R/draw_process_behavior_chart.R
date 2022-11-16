@@ -9,7 +9,7 @@
 #' @param limits Logical. If TRUE, natural process limits (control limits) are plotted. By default, it is set to FALSE  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to TRUE (optional)
 #'
-#' @return Either a ggplot or plotly Process Behavior Chart object
+#' @return A 'ggplot' or 'plotly' object
 #'
 #' @export
 

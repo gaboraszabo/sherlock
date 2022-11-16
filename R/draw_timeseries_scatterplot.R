@@ -19,7 +19,7 @@
 #' @param line_size Set line size. By default, it is set to 1  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to TRUE (optional)
 #'
-#' @return Either a ggplot or plotly Timeseries Scatterplot object
+#' @return A 'ggplot' or 'plotly' object
 #'
 #' @export
 

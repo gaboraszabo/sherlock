@@ -14,7 +14,7 @@
 #' @param jitter Set whether to add jitter. By default, it is set to TRUE  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
-#' @return Either a ggplot or plotly Categorical Scatterplot object
+#' @return A 'ggplot' or 'plotly' object
 #'
 #' @export
 

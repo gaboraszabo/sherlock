@@ -8,7 +8,7 @@
 #' @param grouping_var select grouping variable to normalize by (required)
 #' @param ref_values add reference (nominal) values. takes a string of values with values appearing in the same order as in grouping variable. string length must be equal to unique values in grouping variable (required)
 #'
-#' @return A tibble with observations normalized and saved in a new column
+#' @return A `tibble` object with observations normalized and saved in a new column.
 #'
 #' @export
 

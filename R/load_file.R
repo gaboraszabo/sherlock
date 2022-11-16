@@ -6,7 +6,7 @@
 #' @param path path for the file (required)
 #' @param filetype set whether to read an .xlsx file or a .csv file. It takes either ".xlsx" or ".csv". By default, it is set to ".xlsx" (optional)
 #'
-#' @return A tibble
+#' @return Returns data in the form of a `tibble` object.
 #'
 #' @export
 

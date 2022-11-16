@@ -4,7 +4,7 @@
 #' Set Sherlock plot theme
 #'
 #' @param axis_text_size set axis text and axis title size. options are "normal" or "small". by default, it is set to "normal"
-#' @return Plot object with Sherlock plot theme
+#' @return A 'theme' object with Sherlock plot theme
 #'
 #' @export
 

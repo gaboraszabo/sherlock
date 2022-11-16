@@ -17,7 +17,7 @@
 #' @param x_axis_label Label for x axis. By default, it is set to display x axis column name  (optional)
 #' @param y_axis_label Label for y axis. By default, it is set to display y axis column name  (optional)
 #'
-#' @return A ggplot or plotly Small Multiples Line Plot object
+#' @return A 'ggplot' or 'plotly' object
 #'
 #' @export
 

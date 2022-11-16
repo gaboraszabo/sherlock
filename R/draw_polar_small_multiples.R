@@ -17,7 +17,7 @@
 #' @param label_text_size Size of text for labels. By default, it is set to 11  (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #'
-#' @return A ggplot polar small multiples object
+#' @return A 'ggplot' object
 #'
 #' @examples
 #' library(dplyr)

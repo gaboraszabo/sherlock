@@ -12,7 +12,7 @@
 #' @param alpha Set transparency. By default, it is set to 0.5  (optional)
 #' @param analysis_desc_label analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #'
-#' @return A ggplot Interaction Plot object
+#' @return A 'ggplot' object
 #'
 #' @export
 

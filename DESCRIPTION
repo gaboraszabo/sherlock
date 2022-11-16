@@ -3,7 +3,14 @@ Title: Graphical Displays to Aid Structured Problem Solving and Diagnosis
 Version: 0.5.1
 Authors@R: c( 
     person(given = "Gabor", family = "Szabo", email = "gabor.attila.szabo@gmail.com", role = c("aut", "cre")))
-Description: Powerful graphical displays and statistical tools for structured problem solving and diagnosis.
+Description: Powerful graphical displays and statistical tools for structured problem solving and diagnosis. 
+    The functions of the 'sherlock' package are especially useful for applying the process of elimination as a problem diagnosis technique. 
+    The 'sherlock' package was designed to seamlessly work with the 'tidyverse' set of packages and provides a collection of graphical displays 
+    built on top of the 'ggplot' and 'plotly' packages, such as different kinds small multiple plots as well as helper functions such as 
+    adding reference lines, normalizing observations, reading in data or saving analysis results in an Excel file. 
+    References: 
+    David Hartshorne (2019, ISBN: 978-1-5272-5139-7)
+    Stefan H. Steiner, R. Jock MacKay (2005, ISBN: 0873896467)
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

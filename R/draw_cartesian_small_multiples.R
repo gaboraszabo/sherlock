@@ -16,7 +16,7 @@
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
-#' @return A ggplot or plotly Cartesian Small Multiples object
+#' @return A 'ggplot' or 'plotly' object
 #'
 #' @export
 
