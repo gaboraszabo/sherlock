@@ -18,7 +18,14 @@ space-time point” - Edward Tufte*
 
 ## Installation
 
-You can install the development version of `sherlock` from
+`sherlock` is available on CRAN and can be installed by running the
+below script:
+
+``` r
+install.packages("sherlock")
+```
+
+You can also install the development version of `sherlock` from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -79,6 +86,7 @@ Here are a few examples:
 library(sherlock)
 library(ggh4x)
 #> Loading required package: ggplot2
+#> Warning: package 'ggplot2' was built under R version 4.2.2
 ```
 
 ``` r
@@ -180,7 +188,7 @@ timeseries_scatterplot_data %>%
                               x_axis_text    = 7,
                               interactive    = FALSE)
 #> Joining, by = c("date", "cavity")
-#> Warning: Removed 6 rows containing missing values (geom_point).
+#> Warning: Removed 6 rows containing missing values (`geom_point()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />

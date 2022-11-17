@@ -31,7 +31,12 @@ _"That is to say, nature's laws are causal; they reveal themselves by comparison
 
 ## Installation
 
-You can install the development version of `sherlock` from [GitHub](https://github.com/) with:
+`sherlock` is available on CRAN and can be installed by running the below script:
+``` r
+install.packages("sherlock")
+```
+
+You can also install the development version of `sherlock` from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
