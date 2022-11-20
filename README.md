@@ -3,12 +3,6 @@
 
 # sherlock
 
-<!-- badges: start -->
-
-[![CRAN
-status](https://cranlogs.r-pkg.org/badges/sherlock)](https://CRAN.R-project.org/package=sherlock)
-<!-- badges: end -->
-
 The **{sherlock} R package** provides powerful graphical displays and
 statistical tools to aid structured problem solving and diagnosis. The
 functions of the package are especially useful for applying the process

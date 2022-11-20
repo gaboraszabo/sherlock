@@ -17,9 +17,6 @@ knitr::opts_chunk$set(
 
 # sherlock
 
-<!-- badges: start -->
-[![CRAN status](https://cranlogs.r-pkg.org/badges/sherlock)](https://CRAN.R-project.org/package=sherlock)
-<!-- badges: end -->
 
 The __{sherlock} R package__ provides powerful graphical displays and statistical tools to aid structured problem solving and diagnosis. The functions of the package are especially useful for applying the process of elimination as a problem diagnosis technique. __{sherlock}__ was designed to seamlessly work with the `tidyverse` set of packages.
 
