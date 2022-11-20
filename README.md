@@ -4,6 +4,9 @@
 # sherlock
 
 <!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/sherlock)](https://CRAN.R-project.org/package=sherlock)
 <!-- badges: end -->
 
 The **{sherlock} R package** provides powerful graphical displays and
