@@ -35,10 +35,6 @@ devtools::install_github("gaborszabo11/sherlock")
 
 ## Functions
 
-While the package is currently under development, quite a few functions
-are already available and ready to be used. Available functions are as
-follows:
-
 #### Plotting functions
 
 `draw_multivari_plot()`
@@ -54,6 +50,8 @@ follows:
 `draw_polar_small_multiples()`
 
 `draw_interaction_plot()`
+
+`draw_pareto_chart()`
 
 `draw_process_behavior_chart()`
 
