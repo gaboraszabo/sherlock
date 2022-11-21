@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 
 
-# sherlock <img src="man/figures/logo.png" align="right" />
+# sherlock <img src="man/figures/logo.png" align="right" height="200" style="float:right; height:200px;" />
 
 
 The __{sherlock} R package__ provides powerful graphical displays and statistical tools to aid structured problem solving and diagnosis. The functions of the package are especially useful for applying the process of elimination as a problem diagnosis technique. __{sherlock}__ was designed to seamlessly work with the `tidyverse` set of packages.
