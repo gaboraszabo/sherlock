@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# sherlock <img src="man/figures/logo.png" align="right" height="200" style="float:right; height:200px;" />
+# sherlock <img src="man/figures/logo.png" align="right" height="200" style="float:right; height:150px;" />
 
 The **{sherlock} R package** provides powerful graphical displays and
 statistical tools to aid structured problem solving and diagnosis. The
