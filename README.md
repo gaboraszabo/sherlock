@@ -126,7 +126,10 @@ polar_small_multiples_data %>%
                              faceting_var_1 = Mold_Cavity_Number,
                              point_size     = 0.5, 
                              connect_with_lines = TRUE, 
-                             label_text_size = 7)
+                             label_text_size = 7) +
+  scale_y_continuous(limits = c(0.09, 0.115))
+#> Scale for y is already present.
+#> Adding another scale for y, which will replace the existing scale.
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
