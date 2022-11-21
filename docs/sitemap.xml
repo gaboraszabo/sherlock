@@ -22,9 +22,6 @@
     <loc>/reference/draw_categorical_scatterplot.html</loc>
   </url>
   <url>
-    <loc>/reference/draw_grouped_scatterplot.html</loc>
-  </url>
-  <url>
     <loc>/reference/draw_horizontal_reference_line.html</loc>
   </url>
   <url>
@@ -41,9 +38,6 @@
   </url>
   <url>
     <loc>/reference/draw_process_behavior_chart.html</loc>
-  </url>
-  <url>
-    <loc>/reference/draw_small_multiples.html</loc>
   </url>
   <url>
     <loc>/reference/draw_small_multiples_line_plot.html</loc>
