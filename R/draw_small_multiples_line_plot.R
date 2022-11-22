@@ -123,7 +123,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
       plot.title       = ggplot2::element_text(hjust = 0, size = 16, color = "grey50"),
       plot.subtitle    = ggplot2::element_text(hjust = 0, size = 12, color = "grey50")) +
     ggplot2::labs(
-      title = "Small Multiples Plot",
+      title = "Small Multiples Line Plot",
       subtitle = analysis_desc_label,
       x = ifelse(is.null(x_axis_label), stringr::str_glue("{as_label(x_axis_var_expr)}"), x_axis_label),
       y = ifelse(is.null(y_axis_label), stringr::str_glue("{as_label(y_axis_var_expr)}"), y_axis_label)

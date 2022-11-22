@@ -7,9 +7,10 @@
 #' @param angular_axis angular coordinate values (required)
 #' @param x_y_coord_axis x-y coordinate values (required)
 #' @param grouping_var grouping variable (required)
-#' @param faceting_var_1 set first faceting variable (optional)
-#' @param faceting_var_2 set second faceting variable (optional)
+#' @param faceting_var_1 Set first faceting variable (optional)
+#' @param faceting_var_2 Set second faceting variable (optional)
 #' @param connect_with_lines logical. if FALSE, default, values within each group are not connected with a line (optional)
+#' @param x_y_coord_axis_limits Set x-y coordinate axis limits. By default, it is set to start at 0. (optional)
 #' @param point_size Set point size. By default, it is set to 2  (optional)
 #' @param line_size Set line size. By default, it is set to 0.6  (optional)
 #' @param point_alpha Set point transparency. By default, it is set to 0.6  (optional)
@@ -36,7 +37,7 @@
 #'
 
 draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, grouping_var, faceting_var_1, faceting_var_2,
-                                       connect_with_lines = FALSE, point_size = 2, line_size = 0.6,
+                                       connect_with_lines = FALSE, x_y_coord_axis_limits = c(0, NA), point_size = 2, line_size = 0.6,
                                        point_alpha = 0.6, line_alpha = 0.5, label_text_size = 11, analysis_desc_label = "") {
 
   x_expr            <- rlang::enquo(angular_axis)
@@ -55,7 +56,7 @@ draw_polar_small_multiples <- function(data, angular_axis, x_y_coord_axis, group
     ggplot2::scale_x_continuous(breaks = c(0, 90, 180, 270),
                                 limits = c(0, 360),
                                 labels = scales::number_format(suffix = "\u00b0")) +
-    ggplot2::scale_y_continuous(limits = c(0, NA)) +
+    ggplot2::scale_y_continuous(limits = x_y_coord_axis_limits) +
     ggplot2::theme_light() +
     ggplot2::theme(
       strip.background = ggplot2::element_blank(),
