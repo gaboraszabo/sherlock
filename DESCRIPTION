@@ -30,7 +30,9 @@ Imports:
     stringr,
     plotly,
     readr,
-    openxlsx
+    openxlsx,
+    purrr,
+    fs
 Suggests: 
     roxygen2
 Depends: 

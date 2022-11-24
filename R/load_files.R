@@ -18,18 +18,18 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
 
   # GET PATHS FOR INDIVIDUAL FILES, REMOVE FILES WITH EXTENSIONS NOT MATCHING FILETYPE ARG ----
   paths <- fs::dir_info(path = folder) %>%
-    filter(path %>% str_detect(filetype)) %>%
-    pull(path)
+    dplyr::filter(path %>% stringr::str_detect(filetype)) %>%
+    dplyr::pull(path)
 
   # NAMES OF INDIVIDUAL FILES WITHOUT EXTENSION ----
-  filenames_str_no_extension <- purrr::map_chr(.x = paths, .f = fs::path_file) %>% str_remove_all(filetype)
+  filenames_str_no_extension <- purrr::map_chr(.x = paths, .f = fs::path_file) %>% stringr::str_remove_all(filetype)
 
 
 
   if (filetype == ".xlsx") {
     path <- fs::dir_info(folder) %>%
-      filter(str_detect(path, ".xlsx")) %>%
-      pull(path)
+      dplyr::filter(stringr::str_detect(path, ".xlsx")) %>%
+      dplyr::pull(path)
 
     if (!is.null(data_cleaning_function)) {
 
@@ -37,7 +37,7 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
 
       # ADD FILENAME AS .ID ----
       if (id_by_filename) {
-        list_of_files <- list_of_files %>% set_names(filenames_str_no_extension)
+        list_of_files <- list_of_files %>% purrr::set_names(filenames_str_no_extension)
       }
 
       data <- purrr::map_dfr(.x  = list_of_files,
@@ -52,8 +52,8 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
 
   if (filetype == ".csv") {
     path <- fs::dir_info(folder) %>%
-      filter(str_detect(path, ".csv")) %>%
-      pull(path)
+      dplyr::filter(stringr::str_detect(path, ".csv")) %>%
+      dplyr::pull(path)
 
     if (!is.null(data_cleaning_function)) {
 
@@ -61,7 +61,7 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
 
       # ADD FILENAME AS .ID ----
       if (id_by_filename) {
-        list_of_files <- list_of_files %>% set_names(filenames_str_no_extension)
+        list_of_files <- list_of_files %>% purrr::set_names(filenames_str_no_extension)
       }
 
       data <- purrr::map_dfr(.x  = list_of_files,
