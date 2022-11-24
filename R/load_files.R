@@ -57,7 +57,7 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
 
     if (!is.null(data_cleaning_function)) {
 
-      list_of_files <- purrr::map(.x = path, .f = read_csv)
+      list_of_files <- purrr::map(.x = path, .f = readr::read_csv)
 
       # ADD FILENAME AS .ID ----
       if (id_by_filename) {
@@ -68,7 +68,7 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
                              .f  = data_cleaning_function,
                              .id = id_col_name)
     } else {
-      data <- purrr::map_dfr(.x = path, .f = read_csv)
+      data <- purrr::map_dfr(.x = path, .f = readr::read_csv)
     }
   }
 
