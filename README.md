@@ -13,6 +13,10 @@ designed to seamlessly work with the `tidyverse` set of packages.
 comparison and difference, and they operate at every multi-variate
 space-time point” - Edward Tufte*
 
+I would love to hear your feedback on `sherlock`. You can leave a note
+on current issues, bugs and even request new features
+[here](https://github.com/gaboraszabo/sherlock/issues).
+
 ## Installation
 
 `sherlock` is available on CRAN and can be installed by running the

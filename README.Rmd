@@ -26,6 +26,7 @@ The __{sherlock} R package__ provides powerful graphical displays and statistica
 _"That is to say, nature's laws are causal; they reveal themselves by comparison and difference, and they operate at every multi-variate space-time point" - Edward Tufte_
 
 
+I would love to hear your feedback on `sherlock`. You can leave a note on current issues, bugs and even request new features [here](https://github.com/gaboraszabo/sherlock/issues).
 
 
 
