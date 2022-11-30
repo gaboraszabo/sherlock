@@ -57,7 +57,8 @@ draw_pareto_chart <- function(data, cat_var, continuous_var, highlight_first_n_i
     sherlock::theme_sherlock() +
     ggplot2::theme(axis.title.x = ggplot2::element_blank(),
                    plot.title   = ggplot2::element_text(size = 18),
-                   axis.text.x  = ggplot2::element_text(size = axis_text_size)) +
+                   axis.text.x  = ggplot2::element_text(size = axis_text_size),
+                   axis.title.y = ggplot2::element_blank()) +
     ggplot2::scale_y_continuous(position = "right") +
     ggplot2::labs(title    = title_label,
                   subtitle = ifelse(is.null(analysis_desc_label),
