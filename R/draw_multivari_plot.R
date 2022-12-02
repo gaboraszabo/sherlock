@@ -72,6 +72,10 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
   # 3. Warning messages ----
   if (missing(factor_2) & missing(factor_3)) message("You need two specify at least two factors (factor_1 and factor_2)!")
 
+  if (!((data %>% pull(!!response_expr)) %>% is.numeric())) {
+    message("Response variable is not numeric. Are you sure this is what you meant to do?")
+  }
+
 
   # 4. Conditionals ----
   # 4.1 if only 2 factors ----
