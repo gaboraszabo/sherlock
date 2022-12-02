@@ -28,6 +28,12 @@ _"That is to say, nature's laws are causal; they reveal themselves by comparison
 
 I would love to hear your feedback on `sherlock`. You can leave a note on current issues, bugs and even request new features [here](https://github.com/gaboraszabo/sherlock/issues).
 
+`sherlock` 0.6.0 is already in the works. In addition to fixing a few bugs and making enhancements to already-existing functionality, I will be adding new plotting, statistical analysis and helper functions, such as:
+
+* A new set of plotting functions and statistical tests called the Tukey-Duckworth test for problem diagnosis
+* `load_files()`, which is a function to read in and clean multiple files. Particularly useful when reading in multiple files having the same variables, for example reading in data from an experiment where data was logged and saved separately for each individual unit. Integration of a custom data cleaning function.
+* `create_project_folder`, which is a helper function to quickly create a project folder with a clever sub-folder structure for your project.
+
 
 
 ## Installation
