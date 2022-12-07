@@ -25,15 +25,14 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
   filenames_str_no_extension <- purrr::map_chr(.x = paths, .f = fs::path_file) %>% stringr::str_remove_all(filetype)
 
 
-
   if (filetype == ".xlsx") {
     path <- fs::dir_info(folder) %>%
       dplyr::filter(stringr::str_detect(path, ".xlsx")) %>%
       dplyr::pull(path)
 
-    if (!is.null(data_cleaning_function)) {
+    list_of_files <- purrr::map(.x = path, .f = openxlsx::read.xlsx)
 
-      list_of_files <- purrr::map(.x = path, .f = openxlsx::read.xlsx)
+    if (!is.null(data_cleaning_function)) {
 
       # ADD FILENAME AS .ID ----
       if (id_by_filename) {
@@ -44,8 +43,17 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
                              .f  = data_cleaning_function,
                              .id = id_col_name) %>%
         dplyr::as_tibble()
-    } else {
-      data <- purrr::map_dfr(.x = path, .f = openxlsx::read.xlsx) %>% dplyr::as_tibble()
+    }
+
+    if (is.null(data_cleaning_function)) {
+
+      if (id_by_filename) {
+        list_of_files <- list_of_files %>% purrr::set_names(filenames_str_no_extension)
+      }
+
+      data <- purrr::map_dfr(.x  = list_of_files,
+                             .f  = tidyr::as_tibble,
+                             .id = id_col_name)
     }
   }
 
@@ -55,9 +63,9 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
       dplyr::filter(stringr::str_detect(path, ".csv")) %>%
       dplyr::pull(path)
 
-    if (!is.null(data_cleaning_function)) {
+    list_of_files <- purrr::map(.x = path, .f = readr::read_csv)
 
-      list_of_files <- purrr::map(.x = path, .f = readr::read_csv)
+    if (!is.null(data_cleaning_function)) {
 
       # ADD FILENAME AS .ID ----
       if (id_by_filename) {
@@ -67,9 +75,15 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
       data <- purrr::map_dfr(.x  = list_of_files,
                              .f  = data_cleaning_function,
                              .id = id_col_name)
-    } else {
-      data <- purrr::map_dfr(.x = path, .f = readr::read_csv)
     }
+
+    if (is.null(data_cleaning_function)) {
+      list_of_files <- list_of_files %>% purrr::set_names(filenames_str_no_extension)
+    }
+
+    data <- purrr::map_dfr(.x  = list_of_files,
+                           .f  = tidyr::as_tibble,
+                           .id = id_col_name)
   }
 
 
