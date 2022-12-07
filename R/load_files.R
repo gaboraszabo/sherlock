@@ -52,7 +52,7 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
       }
 
       data <- purrr::map_dfr(.x  = list_of_files,
-                             .f  = tidyr::as_tibble,
+                             .f  = dplyr::as_tibble,
                              .id = id_col_name)
     }
   }
@@ -82,7 +82,7 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
     }
 
     data <- purrr::map_dfr(.x  = list_of_files,
-                           .f  = tidyr::as_tibble,
+                           .f  = dplyr::as_tibble,
                            .id = id_col_name)
   }
 
