@@ -1,7 +1,7 @@
 #' Draw Polar Small Multiples
 #'
 #' @description
-#' Draws a Polar Small Multiple Plot
+#' Draws a Polar Small Multiples Plot
 #'
 #' @param data input dataset to be plotted (required)
 #' @param angular_axis angular coordinate values (required)

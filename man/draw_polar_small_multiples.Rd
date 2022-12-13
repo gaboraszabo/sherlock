@@ -49,9 +49,9 @@ draw_polar_small_multiples(
 
 \item{line_alpha}{Set line transparency. By default, it is set to 0.5  (optional)}
 
-\item{label_text_size}{Size of text for labels. By default, it is set to 11  (optional)}
+\item{label_text_size}{Size of text for labels. By default, it is set to 11. (optional)}
 
-\item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
+\item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL. (optional)}
 }
 \value{
 A 'ggplot' object
