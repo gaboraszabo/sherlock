@@ -28,6 +28,8 @@ draw_cartesian_small_multiples(
 
 \item{y_coord}{Column for Y coordinate values (required)}
 
+\item{grouping_var}{Grouping variable. Each group is displayed in a different color. (optional)}
+
 \item{faceting_var_1}{Set first faceting variable (optional)}
 
 \item{faceting_var_2}{Set second faceting variable (optional)}
@@ -47,8 +49,6 @@ draw_cartesian_small_multiples(
 \item{accuracy}{Set number of decimal places to be displayed on X and Y axes. Examples: 0.1 - one decimal place, 0.01 - two decimal places, 0.001 - three decimal places etc. By default, it is set to 0.001 (optional)}
 
 \item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
-
-\item{grouping_var_1}{Grouping variable. Each group is displayed in a different color. (optional)}
 }
 \value{
 A 'ggplot' or 'plotly' object
