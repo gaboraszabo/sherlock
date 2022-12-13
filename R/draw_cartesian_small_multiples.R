@@ -1,19 +1,21 @@
-#' Draw Cartesian Small Multiple Plot
+#' Draw Cartesian Small Multiples Plot
 #'
 #' @description
 #' Draws a cartesian small multiples plot
 #'
 #' @param data Input dataset to be plotted (required)
-#' @param x_coord x coordinate values (required)
-#' @param y_coord y coordinate values (required)
-#' @param grouping_var_1 Grouping variable 1 (required)
-#' @param grouping_var_2 Grouping variable 2 (optional)
-#' @param four_quadrants Logical. Set whether to display four quadrant with both axes starting at zero. By default, it is set to FALSE (optional)
+#' @param x_coord Column for X coordinate values (required)
+#' @param y_coord Column for Y coordinate values (required)
+#' @param grouping_var_1 Grouping variable. Each group is displayed in a different color. (optional)
+#' @param faceting_var_1 Set first faceting variable (optional)
+#' @param faceting_var_2 Set second faceting variable (optional)
 #' @param show_axis_values Logical. if FALSE, default, axis values are not shown (optional)
-#' @param faceted Logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)
 #' @param size Set point size. By default, it is set to 2  (optional)
 #' @param alpha Set transparency. By default, it is set to 0.4  (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
+#' @param n_breaks_x_axis Set number of breaks on X axis. By default, it is set to 10 (optional)
+#' @param n_breaks_y_axis Set number of breaks on Y axis. By default, it is set to 10 (optional)
+#' @param accuracy Set number of decimal places to be displayed on X and Y axes. Examples: 0.1 - one decimal place, 0.01 - two decimal places, 0.001 - three decimal places etc. By default, it is set to 0.001 (optional)
 #' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #'
 #' @return A 'ggplot' or 'plotly' object
@@ -21,21 +23,20 @@
 #' @export
 
 
-draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_1, grouping_var_2, four_quadrants = FALSE,
-                                           show_axis_values = FALSE, faceted = TRUE, size = 2, alpha = 0.4, analysis_desc_label = NULL,
+draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
+                                           grouping_var, faceting_var_1, faceting_var_2,
+                                           show_axis_values = TRUE,
+                                           size = 2, alpha = 0.4,
+                                           analysis_desc_label = NULL, n_breaks_x_axis = 10, n_breaks_y_axis = 10, accuracy = 0.001,
                                            interactive = FALSE) {
 
-
-  if (missing(grouping_var_1)) {
-    stop("You must select at least one grouping variable.")
-  }
 
   # 1. Tidy Eval ----
   x_expr <- rlang::enquo(x_coord)
   y_expr <- rlang::enquo(y_coord)
-  grouping_var_1_expr <- rlang::enquo(grouping_var_1)
-  grouping_var_2_expr <- rlang::enquo(grouping_var_2)
-  grouping_var_1_2_expr <- rlang::enquos(grouping_var_1, grouping_var_2)
+  grouping_var_expr <- rlang::enquo(grouping_var)
+  faceting_var_1_expr <- rlang::enquo(faceting_var_1)
+  faceting_var_2_expr <- rlang::enquo(faceting_var_2)
 
   # 2. Calculate Limits ----
   range_tbl <- data %>%
@@ -56,41 +57,70 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
   x_and_y_limits <- c(-abs_max - limit_scalar, abs_max + limit_scalar)
 
 
-  # 3. Convert grouping variables to factor ----
-  if (missing(grouping_var_2)) {
+  # 3. Convert grouping variable and faceting variables to factor ----
+  if (!missing(grouping_var)) {
     data <- data %>%
-      dplyr::mutate(!!grouping_var_1_expr := forcats::as_factor(!!grouping_var_1_expr))
-  } else {
-    data <- data %>%
-      dplyr::mutate(!!grouping_var_1_expr := forcats::as_factor(!!grouping_var_1_expr)) %>%
-      dplyr::mutate(!!grouping_var_2_expr := forcats::as_factor(!!grouping_var_2_expr))
+      dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr))
   }
+
+  if (!missing(faceting_var_1) & missing(faceting_var_2)) {
+    data <- data %>%
+      dplyr::mutate(!!faceting_var_1_expr := forcats::as_factor(!!faceting_var_1_expr))
+  }
+
+
+  if (!missing(faceting_var_1) & !missing(faceting_var_2)) {
+    data <- data %>%
+      dplyr::mutate(!!faceting_var_1_expr := forcats::as_factor(!!faceting_var_1_expr),
+                    !!faceting_var_2_expr := forcats::as_factor(!!faceting_var_2_expr))
+  }
+
+
 
 
   # 4. Plot ----
-  plot <- data %>%
-
-    ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_1_expr))
-
-  # 4.1 four_quadrants arg ----
-  if (four_quadrants) {
-    plot <- plot +
-      ggplot2::geom_hline(yintercept = 0, color = "grey70") +
-      ggplot2::geom_vline(xintercept = 0, color = "grey70")
+  if (missing(grouping_var)) {
+    plot <- data %>%
+      ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr)) +
+      ggplot2::geom_point(size = size, alpha = alpha, color = scale_color_sherlock(2))
+  } else {
+    plot <- data %>%
+      ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr, color = !!grouping_var_expr)) +
+      ggplot2::geom_point(size = size, alpha = alpha)
   }
+
 
   plot <- plot +
-    ggplot2::geom_point(size = size, alpha = alpha)
+    ggplot2::coord_fixed(
+      ratio = 1,
+      xlim  = x_and_y_limits,
+      ylim  = x_and_y_limits)
 
-  # 4.2 four_quadrants arg ----
-  if (four_quadrants) {
+
+  # 5. Title ----
+  if (interactive) {
+    if (is.null(analysis_desc_label)) {
+      plot <- plot +
+        ggplot2::labs(
+          title = "Cartesian Small Multiples Plot"
+        )
+    } else {
+      plot <- plot +
+        ggplot2::labs(
+          title = stringr::str_glue("Cartesian Small Multiples Plot - {analysis_desc_label}")
+        )
+    }
+
+  } else {
     plot <- plot +
-      ggplot2::coord_fixed(
-        ratio = 1,
-        xlim = x_and_y_limits,
-        ylim = x_and_y_limits)
+      ggplot2::labs(
+        title = "Cartesian Small Multiples Plot",
+        subtitle = analysis_desc_label
+      )
   }
 
+
+  # 6. Theme ----
   plot <- plot +
     ggplot2::theme_light() +
     ggplot2::theme(
@@ -104,35 +134,27 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
       axis.ticks       = ggplot2::element_blank(),
       legend.title     = ggplot2::element_text(color = "grey50", size = 11),
       legend.text      = ggplot2::element_text(color = "grey50", size = 11),
-      plot.title    = ggplot2::element_text(hjust = 0.5, size = 16, color = "grey50")) +
-    ggplot2::labs(
-      title = "Cartesian Small Multiples Plot",
-      subtitle = analysis_desc_label
-    ) +
+      plot.title       = ggplot2::element_text(size = 16, color = "grey50"),
+      plot.subtitle    = ggplot2::element_text(size = 10, color = "grey50")) +
     sherlock::scale_color_sherlock()
 
 
-  # 5. Conditionals ----
-  if (missing(grouping_var_2)) {
+  plot <- plot +
+    ggplot2::scale_x_continuous(n.breaks = n_breaks_x_axis, labels = scales::number_format(accuracy = accuracy)) +
+    ggplot2::scale_y_continuous(n.breaks = n_breaks_y_axis, labels = scales::number_format(accuracy = accuracy))
 
-    if (faceted) {
-      plot <- plot + ggplot2::facet_wrap(ggplot2::vars(!!grouping_var_1_expr))
-    } else {
-      plot
-    }
 
-  } else {
-    if (faceted) {
-      plot <- plot + ggplot2::facet_grid(rows = ggplot2::vars(!!grouping_var_2_expr),
-                                         cols = ggplot2::vars(!!grouping_var_1_expr))
-    } else {
-      message("Cartesian plot is always faceted when there are two grouping variables.\nDrop grouping variable 2 for no faceting.")
-
-      plot <- plot + ggplot2::facet_grid(rows = ggplot2::vars(!!grouping_var_2_expr),
-                                         cols = ggplot2::vars(!!grouping_var_1_expr))
-    }
-
+  # 7. Conditionals ----
+  if (!missing(faceting_var_1) & missing(faceting_var_2)) {
+    plot <- plot + ggplot2::facet_wrap(ggplot2::vars(!!faceting_var_1_expr))
   }
+
+
+  if (!missing(faceting_var_1) & !missing(faceting_var_2)) {
+    plot <- plot + ggplot2::facet_grid(rows = ggplot2::vars(!!faceting_var_1_expr),
+                                       cols = ggplot2::vars(!!faceting_var_2_expr))
+  }
+
 
 
   if (show_axis_values) {
@@ -140,7 +162,7 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord, grouping_var_
   }
 
 
-  # 6. Interactivity ----
+  # 8. Interactivity ----
   if (interactive) {
     plot <- plotly::ggplotly(plot)
   }
