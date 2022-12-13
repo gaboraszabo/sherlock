@@ -2,39 +2,37 @@
 % Please edit documentation in R/draw_cartesian_small_multiples.R
 \name{draw_cartesian_small_multiples}
 \alias{draw_cartesian_small_multiples}
-\title{Draw Cartesian Small Multiple Plot}
+\title{Draw Cartesian Small Multiples Plot}
 \usage{
 draw_cartesian_small_multiples(
   data,
   x_coord,
   y_coord,
-  grouping_var_1,
-  grouping_var_2,
-  four_quadrants = FALSE,
-  show_axis_values = FALSE,
-  faceted = TRUE,
+  grouping_var,
+  faceting_var_1,
+  faceting_var_2,
+  show_axis_values = TRUE,
   size = 2,
   alpha = 0.4,
   analysis_desc_label = NULL,
+  n_breaks_x_axis = 10,
+  n_breaks_y_axis = 10,
+  accuracy = 0.001,
   interactive = FALSE
 )
 }
 \arguments{
 \item{data}{Input dataset to be plotted (required)}
 
-\item{x_coord}{x coordinate values (required)}
+\item{x_coord}{Column for X coordinate values (required)}
 
-\item{y_coord}{y coordinate values (required)}
+\item{y_coord}{Column for Y coordinate values (required)}
 
-\item{grouping_var_1}{Grouping variable 1 (required)}
+\item{faceting_var_1}{Set first faceting variable (optional)}
 
-\item{grouping_var_2}{Grouping variable 2 (optional)}
-
-\item{four_quadrants}{Logical. Set whether to display four quadrant with both axes starting at zero. By default, it is set to FALSE (optional)}
+\item{faceting_var_2}{Set second faceting variable (optional)}
 
 \item{show_axis_values}{Logical. if FALSE, default, axis values are not shown (optional)}
-
-\item{faceted}{Logical. if TRUE, default, plot will be faceted. Note: Cartesian plot is always faceted when there are two grouping variables. Drop grouping variable 2 for no faceting. (optional)}
 
 \item{size}{Set point size. By default, it is set to 2  (optional)}
 
@@ -42,7 +40,15 @@ draw_cartesian_small_multiples(
 
 \item{analysis_desc_label}{Label (subtitle) for analysis description. By default, it is set to NULL  (optional)}
 
+\item{n_breaks_x_axis}{Set number of breaks on X axis. By default, it is set to 10 (optional)}
+
+\item{n_breaks_y_axis}{Set number of breaks on Y axis. By default, it is set to 10 (optional)}
+
+\item{accuracy}{Set number of decimal places to be displayed on X and Y axes. Examples: 0.1 - one decimal place, 0.01 - two decimal places, 0.001 - three decimal places etc. By default, it is set to 0.001 (optional)}
+
 \item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
+
+\item{grouping_var_1}{Grouping variable. Each group is displayed in a different color. (optional)}
 }
 \value{
 A 'ggplot' or 'plotly' object

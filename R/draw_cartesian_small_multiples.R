@@ -6,7 +6,7 @@
 #' @param data Input dataset to be plotted (required)
 #' @param x_coord Column for X coordinate values (required)
 #' @param y_coord Column for Y coordinate values (required)
-#' @param grouping_var_1 Grouping variable. Each group is displayed in a different color. (optional)
+#' @param grouping_var Grouping variable. Each group is displayed in a different color. (optional)
 #' @param faceting_var_1 Set first faceting variable (optional)
 #' @param faceting_var_2 Set second faceting variable (optional)
 #' @param show_axis_values Logical. if FALSE, default, axis values are not shown (optional)
