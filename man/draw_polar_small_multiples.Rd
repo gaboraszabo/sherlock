@@ -57,7 +57,7 @@ draw_polar_small_multiples(
 A 'ggplot' object
 }
 \description{
-Draws a Polar Small Multiple Plot
+Draws a Polar Small Multiples Plot
 }
 \examples{
 library(dplyr)
