@@ -16,8 +16,8 @@
 #' @param line_size Set line size. By default, it is set to 0.6  (optional)
 #' @param point_alpha Set point transparency. By default, it is set to 0.6  (optional)
 #' @param line_alpha Set line transparency. By default, it is set to 0.5  (optional)
-#' @param label_text_size Size of text for labels. By default, it is set to 11  (optional)
-#' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
+#' @param label_text_size Size of text for labels. By default, it is set to 11. (optional)
+#' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL. (optional)
 #'
 #' @return A 'ggplot' object
 #'

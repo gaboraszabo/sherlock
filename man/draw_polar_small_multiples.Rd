@@ -12,6 +12,7 @@ draw_polar_small_multiples(
   faceting_var_1,
   faceting_var_2,
   connect_with_lines = FALSE,
+  connect_start_and_end_points = TRUE,
   x_y_coord_axis_limits = c(0, NA),
   point_size = 2,
   line_size = 0.6,
@@ -34,7 +35,9 @@ draw_polar_small_multiples(
 
 \item{faceting_var_2}{Set second faceting variable (optional)}
 
-\item{connect_with_lines}{logical. if FALSE, default, values within each group are not connected with a line (optional)}
+\item{connect_with_lines}{Logical. If set to TRUE, values within each group are connected with a line. By default, it is set to FALSE (optional)}
+
+\item{connect_start_and_end_points}{Logical. If set to TRUE, the start and end points of the lines get connected. It is useful when trying to draw a complete circle but may not be useful when only trying to draw a shape different than that (e.g. a semicircle). By default, it is set to TRUE (optional)}
 
 \item{x_y_coord_axis_limits}{Set x-y coordinate axis limits. By default, it is set to start at 0. (optional)}
 
