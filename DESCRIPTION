@@ -32,7 +32,8 @@ Imports:
     readr,
     openxlsx,
     purrr,
-    fs
+    fs,
+    rstudioapi
 Suggests: 
     roxygen2
 Depends: 

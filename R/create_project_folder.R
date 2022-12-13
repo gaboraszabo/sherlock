@@ -48,9 +48,9 @@ create_project_folder <- function(folder_name,
 
   purrr::map(.x = folder_structure_paths, .f = fs::dir_create)
 
-  initializeProject(path = folder_path)
+  rstudioapi::initializeProject(path = folder_path)
 
 
-  return(message(str_glue("A new project folder has been created at {normalizePath(folder_path)}.")))
+  return(message(stringr::str_glue("A new project folder has been created at {normalizePath(folder_path)}.")))
 
 }
