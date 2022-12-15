@@ -38,23 +38,23 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
   faceting_var_1_expr <- rlang::enquo(faceting_var_1)
   faceting_var_2_expr <- rlang::enquo(faceting_var_2)
 
-  # 2. Calculate Limits ----
-  range_tbl <- data %>%
-    dplyr::summarize(range_max_2 = range(!!x_expr, !!y_expr)[2],
-                     range_min_2 = range(!!x_expr, !!y_expr)[1])
-
-  min <- range_tbl %>%
-    dplyr::pull(range_min_2)
-
-  max <- range_tbl %>%
-    dplyr::pull(range_max_2)
-
-  range_vector <- abs(max - min)
-  limit_scalar <- abs(range_vector / 20)
-
-  abs_max <- max(abs(min), abs(max))
-
-  x_and_y_limits <- c(-abs_max - limit_scalar, abs_max + limit_scalar)
+  # # 2. Calculate Limits ----
+  # range_tbl <- data %>%
+  #   dplyr::summarize(range_max_2 = range(!!x_expr, !!y_expr)[2],
+  #                    range_min_2 = range(!!x_expr, !!y_expr)[1])
+  #
+  # min <- range_tbl %>%
+  #   dplyr::pull(range_min_2)
+  #
+  # max <- range_tbl %>%
+  #   dplyr::pull(range_max_2)
+  #
+  # range_vector <- abs(max - min)
+  # limit_scalar <- abs(range_vector / 20)
+  #
+  # abs_max <- max(abs(min), abs(max))
+  #
+  # x_and_y_limits <- c(-abs_max - limit_scalar, abs_max + limit_scalar)
 
 
   # 3. Convert grouping variable and faceting variables to factor ----
@@ -91,33 +91,9 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
 
 
   plot <- plot +
-    ggplot2::coord_fixed(
-      ratio = 1,
-      xlim  = x_and_y_limits,
-      ylim  = x_and_y_limits)
+    ggplot2::coord_fixed(ratio = 1)
 
 
-  # 5. Title ----
-  if (interactive) {
-    if (is.null(analysis_desc_label)) {
-      plot <- plot +
-        ggplot2::labs(
-          title = "Cartesian Small Multiples Plot"
-        )
-    } else {
-      plot <- plot +
-        ggplot2::labs(
-          title = stringr::str_glue("Cartesian Small Multiples Plot - {analysis_desc_label}")
-        )
-    }
-
-  } else {
-    plot <- plot +
-      ggplot2::labs(
-        title = "Cartesian Small Multiples Plot",
-        subtitle = analysis_desc_label
-      )
-  }
 
 
   # 6. Theme ----
@@ -137,6 +113,31 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
       plot.title       = ggplot2::element_text(size = 16, color = "grey50"),
       plot.subtitle    = ggplot2::element_text(size = 10, color = "grey50")) +
     sherlock::scale_color_sherlock()
+
+
+  # 5. Title ----
+  if (interactive) {
+    if (is.null(analysis_desc_label)) {
+      plot <- plot +
+        ggplot2::labs(
+          title = "Cartesian Small Multiples Plot"
+        )
+    } else {
+      plot <- plot +
+        ggplot2::labs(
+          title = stringr::str_glue("Cartesian Small Multiples Plot - {analysis_desc_label}")
+        ) +
+        ggplot2::theme(plot.title = ggplot2::element_text(size = 12, color = "grey50"))
+    }
+
+  } else {
+    plot <- plot +
+      ggplot2::labs(
+        title = "Cartesian Small Multiples Plot",
+        subtitle = analysis_desc_label
+      )
+  }
+
 
 
   plot <- plot +
