@@ -9,14 +9,16 @@
 #' @param grouping_var Grouping variable. Each group is displayed in a different color. (optional)
 #' @param faceting_var_1 Set first faceting variable (optional)
 #' @param faceting_var_2 Set second faceting variable (optional)
-#' @param show_axis_values Logical. if FALSE, default, axis values are not shown (optional)
+#' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
 #' @param size Set point size. By default, it is set to 2  (optional)
 #' @param alpha Set transparency. By default, it is set to 0.4  (optional)
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
+#' @param x_axis_label Label for x axis. By default, it is set to display x axis column name  (optional)
+#' @param y_axis_label Label for y axis. By default, it is set to display y axis column name  (optional)
 #' @param n_breaks_x_axis Set number of breaks on X axis. By default, it is set to 10 (optional)
 #' @param n_breaks_y_axis Set number of breaks on Y axis. By default, it is set to 10 (optional)
 #' @param accuracy Set number of decimal places to be displayed on X and Y axes. Examples: 0.1 - one decimal place, 0.01 - two decimal places, 0.001 - three decimal places etc. By default, it is set to 0.001 (optional)
-#' @param interactive Set plot interactivity. By default, it is set to FALSE (optional)
+#' @param show_axis_values Logical. if FALSE, default, axis values are not shown (optional)
 #'
 #' @return A 'ggplot' or 'plotly' object
 #'
@@ -24,11 +26,10 @@
 
 
 draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
-                                           grouping_var, faceting_var_1, faceting_var_2,
-                                           show_axis_values = TRUE,
+                                           grouping_var, faceting_var_1, faceting_var_2, interactive = FALSE,
                                            size = 2, alpha = 0.4,
-                                           analysis_desc_label = NULL, n_breaks_x_axis = 10, n_breaks_y_axis = 10, accuracy = 0.001,
-                                           interactive = FALSE) {
+                                           analysis_desc_label = NULL, x_axis_label = NULL, y_axis_label = NULL,
+                                           n_breaks_x_axis = 10, n_breaks_y_axis = 10, accuracy = 0.001, show_axis_values = TRUE) {
 
 
   # 1. Tidy Eval ----
@@ -137,6 +138,14 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
         subtitle = analysis_desc_label
       )
   }
+
+
+
+  plot <- plot +
+    ggplot2::labs(
+      x = ifelse(is.null(x_axis_label), stringr::str_glue("{as_label(x_expr)}"), x_axis_label),
+      y = ifelse(is.null(y_axis_label), stringr::str_glue("{as_label(y_expr)}"), y_axis_label)
+    )
 
 
 
