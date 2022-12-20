@@ -191,19 +191,19 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
 
   if (!missing(grouping_var_1) && missing(grouping_var_2) && missing(grouping_var_3)) {
     plot <- plot +
-      ggplot2::labs(title = "Grouped Scatterplot",
+      ggplot2::labs(title = "Categorical Scatterplot",
                     subtitle = stringr::str_glue("By {as_label(grouping_var_1_expr)}"))
   }
 
   if (!missing(grouping_var_1) && !missing(grouping_var_2) && missing(grouping_var_3)) {
     plot <- plot +
-      ggplot2::labs(title = "Grouped Scatterplot",
+      ggplot2::labs(title = "Categorical Scatterplot",
                     subtitle = stringr::str_glue("{as_label(grouping_var_1_expr)} by {as_label(grouping_var_2_expr)}"))
   }
 
   if (!missing(grouping_var_1) && !missing(grouping_var_2) && !missing(grouping_var_3)) {
     plot <- plot +
-      ggplot2::labs(title = "Grouped Scatterplot",
+      ggplot2::labs(title = "Categorical Scatterplot",
                     subtitle = stringr::str_glue("{as_label(grouping_var_1_expr)} by {as_label(grouping_var_2_expr)} by {as_label(grouping_var_3_expr)}"))
   }
 

@@ -14,7 +14,7 @@ scale_fill_sherlock <- function(palette = 1) {
 
   if(palette == 1) {
 
-    fill_scheme <- ggplot2::scale_color_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
+    fill_scheme <- ggplot2::scale_fill_manual(values = c("#3971CB", "#D76213", "#111111", "#9A0000",
                                                            "#335F34", "#8E5816", "#624187", "#141B7A",
                                                            "#3971CB", "#D76213", "#111111", "#9A0000",
                                                            "#335F34", "#8E5816", "#624187", "#141B7A",
