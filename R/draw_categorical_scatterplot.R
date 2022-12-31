@@ -210,16 +210,6 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
 
 
 
-  # if (missing(grouping_var_1) && missing(grouping_var_2) && missing(grouping_var_3)) {
-  #   plot <- plot +
-  #     ggplot2::labs(title = "Scatterplot")
-  # } else {
-  #   plot <- plot +
-  #     ggplot2::labs(title = "Grouped Scatterplot")
-  # }
-
-
-
   # 5. Interactivity ----
   if (interactive) {
     plot <- plotly::ggplotly(plot)
