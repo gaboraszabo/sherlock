@@ -140,8 +140,9 @@ library(dplyr)
 
 polar_small_multiples_data %>% 
   filter(Mold_Cavity_Number %in% c(4, 6)) %>% 
+  rename(Radius = "ID_2") %>% 
   draw_polar_small_multiples(angular_axis   = ID_Measurement_Angle, 
-                             x_y_coord_axis = ID_2, 
+                             x_y_coord_axis = Radius, 
                              grouping_var   = Tip_Bottom, 
                              faceting_var_1 = Mold_Cavity_Number,
                              point_size     = 0.5, 
