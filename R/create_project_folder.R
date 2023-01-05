@@ -17,6 +17,11 @@ create_project_folder <- function(folder_name,
                                   subfolders = "generic") {
 
   # SUBFOLDER STRUCTURES ----
+  # 3. custom ----
+  if (subfolders != "generic" || subfolders != "shiny") {
+    folder_structure <- subfolders
+  }
+
   # 1. generic ----
   if (subfolders == "generic") {
     folder_structure <- c("01_data",
@@ -34,10 +39,6 @@ create_project_folder <- function(folder_name,
                           "scripts")
   }
 
-  # 3. custom ----
-  if (subfolders != "generic" && subfolders != "shiny") {
-    folder_structure <- subfolders
-  }
 
 
 
