@@ -5,7 +5,7 @@
 #'
 #' @param folder_name Set name of the folder. Examples: "Analysis_20221212", "01_application" (required)
 #' @param path Set path for folder. Example: "R/Projects/" (required)
-#' @param subfolders Set type of subfolder structure. Options are "generic" or "shiny". The "generic" option has the following subfolders: "01_data", "02_reports", "03_images", "04_scripts" and "05_misc". The "shiny" option has the following subfolders: "data", "css", "wwww", "images" and "scripts". By default, it is set to "generic". (optional)
+#' @param subfolders Set type of subfolder structure. Options are "generic" or "shiny" or custom. The "generic" option has the following subfolders: "01_data", "02_reports", "03_images", "04_scripts" and "05_misc". The "shiny" option has the following subfolders: "data", "css", "wwww", "images" and "scripts". By default, it is set to "generic". (optional)
 #'
 #' @return A project folder and sub-folder structure and corresponding .Rproj file on your computer
 #'
@@ -32,6 +32,11 @@ create_project_folder <- function(folder_name,
                           "www",
                           "images",
                           "scripts")
+  }
+
+  # 3. custom ----
+  if (subfolders != "generic" || subfolders != "shiny") {
+    folder_structure <- subfolders
   }
 
 
