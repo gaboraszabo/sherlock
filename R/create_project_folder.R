@@ -34,10 +34,10 @@ create_project_folder <- function(folder_name,
                           "scripts")
   }
 
-  # # 3. custom ----
-  # if (subfolders != "generic" && subfolders != "shiny") {
-  #   folder_structure <- subfolders
-  # }
+  # 3. custom ----
+  if (subfolders != "generic" && subfolders != "shiny") {
+    folder_structure <- subfolders
+  }
 
 
 
