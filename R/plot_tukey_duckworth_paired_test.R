@@ -25,7 +25,7 @@ plot_tukey_duckworth_paired_test <- function(data, y_var, x_vars, arrows = FALSE
   data_y_var <- data %>%
     tidyr::pivot_longer(cols = {{ y_var }}, names_to = "Variable", values_to = "Value") %>%
     dplyr::select(Pair, Variable, Value, color_label) %>%
-    dplyr::mutate(Pair = Pair %>% as_factor()) %>%
+    dplyr::mutate(Pair = Pair %>% forcats::as_factor()) %>%
     dplyr::mutate(Variable = stringr::str_replace(Variable,
                                                   pattern = y_var_label,
                                                   replacement = stringr::str_glue("Y - {y_var_label}"))) %>%
@@ -72,16 +72,16 @@ plot_tukey_duckworth_paired_test <- function(data, y_var, x_vars, arrows = FALSE
   data_x_var <- data %>%
     tidyr::pivot_longer(cols = {{ x_vars }}, names_to = "Variable", values_to = "Value") %>%
     dplyr::select(Pair, Variable, Value, color_label) %>%
-    dplyr::mutate(Pair = Pair %>% as_factor()) %>%
-    dplyr::mutate(Variable = Variable %>% as_factor()) %>%
+    dplyr::mutate(Pair = Pair %>% forcats::as_factor()) %>%
+    dplyr::mutate(Variable = Variable %>% forcats::as_factor()) %>%
     dplyr::arrange(Variable, Pair)
 
   data_x_var_arrow_color <- data_x_var %>%
     tidyr::pivot_wider(names_from = "color_label", values_from = "Value") %>%
     dplyr::mutate(diff = black - red) %>%
     tidyr::pivot_longer(cols = 3:4, names_to = "color_label", values_to = "Value") %>%
-    dplyr::mutate(Pair = Pair %>% as_factor()) %>%
-    dplyr::mutate(Variable = Variable %>% as_factor()) %>%
+    dplyr::mutate(Pair = Pair %>% forcats::as_factor()) %>%
+    dplyr::mutate(Variable = Variable %>% forcats::as_factor()) %>%
     dplyr::arrange(Variable, Pair)
 
   data_x_var_arrow_color <- data_x_var_arrow_color %>%
