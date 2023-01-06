@@ -14,27 +14,26 @@
 select_low_high_units <- function(data, y_var, number_of_pairs) {
 
   # Tidy Eval ----
-  y_var_expr <- enquo(y_var)
+  y_var_expr <- rlang::enquo(y_var)
 
 
   # Data Transformation ----
   data <- data %>%
-    arrange(desc(!!y_var_expr)) %>%
-    mutate(rank = row_number()) %>%
-    select(rank, everything()) %>%
-    mutate(low_high = case_when(rank <= number_of_pairs ~ "high",
-                                rank > n()-number_of_pairs ~ "low",
-                                TRUE ~ "mid")) %>%
-    mutate(color_label = case_when(low_high == "high" ~ "black",
-                                   low_high == "low" ~ "red",
-                                   TRUE ~ "#3971CB")) %>%
-
-    filter(low_high %in% c("low", "high")) %>%
-    group_by(low_high) %>%
-    slice_sample(n = number_of_pairs, replace = FALSE) %>%
-    mutate(Pair = 1:n()) %>%
-    ungroup() %>%
-    select(Pair, everything(), -rank)
+    dplyr::arrange(dplyr::desc(!!y_var_expr)) %>%
+    dplyr::mutate(rank = row_number()) %>%
+    dplyr::select(rank, everything()) %>%
+    dplyr::mutate(low_high = dplyr::case_when(rank <= number_of_pairs ~ "high",
+                                              rank > n()-number_of_pairs ~ "low",
+                                              TRUE ~ "mid")) %>%
+    dplyr::mutate(color_label = dplyr::case_when(low_high == "high" ~ "black",
+                                                 low_high == "low" ~ "red",
+                                                 TRUE ~ "#3971CB")) %>%
+    dplyr::filter(low_high %in% c("low", "high")) %>%
+    dplyr::group_by(low_high) %>%
+    dplyr::slice_sample(n = number_of_pairs, replace = FALSE) %>%
+    dplyr::mutate(Pair = 1:n()) %>%
+    dplyr::ungroup() %>%
+    dplyr::select(Pair, everything(), -rank)
 
   return(data)
 
