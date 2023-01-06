@@ -11,7 +11,7 @@ create_project_folder(folder_name, path, subfolders = "generic")
 
 \item{path}{Set path for folder. Example: "R/Projects/" (required)}
 
-\item{subfolders}{Set type of subfolder structure. Options are "generic" or "shiny" or custom. The "generic" option has the following subfolders: "01_data", "02_reports", "03_images", "04_scripts" and "05_misc". The "shiny" option has the following subfolders: "data", "css", "wwww", "images" and "scripts". By default, it is set to "generic". (optional)}
+\item{subfolders}{Set type of subfolder structure. Options are "generic" or "shiny". The "generic" option has the following subfolders: "01_data", "02_reports", "03_images", "04_scripts" and "05_misc". The "shiny" option has the following subfolders: "data", "css", "wwww", "images" and "scripts". By default, it is set to "generic". (optional)}
 }
 \value{
 A project folder and sub-folder structure and corresponding .Rproj file on your computer
