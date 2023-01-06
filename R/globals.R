@@ -3,4 +3,4 @@ utils::globalVariables(
     "mean_tbl", "multi_vari_tbl", "multi_vari_data_2", "Length", "Trial", "Part", "Operator", "multi_vari_data",
     "cycle", "fixture", "line", "force", "youden_plot_data_2", "gage_1", "gage_2", "grouping_var_distinct", "ref_values_tbl",
     "ref_values_tbl_joined", "ref_value", "avg", "lcl", "ucl", "moving_range", "timeseries_scatterplot_data", "n", "index",
-    "paneled_theme_element", "variable", "overall_mean", "wb", "polar_small_multiples_data"))
+    "paneled_theme_element", "variable", "overall_mean", "wb", "polar_small_multiples_data", "low_high", "Pair"))
