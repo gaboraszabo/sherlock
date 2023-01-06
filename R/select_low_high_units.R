@@ -20,8 +20,8 @@ select_low_high_units <- function(data, y_var, number_of_pairs) {
   # Data Transformation ----
   data <- data %>%
     dplyr::arrange(dplyr::desc(!!y_var_expr)) %>%
-    dplyr::mutate(rank = row_number()) %>%
-    dplyr::select(rank, everything()) %>%
+    dplyr::mutate(rank = dplyr::row_number()) %>%
+    dplyr::select(rank, dplyr::everything()) %>%
     dplyr::mutate(low_high = dplyr::case_when(rank <= number_of_pairs ~ "high",
                                               rank > n()-number_of_pairs ~ "low",
                                               TRUE ~ "mid")) %>%
@@ -33,7 +33,7 @@ select_low_high_units <- function(data, y_var, number_of_pairs) {
     dplyr::slice_sample(n = number_of_pairs, replace = FALSE) %>%
     dplyr::mutate(Pair = 1:n()) %>%
     dplyr::ungroup() %>%
-    dplyr::select(Pair, everything(), -rank)
+    dplyr::select(Pair, dplyr::everything(), -rank)
 
   return(data)
 
