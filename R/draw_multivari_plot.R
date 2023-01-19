@@ -89,6 +89,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
       dplyr::summarize(mean = mean(!!response_expr)) %>%
       dplyr::mutate(factor_2 := !!factor_2_expr)
 
+
     # Multi-vari tbl ----
     multi_vari_tbl <- data %>%
       dplyr::mutate(!!(factor_2_expr) := forcats::as_factor(!!factor_2_expr)) %>%
