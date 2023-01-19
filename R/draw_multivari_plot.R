@@ -119,7 +119,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
     } else {
       multi_vari_chart <- multi_vari_chart +
         ggplot2::geom_point(size = point_size, alpha = alpha) +
-        ggplot2::geom_line(ggplot2::aes(group = 1), size = line_size, alpha = alpha)
+        ggplot2::geom_line(ggplot2::aes(group = !!factor_2_expr), size = line_size, alpha = alpha)
     }
 
 
