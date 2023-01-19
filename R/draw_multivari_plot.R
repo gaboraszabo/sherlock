@@ -98,7 +98,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
     # Plotting function ----
     multi_vari_chart <- multi_vari_tbl %>%
 
-      ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr, color = !!factor_1_expr)) +
+      ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr, color = !!factor_2_expr)) +
       ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_2_expr)) +
       ggplot2::guides(y.sec = "axis") +
       theme_element +
