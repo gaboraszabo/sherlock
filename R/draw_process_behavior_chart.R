@@ -65,7 +65,7 @@ draw_process_behavior_chart <- function(data, y_var, grouping_var, limits = TRUE
       ggplot2::geom_point(color = "#304269", size = 1, alpha = 0.6)
   } else {
     plot <- data %>%
-      ggplot2::ggplot(ggplot2::aes(n, !!y_var_expr)) +
+      ggplot2::ggplot(ggplot2::aes(index, !!y_var_expr)) +
       ggplot2::geom_line(color = "#304269", size = 0.5, alpha = 0.4) +
       ggplot2::geom_point(color = "#304269", size = 1, alpha = 0.6) +
 
