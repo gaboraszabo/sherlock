@@ -8,6 +8,8 @@
 #' @param grouping_var_1 First grouping variable (optional)
 #' @param grouping_var_2 Second, higher-level grouping variable  (optional)
 #' @param grouping_var_3 Third, highest-level grouping variable (optional)
+#' @param plot_means logical. if TRUE, means for lowest-level grouping variable are plotted. By default, it is set to FALSE. (optional)
+#' @param connect_means logical. if TRUE, means for lowest-level grouping variable are connected with a line. By default, it is set to FALSE. (optional)
 #' @param group_color  Set whether to color by grouping_var_1. By default, it is set to FALSE (optional)
 #' @param size Set point size. By default, it is set to 2  (optional)
 #' @param alpha Set transparency. By default, it is set to 0.5  (optional)
@@ -26,7 +28,8 @@
 #' @export
 
 draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3,
-                                     group_color = FALSE, size = 2, alpha = 0.5, jitter = TRUE, interactive = FALSE) {
+                                         plot_means = FALSE, connect_means = FALSE, group_color = FALSE,
+                                         size = 2, alpha = 0.5, jitter = TRUE, interactive = FALSE) {
 
   # 0. MESSAGES AND WARNINGS ----
   if (missing(y_var)) {
@@ -132,6 +135,29 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
   }
 
 
+  # Connect means ----
+  if (connect_means) {
+    plot <- plot +
+      ggplot2::stat_summary(aes(group = 1),
+                            fun = "mean",
+                            geom = "line",
+                            size = 0.5,
+                            color = "grey50",
+                            alpha = 0.7)
+  }
+
+
+  # Plot means ----
+  if (plot_means) {
+    plot <- plot +
+      ggplot2::stat_summary(fun    = "mean",
+                            color  = "black",
+                            geom   = "point",
+                            shape  = 95,
+                            size   = 6, alpha = 0.7,
+                            stroke = 6)
+  }
+
   # Theme ----
 
   if (missing(grouping_var_1)) {
@@ -170,7 +196,7 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
       axis.ticks        = ggplot2::element_blank()
     )
 
-  #plot <- plot + paneled_theme_element
+
 
 
   if(!missing(grouping_var_2) && missing(grouping_var_3)) {
