@@ -16,54 +16,54 @@
 select_low_high_units_manual <- function(data, select_units_by = "row_number", lowest_units, highest_units, part_id_col) {
 
   # Tidy Eval ----
-  part_id_col_expr <- enquo(part_id_col)
+  part_id_col_expr <- rlang::enquo(part_id_col)
 
 
   # Data Transformation ----
   if (select_units_by == "row_number") {
 
     lowest_units <- data %>%
-      slice(lowest_units) %>%
-      mutate(low_high = "low") %>%
-      mutate(color_label = "red")
+      dplyr::slice(lowest_units) %>%
+      dplyr::mutate(low_high = "low") %>%
+      dplyr::mutate(color_label = "red")
 
     highest_units <- data %>%
-      slice(highest_units) %>%
-      mutate(low_high = "high") %>%
-      mutate(color_label = "black")
+      dplyr::slice(highest_units) %>%
+      dplyr::mutate(low_high = "high") %>%
+      dplyr::mutate(color_label = "black")
   }
 
   if (select_units_by == "part_id") {
 
     data <- data %>%
-      mutate(!!part_id_col_expr := !!part_id_col_expr %>% as.integer())
+      dplyr::mutate(!!part_id_col_expr := !!part_id_col_expr %>% as.integer())
 
     lowest_units <- data %>%
-      filter(!!part_id_col_expr %in% lowest_units) %>%
-      mutate(low_high = "low") %>%
-      mutate(color_label = "red")
+      dplyr::filter(!!part_id_col_expr %in% lowest_units) %>%
+      dplyr::mutate(low_high = "low") %>%
+      dplyr::mutate(color_label = "red")
 
     highest_units <- data %>%
-      filter(!!part_id_col_expr %in% highest_units) %>%
-      mutate(low_high = "high") %>%
-      mutate(color_label = "black")
+      dplyr::filter(!!part_id_col_expr %in% highest_units) %>%
+      dplyr::mutate(low_high = "high") %>%
+      dplyr::mutate(color_label = "black")
   }
 
 
-  low_high_tbl <- bind_rows(highest_units, lowest_units)
+  low_high_tbl <- dplyr::bind_rows(highest_units, lowest_units)
 
   low_high_tbl <- low_high_tbl %>%
-    group_by(low_high) %>%
-    mutate(Pair = 1:n()) %>%
-    ungroup()
+    dplyr::group_by(low_high) %>%
+    dplyr::mutate(Pair = 1:n()) %>%
+    dplyr::ungroup()
 
   # REARRANGE COLUMNS ----
   if (missing(part_id_col)) {
     low_high_tbl <- low_high_tbl %>%
-      select(Pair, everything())
+      dplyr::select(Pair, everything())
   } else {
     low_high_tbl <- low_high_tbl %>%
-      select(Pair, !!part_id_col_expr, everything())
+      dplyr::select(Pair, !!part_id_col_expr, everything())
   }
 
 
