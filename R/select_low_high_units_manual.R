@@ -60,10 +60,10 @@ select_low_high_units_manual <- function(data, select_units_by = "row_number", l
   # REARRANGE COLUMNS ----
   if (missing(part_id_col)) {
     low_high_tbl <- low_high_tbl %>%
-      dplyr::select(Pair, everything())
+      dplyr::select(Pair, dplyr::everything())
   } else {
     low_high_tbl <- low_high_tbl %>%
-      dplyr::select(Pair, !!part_id_col_expr, everything())
+      dplyr::select(Pair, !!part_id_col_expr, dplyr::everything())
   }
 
 
