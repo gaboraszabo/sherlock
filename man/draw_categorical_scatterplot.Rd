@@ -10,6 +10,8 @@ draw_categorical_scatterplot(
   grouping_var_1,
   grouping_var_2,
   grouping_var_3,
+  plot_means = FALSE,
+  connect_means = FALSE,
   group_color = FALSE,
   size = 2,
   alpha = 0.5,
@@ -27,6 +29,10 @@ draw_categorical_scatterplot(
 \item{grouping_var_2}{Second, higher-level grouping variable  (optional)}
 
 \item{grouping_var_3}{Third, highest-level grouping variable (optional)}
+
+\item{plot_means}{logical. if TRUE, means for lowest-level grouping variable are plotted. By default, it is set to FALSE. (optional)}
+
+\item{connect_means}{logical. if TRUE, means for lowest-level grouping variable are connected with a line. By default, it is set to FALSE. (optional)}
 
 \item{group_color}{Set whether to color by grouping_var_1. By default, it is set to FALSE (optional)}
 

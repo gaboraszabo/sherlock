@@ -138,10 +138,10 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
   # Connect means ----
   if (connect_means) {
     plot <- plot +
-      ggplot2::stat_summary(aes(group = 1),
-                            fun = "mean",
-                            geom = "line",
-                            size = 0.5,
+      ggplot2::stat_summary(ggplot2::aes(group = 1),
+                            fun   = "mean",
+                            geom  = "line",
+                            size  = 0.5,
                             color = "grey50",
                             alpha = 0.7)
   }
