@@ -74,7 +74,7 @@ draw_youden_plot <- function(data, x_axis_var, y_axis_var, grouping_var, lsl, us
     plot <- data %>%
 
       ggplot2::ggplot(ggplot2::aes(!!(meas_1_expr), !!(meas_2_expr))) +
-      ggplot2::geom_point(color  = "#3971CB", alpha  = alpha, size = 2) +
+      ggplot2::geom_point(color  = "#3971CB", alpha  = alpha, size = size) +
 
       ggplot2::theme_light() +
       ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
