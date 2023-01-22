@@ -77,7 +77,7 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
     plot <- data %>%
       ggplot2::ggplot(ggplot2::aes(variable, !!y_var_expr)) +
       ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha,
-                           width = if (jitter) 0.015 else 0, shape = 21, size = size)
+                           width = if (jitter) 0.015 else 0, height = 0, shape = 21, size = size)
   }
 
   if (!missing(grouping_var_1)) {
@@ -85,12 +85,12 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, group = !!grouping_var_1_expr)) +
         ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha,
-                             width = if (jitter) 0.03 else 0, shape = 21, size = size)
+                             width = if (jitter) 0.03 else 0, height = 0, shape = 21, size = size)
     }
     if (group_color) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_1_expr)) +
-        ggplot2::geom_jitter(alpha = alpha, width = if (jitter) 0.03 else 0, size = size) +
+        ggplot2::geom_jitter(alpha = alpha, width = if (jitter) 0.03 else 0, height = 0, size = size) +
         sherlock::scale_color_sherlock() +
         sherlock::scale_fill_sherlock()
     }
@@ -102,13 +102,13 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, group = !!grouping_var_1_expr)) +
         ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha,
-                             width = if (jitter) 0.03 else 0, shape = 21, size = size) +
+                             width = if (jitter) 0.03 else 0, height = 0, shape = 21, size = size) +
         ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_2_expr))
     }
     if (group_color) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_1_expr)) +
-        ggplot2::geom_jitter(alpha = alpha, width = if (jitter) 0.03 else 0, size = size) +
+        ggplot2::geom_jitter(alpha = alpha, width = if (jitter) 0.03 else 0, height = 0, size = size) +
         ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_2_expr)) +
         sherlock::scale_color_sherlock() +
         sherlock::scale_fill_sherlock()
@@ -121,13 +121,13 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, group = !!grouping_var_1_expr)) +
         ggplot2::geom_jitter(color = sherlock::scale_color_sherlock(2), fill = sherlock::scale_fill_sherlock(2), alpha = alpha,
-                             width = if (jitter) 0.03 else 0, shape = 21, size = size) +
+                             width = if (jitter) 0.03 else 0, height = 0, shape = 21, size = size) +
         ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_3_expr, !!grouping_var_2_expr))
     }
     if (group_color) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!grouping_var_1_expr, !!y_var_expr, color = !!grouping_var_1_expr)) +
-        ggplot2::geom_jitter(alpha = alpha, width = if (jitter) 0.03 else 0, size = size) +
+        ggplot2::geom_jitter(alpha = alpha, width = if (jitter) 0.03 else 0, height = 0, size = size) +
         ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!grouping_var_3_expr, !!grouping_var_2_expr)) +
         sherlock::scale_color_sherlock() +
         sherlock::scale_fill_sherlock()
@@ -212,7 +212,8 @@ draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_v
 
   if (missing(grouping_var_1) && missing(grouping_var_2) && missing(grouping_var_3)) {
     plot <- plot +
-      ggplot2::labs(title = "Scatterplot")
+      ggplot2::labs(title = "Categorical Scatterplot",
+                    subtitle = stringr::str_glue("{as_label(y_var_expr)}"))
   }
 
   if (!missing(grouping_var_1) && missing(grouping_var_2) && missing(grouping_var_3)) {

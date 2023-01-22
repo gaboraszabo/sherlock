@@ -9,6 +9,20 @@ functions of the package are especially useful for applying the process
 of elimination as a problem diagnosis technique. **{sherlock}** was
 designed to seamlessly work with the `tidyverse` set of packages.
 
+More specifically, **{sherlock}** features functionality to
+
+- create a project folder/sub-folder structure and .Rproj file for your
+  problem solving project with one function call
+- read in tabular data from various sources
+- facilitate reading in and cleaning many files all at once (for example
+  raw data from data loggers or sensors)
+- create powerful and highly customizable visual displays, some of which
+  are non-existent even in popular statistical packages
+- use a custom **{sherlock}** ggplot2 theme, which offers a
+  clean-looking visual appearance
+- use sample datasets to test plotting functions
+- save data and plots into an Excel file
+
 *“That is to say, nature’s laws are causal; they reveal themselves by
 comparison and difference, and they operate at every multi-variate
 space-time point” - Edward Tufte*
@@ -22,16 +36,16 @@ bugs and making enhancements to already-existing functionality, I will
 be adding new plotting, statistical analysis and helper functions, such
 as:
 
--   A new set of plotting functions and statistical tests called the
-    Tukey-Duckworth test for problem diagnosis
--   `load_files()`, which is a function to read in and clean multiple
-    files. Particularly useful when reading in multiple files having the
-    same variables, for example reading in data from an experiment where
-    data was logged and saved separately for each individual unit.
-    Integration of a custom data cleaning function.
--   `create_project_folder`, which is a helper function to quickly
-    create a project folder with a clever sub-folder structure for your
-    project.
+- A new set of plotting functions and statistical tests called the
+  Tukey-Duckworth test for problem diagnosis
+- `load_files()`, which is a function to read in and clean multiple
+  files. Particularly useful when reading in multiple files having the
+  same variables, for example reading in data from an experiment where
+  data was logged and saved separately for each individual unit.
+  Integration of a custom data cleaning function.
+- `create_project_folder()`, which is a helper function to quickly
+  create a project folder with a clever sub-folder structure for your
+  project.
 
 ## Installation
 
