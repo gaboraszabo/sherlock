@@ -4,22 +4,22 @@
 #' Automatically selects low-high units in a tibble as well as assigns them into groups
 #'
 #' @param data input dataset (required)
-#' @param y_var Y variable of interest (required)
+#' @param y_var variable of interest (required)
 #' @param number_of_pairs Number of low-high pairs to be created. Takes a numeric value (required)
 #'
 #' @return A tibble object filtered down to the low-high units selected
 #'
 #' @export
 
-select_low_high_units <- function(data, y_var, number_of_pairs) {
+select_low_high_units <- function(data, var, number_of_pairs) {
 
   # Tidy Eval ----
-  y_var_expr <- rlang::enquo(y_var)
+  var_expr <- rlang::enquo(var)
 
 
   # Data Transformation ----
   data <- data %>%
-    dplyr::arrange(dplyr::desc(!!y_var_expr)) %>%
+    dplyr::arrange(dplyr::desc(!!var_expr)) %>%
     dplyr::mutate(rank = dplyr::row_number()) %>%
     dplyr::select(rank, dplyr::everything()) %>%
     dplyr::mutate(low_high = dplyr::case_when(rank <= number_of_pairs ~ "high",
