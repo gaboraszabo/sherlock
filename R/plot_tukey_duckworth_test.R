@@ -32,8 +32,8 @@ plot_tukey_test <- function(data, y_var, x_var_levels, point_size = 3, point_typ
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(variable, !!y_var_expr, color = !!x_var_levels_expr)) +
         ggplot2::geom_jitter(width = 0.06, height = 0, alpha = 0.4, size = point_size) +
-        theme_sherlock() +
-        scale_color_manual(values = c("red", "black"))
+        sherlock::theme_sherlock() +
+        ggplot2::scale_color_manual(values = c("red", "black"))
 
     }
 
@@ -41,8 +41,8 @@ plot_tukey_test <- function(data, y_var, x_var_levels, point_size = 3, point_typ
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(variable, !!y_var_expr, color = !!x_var_levels_expr)) +
         ggplot2::geom_jitter(width = 0.06, height = 0, alpha = 0.6, size = point_size, shape = 21, stroke = 1.5) +
-        theme_sherlock() +
-        scale_color_manual(values = c("red", "black"))
+        sherlock::theme_sherlock() +
+        ggplot2::scale_color_manual(values = c("red", "black"))
     }
 
   }
@@ -53,8 +53,8 @@ plot_tukey_test <- function(data, y_var, x_var_levels, point_size = 3, point_typ
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!x_var_levels_expr, !!y_var_expr, color = !!x_var_levels_expr)) +
         ggplot2::geom_jitter(width = 0.06, height = 0, alpha = 0.4, size = point_size) +
-        theme_sherlock() +
-        scale_color_manual(values = c("red", "black"))
+        sherlock::theme_sherlock() +
+        ggplot2::scale_color_manual(values = c("red", "black"))
 
     }
 
@@ -62,8 +62,8 @@ plot_tukey_test <- function(data, y_var, x_var_levels, point_size = 3, point_typ
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!x_var_levels_expr, !!y_var_expr, color = !!x_var_levels_expr)) +
         ggplot2::geom_jitter(width = 0.06, height = 0, alpha = 0.6, size = point_size, shape = 21, stroke = 1.5) +
-        theme_sherlock() +
-        scale_color_manual(values = c("red", "black"))
+        sherlock::theme_sherlock() +
+        ggplot2::scale_color_manual(values = c("red", "black"))
     }
 
   }

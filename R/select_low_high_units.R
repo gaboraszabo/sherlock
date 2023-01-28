@@ -4,7 +4,7 @@
 #' Automatically selects low-high units in a tibble as well as assigns them into groups
 #'
 #' @param data input dataset (required)
-#' @param y_var variable of interest (required)
+#' @param var variable of interest (required)
 #' @param number_of_pairs Number of low-high pairs to be created. Takes a numeric value (required)
 #'
 #' @return A tibble object filtered down to the low-high units selected

@@ -4,14 +4,14 @@
 \alias{select_low_high_units}
 \title{Select Low-High Units}
 \usage{
-select_low_high_units(data, y_var, number_of_pairs)
+select_low_high_units(data, var, number_of_pairs)
 }
 \arguments{
 \item{data}{input dataset (required)}
 
-\item{y_var}{Y variable of interest (required)}
-
 \item{number_of_pairs}{Number of low-high pairs to be created. Takes a numeric value (required)}
+
+\item{y_var}{variable of interest (required)}
 }
 \value{
 A tibble object filtered down to the low-high units selected
