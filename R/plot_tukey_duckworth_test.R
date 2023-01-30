@@ -15,7 +15,7 @@
 #'
 #' @export
 
-plot_tukey_test <- function(data, y_var, x_var_levels, point_size = 3, point_type = "solid",
+plot_tukey_duckworth_test <- function(data, y_var, x_var_levels, point_size = 3, point_type = "solid",
                             split_levels = FALSE, analysis_desc_label = NULL) {
 
   y_var_expr <- rlang::enquo(y_var)
