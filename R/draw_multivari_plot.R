@@ -5,9 +5,10 @@
 #'
 #' @param data input dataset to be plotted (required)
 #' @param response response variable, Y (required)
-#' @param factor_1 lowest level factor (required)
-#' @param factor_2 mid-level factor (required)
-#' @param factor_3 top level factor (optional)
+#' @param factor_1 select column for lowest level factor (required)
+#' @param factor_2 select column for mid-level factor (required)
+#' @param factor_3 select column for top level factor (optional)
+#' @param data_point_label select column to label data points (optional)
 #' @param plot_means logical. if FALSE, default, means for mid-level factor are not plotted (optional)
 #' @param point_size Set point size. By default, it is set to 2.5  (optional)
 #' @param line_size Set line size. By default, it is set to 0.7  (optional)
@@ -36,14 +37,16 @@
 #' @export
 
 
-draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, plot_means = FALSE,
-                                x_axis_text_size = 11, panel_text_size = 14, point_size = 2.5, line_size = 0.7, alpha = 0.6) {
+draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, data_point_label = NULL,
+                                plot_means = FALSE, x_axis_text_size = 11, panel_text_size = 14, point_size = 2.5,
+                                line_size = 0.7, alpha = 0.6) {
 
   # 1. Tidy Eval ----
-  response_expr <- rlang::enquo(response)
-  factor_1_expr <- rlang::enquo(factor_1)
-  factor_2_expr <- rlang::enquo(factor_2)
-  factor_3_expr <- rlang::enquo(factor_3)
+  response_expr   <- rlang::enquo(response)
+  factor_1_expr   <- rlang::enquo(factor_1)
+  factor_2_expr   <- rlang::enquo(factor_2)
+  factor_3_expr   <- rlang::enquo(factor_3)
+  data_point_label_expr <- rlang::enquo(data_point_label)
 
   # 2. Theme element ----
   theme_element <- ggplot2::theme_light() +
@@ -120,6 +123,13 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
       multi_vari_chart <- multi_vari_chart +
         ggplot2::geom_point(size = point_size, alpha = alpha) +
         ggplot2::geom_line(ggplot2::aes(group = !!factor_2_expr), size = line_size, alpha = alpha)
+
+      if (!is.null(data_point_label)) {
+        multi_vari_chart <- multi_vari_chart +
+          ggplot2::geom_label((ggplot2::aes(label = !!data_point_label_expr)), size = 3, color = "grey50")
+
+      }
+
     }
 
 
@@ -181,6 +191,13 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, pl
           x        = stringr::str_glue("{as_label(factor_1_expr)}"),
           y        = stringr::str_glue("{as_label(response_expr)}")
         )
+
+
+      if (!is.null(data_point_label)) {
+        multi_vari_chart <- multi_vari_chart +
+          ggplot2::geom_label((ggplot2::aes(label = !!data_point_label_expr)), size = 3, color = "grey50")
+
+      }
 
     }
 
