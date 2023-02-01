@@ -124,7 +124,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, da
         ggplot2::geom_point(size = point_size, alpha = alpha) +
         ggplot2::geom_line(ggplot2::aes(group = !!factor_2_expr), size = line_size, alpha = alpha)
 
-      if (!is.null(data_point_label)) {
+      if (!missing(data_point_label)) {
         multi_vari_chart <- multi_vari_chart +
           ggplot2::geom_label((ggplot2::aes(label = !!data_point_label_expr)), size = 3, color = "grey50")
 
@@ -193,7 +193,7 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, da
         )
 
 
-      if (!is.null(data_point_label)) {
+      if (!missing(data_point_label)) {
         multi_vari_chart <- multi_vari_chart +
           ggplot2::geom_label((ggplot2::aes(label = !!data_point_label_expr)), size = 3, color = "grey50")
 

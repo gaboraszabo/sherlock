@@ -10,6 +10,7 @@ draw_multivari_plot(
   factor_1,
   factor_2,
   factor_3,
+  data_point_label = NULL,
   plot_means = FALSE,
   x_axis_text_size = 11,
   panel_text_size = 14,
@@ -23,11 +24,13 @@ draw_multivari_plot(
 
 \item{response}{response variable, Y (required)}
 
-\item{factor_1}{lowest level factor (required)}
+\item{factor_1}{select column for lowest level factor (required)}
 
-\item{factor_2}{mid-level factor (required)}
+\item{factor_2}{select column for mid-level factor (required)}
 
-\item{factor_3}{top level factor (optional)}
+\item{factor_3}{select column for top level factor (optional)}
+
+\item{data_point_label}{select column to label data points (optional)}
 
 \item{plot_means}{logical. if FALSE, default, means for mid-level factor are not plotted (optional)}
 
