@@ -126,8 +126,13 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, da
 
       if (!missing(data_point_label)) {
         multi_vari_chart <- multi_vari_chart +
-          ggplot2::geom_label((ggplot2::aes(label = !!data_point_label_expr)), size = 3, color = "grey50")
-
+          ggplot2::geom_label((ggplot2::aes(label = !!data_point_label_expr)), size = 3, color = "grey50") +
+          ggplot2::labs(
+            title = "Multivari Plot",
+            subtitle = stringr::str_glue("{as_label(factor_1_expr)} by {as_label(factor_2_expr)}, data point label: {as_label(data_point_label_expr)}"),
+            x = stringr::str_glue("{as_label(factor_1_expr)}"),
+            y = stringr::str_glue("{as_label(response_expr)}")
+          )
       }
 
     }
@@ -195,8 +200,13 @@ draw_multivari_plot <- function(data, response, factor_1, factor_2, factor_3, da
 
       if (!missing(data_point_label)) {
         multi_vari_chart <- multi_vari_chart +
-          ggplot2::geom_label((ggplot2::aes(label = !!data_point_label_expr)), size = 3, color = "grey50")
-
+          ggplot2::geom_label((ggplot2::aes(label = !!data_point_label_expr)), size = 3, color = "grey50") +
+          ggplot2::labs(
+            title    = "Multivari Plot",
+            subtitle = stringr::str_glue("{as_label(factor_1_expr)} by {as_label(factor_2_expr)} by {as_label(factor_3_expr)}, data point label: {as_label(data_point_label_expr)}"),
+            x        = stringr::str_glue("{as_label(factor_1_expr)}"),
+            y        = stringr::str_glue("{as_label(response_expr)}")
+          )
       }
 
     }
