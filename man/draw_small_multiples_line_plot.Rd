@@ -9,8 +9,9 @@ draw_small_multiples_line_plot(
   x_axis_var,
   y_axis_var,
   grouping_var,
+  faceting_var_1,
+  faceting_var_2,
   lowest_highest_units,
-  faceting = FALSE,
   unique_color_by_group = FALSE,
   size = 0.7,
   alpha = 0.4,
@@ -29,9 +30,11 @@ draw_small_multiples_line_plot(
 
 \item{grouping_var}{set grouping variable (required)}
 
-\item{lowest_highest_units}{takes a vector of strings corresponding to the lowest/highest units to be highlighted (optional)}
+\item{faceting_var_1}{Set first faceting variable (optional)}
 
-\item{faceting}{set whether to display each group in a separate plot. By default, it is set to FALSE (optional)}
+\item{faceting_var_2}{Set second faceting variable (optional)}
+
+\item{lowest_highest_units}{takes a vector of strings corresponding to the lowest/highest units to be highlighted (optional)}
 
 \item{unique_color_by_group}{set whether to display each group in a unique color. By default, it is set to FALSE (optional)}
 
