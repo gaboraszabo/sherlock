@@ -39,26 +39,9 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
   faceting_var_1_expr <- rlang::enquo(faceting_var_1)
   faceting_var_2_expr <- rlang::enquo(faceting_var_2)
 
-  # # 2. Calculate Limits ----
-  # range_tbl <- data %>%
-  #   dplyr::summarize(range_max_2 = range(!!x_expr, !!y_expr)[2],
-  #                    range_min_2 = range(!!x_expr, !!y_expr)[1])
-  #
-  # min <- range_tbl %>%
-  #   dplyr::pull(range_min_2)
-  #
-  # max <- range_tbl %>%
-  #   dplyr::pull(range_max_2)
-  #
-  # range_vector <- abs(max - min)
-  # limit_scalar <- abs(range_vector / 20)
-  #
-  # abs_max <- max(abs(min), abs(max))
-  #
-  # x_and_y_limits <- c(-abs_max - limit_scalar, abs_max + limit_scalar)
 
 
-  # 3. Convert grouping variable and faceting variables to factor ----
+  # 2. Convert grouping variable and faceting variables to factor ----
   if (!missing(grouping_var)) {
     data <- data %>%
       dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr))
@@ -79,7 +62,7 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
 
 
 
-  # 4. Plot ----
+  # 3. Plot ----
   if (missing(grouping_var)) {
     plot <- data %>%
       ggplot2::ggplot(ggplot2::aes(!!x_expr, !!y_expr)) +
@@ -97,7 +80,7 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
 
 
 
-  # 6. Theme ----
+  # 4. Theme ----
   plot <- plot +
     ggplot2::theme_light() +
     ggplot2::theme(
@@ -154,7 +137,7 @@ draw_cartesian_small_multiples <- function(data, x_coord, y_coord,
     ggplot2::scale_y_continuous(n.breaks = n_breaks_y_axis, labels = scales::number_format(accuracy = accuracy))
 
 
-  # 7. Conditionals ----
+  # 6. Conditionals ----
   if (!missing(faceting_var_1) & missing(faceting_var_2)) {
     plot <- plot + ggplot2::facet_wrap(ggplot2::vars(!!faceting_var_1_expr))
   }
