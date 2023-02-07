@@ -37,6 +37,6 @@ save_analysis <- function(data, plot, filename, filepath) {
   # 5. COMPLETE FILEPATH
   filepath_complete <- paste0(filepath, filename, ".xlsx")
 
-  return(message(str_glue("The analysis has been saved to {normalizePath(filepath_complete)}")))
+  return(message(stringr::str_glue("The analysis has been saved to {normalizePath(filepath_complete)}")))
 
 }
