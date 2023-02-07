@@ -33,4 +33,10 @@ save_analysis <- function(data, plot, filename, filepath) {
   # 4. ADD DATA TO WORKSHEET "DATA"
   openxlsx::writeData(wb = wb, sheet = "data", x = data)
   openxlsx::saveWorkbook(wb = wb, file = paste0(filepath, filename, ".xlsx"), overwrite = TRUE)
+
+  # 5. COMPLETE FILEPATH
+  filepath_complete <- paste0(filepath, filename, ".xlsx")
+
+  return(message(str_glue("The analysis has been saved to {normalizePath(filepath_complete)}")))
+
 }
