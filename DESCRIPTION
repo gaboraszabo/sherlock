@@ -1,6 +1,6 @@
 Package: sherlock
 Title: Graphical Displays to Aid Structured Problem Solving and Diagnosis
-Version: 0.5.1
+Version: 0.6.0
 Authors@R: c( 
     person(given = "Gabor", family = "Szabo", email = "gabor.attila.szabo@gmail.com", role = c("aut", "cre")))
 Description: Powerful graphical displays and statistical tools for structured problem solving and diagnosis. 
@@ -24,7 +24,7 @@ Imports:
     forcats,
     ggplot2,
     dplyr,
-    tidyr,
+    tidyr,3
     cowplot,
     scales,
     ggh4x,
