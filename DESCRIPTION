@@ -24,7 +24,7 @@ Imports:
     forcats,
     ggplot2,
     dplyr,
-    tidyr,3
+    tidyr,
     cowplot,
     scales,
     ggh4x,
