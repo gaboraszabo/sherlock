@@ -1,18 +1,11 @@
 ## Resubmission
 This is a re-submission. In this version I have:
-* Fixed spelling and removed unnecessary spaces from the Description field of the DESCRIPTION file.
+* Fixed minor issues with existing functions
+* Added new functions, namely create_project_folder(), load_files(), plot_tukey_duckworth_test(), plot_tukey_duckworth_paired_test(), select_low_high_units(), select_low_high_units_manual()
 
-
-## Resubmission
-This is a re-submission. In this version I have:
-* Added more detail to the Description field of the DESCRIPTION file.
-* Added references to the Description field of the DESCRIPTION file.
-* Added \value to .Rd files
-* Added more executable examples to the .Rd files
 
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
-* This is a new release.
