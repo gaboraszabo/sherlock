@@ -13,7 +13,8 @@
 #'
 #' @export
 
-load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL, id_by_filename = FALSE, id_col_name = "index") {
+load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
+                       id_by_filename = FALSE, id_col_name = "index") {
 
 
   # GET PATHS FOR INDIVIDUAL FILES, REMOVE FILES WITH EXTENSIONS NOT MATCHING FILETYPE ARG ----
@@ -31,6 +32,7 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
       dplyr::pull(path)
 
     list_of_files <- purrr::map(.x = path, .f = openxlsx::read.xlsx)
+
 
     if (!is.null(data_cleaning_function)) {
 
@@ -65,6 +67,7 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
 
     list_of_files <- purrr::map(.x = path, .f = readr::read_csv)
 
+
     if (!is.null(data_cleaning_function)) {
 
       # ADD FILENAME AS .ID ----
@@ -78,12 +81,15 @@ load_files <- function(folder, filetype = ".csv", data_cleaning_function = NULL,
     }
 
     if (is.null(data_cleaning_function)) {
-      list_of_files <- list_of_files %>% purrr::set_names(filenames_str_no_extension)
-    }
 
-    data <- purrr::map_dfr(.x  = list_of_files,
-                           .f  = dplyr::as_tibble,
-                           .id = id_col_name)
+      if (id_by_filename) {
+        list_of_files <- list_of_files %>% purrr::set_names(filenames_str_no_extension)
+      }
+
+      data <- purrr::map_dfr(.x  = list_of_files,
+                             .f  = dplyr::as_tibble,
+                             .id = id_col_name)
+    }
   }
 
 
