@@ -46,13 +46,13 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
   if (plot_max_values) {
     data <- data %>%
       dplyr::mutate(!!grouping_var_expr := forcats::as_factor(!!grouping_var_expr)) %>%
-      group_by({{grouping_var}}, {{faceting_var_1}}, {{faceting_var_2}}) %>%
-      mutate(max = max({{y_axis_var}})) %>%
-      ungroup() %>%
-      mutate(value = case_when({{y_axis_var}} == max ~ max)) %>%
-      mutate(point_size = case_when({{y_axis_var}} == max ~ 2.5)) %>%
-      mutate(point_stroke = case_when({{y_axis_var}} == max ~ 1.5)) %>%
-      mutate(point_shape = case_when({{y_axis_var}} == max ~ 21) %>% as_factor())
+      dplyr::group_by({{grouping_var}}, {{faceting_var_1}}, {{faceting_var_2}}) %>%
+      dplyr::mutate(max = max({{y_axis_var}})) %>%
+      dplyr::ungroup() %>%
+      dplyr::mutate(value = dplyr::case_when({{y_axis_var}} == max ~ max)) %>%
+      dplyr::mutate(point_size = dplyr::case_when({{y_axis_var}} == max ~ 2.5)) %>%
+      dplyr::mutate(point_stroke = dplyr::case_when({{y_axis_var}} == max ~ 1.5)) %>%
+      dplyr::mutate(point_shape = dplyr::case_when({{y_axis_var}} == max ~ 21) %>% as_factor())
   }
 
 
@@ -77,9 +77,9 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
 
       if (plot_max_values) {
         plot <- plot +
-          geom_point(aes(x = !!x_axis_var_expr, y = value), size = data$point_size, color = scale_color_sherlock(3),
-                     stroke = ifelse(interactive, 0.5, 1.5),
-                     shape = data$point_shape, alpha = 1)
+          ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value), size = data$point_size,
+                              color = scale_color_sherlock(3), stroke = ifelse(interactive, 0.5, 1.5),
+                              shape = data$point_shape, alpha = 1)
       }
     }
 
@@ -90,9 +90,9 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
 
       if (plot_max_values) {
         plot <- plot +
-          geom_point(aes(x = !!x_axis_var_expr, y = value), size = data$point_size,
-                     stroke = ifelse(interactive, 0.5, 1.5),
-                     shape = data$point_shape, color = "grey50", alpha = 1)
+          ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value), size = data$point_size,
+                              stroke = ifelse(interactive, 0.5, 1.5),
+                              shape = data$point_shape, color = "grey50", alpha = 1)
       }
     }
   }
@@ -107,9 +107,9 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
 
       if (plot_max_values) {
         plot <- plot +
-          geom_point(aes(x = !!x_axis_var_expr, y = value, color = !!grouping_var_expr), size = data$point_size,
-                     stroke = ifelse(interactive, 0.5, 1.5),
-                     shape = data$point_shape, alpha = alpha)
+          ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value, color = !!grouping_var_expr),
+                              size = data$point_size, stroke = ifelse(interactive, 0.5, 1.5),
+                              shape = data$point_shape, alpha = alpha)
       }
     }
 
@@ -120,9 +120,9 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
 
       if (plot_max_values) {
         plot <- plot +
-          geom_point(aes(x = !!x_axis_var_expr, y = value), size = data$point_size,
-                     stroke = ifelse(interactive, 0.5, 1.5),
-                     shape = data$point_shape, color = "grey60", alpha = 1)
+          ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value), size = data$point_size,
+                              stroke = ifelse(interactive, 0.5, 1.5),
+                              shape = data$point_shape, color = "grey60", alpha = 1)
       }
     }
   }
