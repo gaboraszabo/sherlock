@@ -11,6 +11,7 @@ draw_small_multiples_line_plot(
   grouping_var,
   faceting_var_1,
   faceting_var_2,
+  plot_max_values = FALSE,
   lowest_highest_units,
   unique_color_by_group = FALSE,
   size = 0.7,
@@ -33,6 +34,8 @@ draw_small_multiples_line_plot(
 \item{faceting_var_1}{Set first faceting variable (optional)}
 
 \item{faceting_var_2}{Set second faceting variable (optional)}
+
+\item{plot_max_values}{Highlights maximum values per group. By default, it is set to FALSE (optional)}
 
 \item{lowest_highest_units}{takes a vector of strings corresponding to the lowest/highest units to be highlighted (optional)}
 

@@ -52,7 +52,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
       dplyr::mutate(value = dplyr::case_when({{y_axis_var}} == max ~ max)) %>%
       dplyr::mutate(point_size = dplyr::case_when({{y_axis_var}} == max ~ 2.5)) %>%
       dplyr::mutate(point_stroke = dplyr::case_when({{y_axis_var}} == max ~ 1.5)) %>%
-      dplyr::mutate(point_shape = dplyr::case_when({{y_axis_var}} == max ~ 21) %>% as_factor())
+      dplyr::mutate(point_shape = dplyr::case_when({{y_axis_var}} == max ~ 21) %>% forcats::as_factor())
   }
 
 
