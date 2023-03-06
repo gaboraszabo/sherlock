@@ -4,12 +4,14 @@
 \alias{load_file}
 \title{Load File}
 \usage{
-load_file(path, filetype = ".xlsx")
+load_file(path, filetype = ".xlsx", col_names = TRUE)
 }
 \arguments{
 \item{path}{path for the file (required)}
 
 \item{filetype}{set whether to read an .xlsx file or a .csv file. It takes either ".xlsx" or ".csv". By default, it is set to ".xlsx" (optional)}
+
+\item{col_names}{Either TRUE, FALSE or a character vector of column names. If TRUE, the first row of the input will be used as the column names, and will not be included in the data frame. If FALSE, column names will be generated automatically: X1, X2, X3 etc. If col_names is a character vector, the values will be used as the names of the columns, and the first row of the input will be read into the first row of the output data frame.}
 }
 \value{
 Returns data in the form of a \code{tibble} object.
