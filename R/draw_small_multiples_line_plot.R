@@ -78,7 +78,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
       if (plot_max_values) {
         plot <- plot +
           ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value), size = data$point_size,
-                              color = scale_color_sherlock(3), stroke = ifelse(interactive, 0.5, 1.5),
+                              color = scale_color_sherlock(3), stroke = ifelse(interactive, 0.5, 1),
                               shape = data$point_shape, alpha = 1)
       }
     }
@@ -91,7 +91,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
       if (plot_max_values) {
         plot <- plot +
           ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value), size = data$point_size,
-                              stroke = ifelse(interactive, 0.5, 1.5),
+                              stroke = ifelse(interactive, 0.5, 1),
                               shape = data$point_shape, color = "grey50", alpha = 1)
       }
     }
@@ -108,7 +108,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
       if (plot_max_values) {
         plot <- plot +
           ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value, color = !!grouping_var_expr),
-                              size = data$point_size, stroke = ifelse(interactive, 0.5, 1.5),
+                              size = data$point_size, stroke = ifelse(interactive, 0.5, 1),
                               shape = data$point_shape, alpha = alpha)
       }
     }
@@ -121,7 +121,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
       if (plot_max_values) {
         plot <- plot +
           ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value), size = data$point_size,
-                              stroke = ifelse(interactive, 0.5, 1.5),
+                              stroke = ifelse(interactive, 0.5, 1),
                               shape = data$point_shape, color = "grey60", alpha = 1)
       }
     }
