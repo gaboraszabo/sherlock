@@ -31,13 +31,17 @@ I would love to hear your feedback on `sherlock`. You can leave a note
 on current issues, bugs and even request new features
 [here](https://github.com/gaboraszabo/sherlock/issues).
 
-`sherlock` 0.6.0 is already in the works. In addition to fixing a few
-bugs and making enhancements to already-existing functionality, I will
-be adding new plotting, statistical analysis and helper functions, such
-as:
+`sherlock` 0.6.0 is now released. In addition to fixing a few bugs and
+making enhancements to already-existing functionality, new plotting,
+statistical analysis and helper functions have been added, such as:
 
 - A new set of plotting functions and statistical tests called the
-  Tukey-Duckworth test for problem diagnosis
+  Tukey-Duckworth test for problem diagnosis. These are
+  `plot_tukey_duckworth_test()` and
+  `plot_tukey_duckworth_paired_test()`.
+- `select_low_high_units()` and `select_low_high_units_manual()`:
+  Automatically or manually select low-high units in a tibble as well as
+  assign them into groups.
 - `load_files()`, which is a function to read in and clean multiple
   files. Particularly useful when reading in multiple files having the
   same variables, for example reading in data from an experiment where
@@ -88,9 +92,17 @@ devtools::install_github("gaborszabo11/sherlock")
 
 `draw_timeseries_scatterplot()`
 
+`plot_tukey_duckworth_test()`
+
+`plot_tukey_duckworth_paired_test()`
+
 #### Helper functions
 
 `load_file()`
+
+`load_files()`
+
+`create_project_folder()`
 
 `save_analysis()`
 
@@ -105,6 +117,10 @@ devtools::install_github("gaborszabo11/sherlock")
 `draw_horizontal_reference_line()`
 
 `draw_vertical_reference_line()`
+
+`select_low_high_units()`
+
+`select_low_high_units_manual()`
 
 ## Examples
 
