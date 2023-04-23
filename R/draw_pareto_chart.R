@@ -65,6 +65,10 @@ draw_pareto_chart <- function(data, cat_var, continuous_var, highlight_first_n_i
                                     stringr::str_glue("{as_label(continuous_var_expr)} by {as_label(cat_var_expr)}"),
                                     analysis_desc_label))
 
+  if (scale == "numeric") {
+    plot <- plot + ggplot2::scale_y_continuous(position = "right", labels = scales::number_format(accuracy = 1))
+  }
+
   if (scale == "percent") {
     plot <- plot + ggplot2::scale_y_continuous(position = "right", labels = scales::percent_format(accuracy = 0.1))
   }
