@@ -25,7 +25,7 @@
 #'
 #' polar_small_multiples_data %>%
 #'   filter(ID_Measurement_Angle %in% c(0, 45, 90, 135)) %>%
-#'   normalize_observations(response = ID,
+#'   normalize_observations(y_var = ID,
 #'                          grouping_var = Tip_Bottom,
 #'                          ref_values = c(0.2075, 0.2225)) %>%
 #'   draw_multivari_plot(y_var            = ID_normalized,
