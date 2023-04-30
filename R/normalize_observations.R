@@ -4,7 +4,7 @@
 #' This function takes an input dataset and normalizes observations
 #'
 #' @param data input dataset to be plotted (required)
-#' @param response response variable, Y (required)
+#' @param y_var response variable, Y (required)
 #' @param grouping_var select grouping variable to normalize by (required)
 #' @param ref_values add reference (nominal) values. takes a string of values with values appearing in the same order as in grouping variable. string length must be equal to unique values in grouping variable (required)
 #'
@@ -15,18 +15,18 @@
 #'
 #' polar_small_multiples_data %>%
 #'     filter(ID_Measurement_Angle %in% c(0, 45, 90, 135)) %>%
-#'     normalize_observations(response = ID,
+#'     normalize_observations(y_var = ID,
 #'                            grouping_var = Tip_Bottom,
 #'                            ref_values = c(0.2075, 0.2225))
 #'
 #' @export
 
-normalize_observations <- function(data, response, grouping_var, ref_values) {
+normalize_observations <- function(data, y_var, grouping_var, ref_values) {
 
   # 1. Tidy Eval
-  response_expr <- rlang::enquo(response)
+  y_var_expr <- rlang::enquo(y_var)
   grouping_var_expr <- rlang::enquo(grouping_var)
-  response_ensym <- as.character(rlang::ensym(response))
+  response_ensym <- as.character(rlang::ensym(y_var))
 
   grouping_var_distinct <- data %>% dplyr::distinct(!!grouping_var_expr)
 
@@ -39,7 +39,7 @@ normalize_observations <- function(data, response, grouping_var, ref_values) {
 
   data <- data %>%
     dplyr::left_join(ref_values_tbl_joined) %>%
-    dplyr::mutate(!! stringr::str_glue("{response_ensym}_normalized") := !!response_expr - ref_value)
+    dplyr::mutate(!! stringr::str_glue("{response_ensym}_normalized") := !!y_var_expr - ref_value)
 
   return(data)
 

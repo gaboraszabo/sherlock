@@ -6,10 +6,11 @@
 \usage{
 draw_multivari_plot(
   data,
-  response,
-  factor_1,
-  factor_2,
-  factor_3,
+  y_var,
+  grouping_var_1,
+  grouping_var_2,
+  grouping_var_3,
+  grouping_var_4,
   data_point_label = NULL,
   plot_means = FALSE,
   x_axis_text_size = 11,
@@ -22,13 +23,15 @@ draw_multivari_plot(
 \arguments{
 \item{data}{input dataset to be plotted (required)}
 
-\item{response}{response variable, Y (required)}
+\item{y_var}{response variable, Y (required)}
 
-\item{factor_1}{select column for lowest level factor (required)}
+\item{grouping_var_1}{select column for lowest level grouping variable (required)}
 
-\item{factor_2}{select column for mid-level factor (required)}
+\item{grouping_var_2}{select column for second level grouping variable (required)}
 
-\item{factor_3}{select column for top level factor (optional)}
+\item{grouping_var_3}{select column for third level grouping variable (optional)}
+
+\item{grouping_var_4}{select column for fourth level grouping variable (optional)}
 
 \item{data_point_label}{select column to label data points (optional)}
 
@@ -59,10 +62,10 @@ polar_small_multiples_data \%>\%
   normalize_observations(response = ID,
                          grouping_var = Tip_Bottom,
                          ref_values = c(0.2075, 0.2225)) \%>\%
-  draw_multivari_plot(response    = ID_normalized,
-                     factor_1    = ID_Measurement_Angle,
-                     factor_2    = Mold_Cavity_Number,
-                     factor_3    = Tip_Bottom,
+  draw_multivari_plot(y_var            = ID_normalized,
+                     grouping_var_1    = ID_Measurement_Angle,
+                     grouping_var_2    = Mold_Cavity_Number,
+                     grouping_var_3    = Tip_Bottom,
                      x_axis_text = 6) +
   draw_horizontal_reference_line(reference_line = 0)
 
