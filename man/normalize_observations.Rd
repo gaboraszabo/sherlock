@@ -4,12 +4,12 @@
 \alias{normalize_observations}
 \title{Normalize observations}
 \usage{
-normalize_observations(data, response, grouping_var, ref_values)
+normalize_observations(data, y_var, grouping_var, ref_values)
 }
 \arguments{
 \item{data}{input dataset to be plotted (required)}
 
-\item{response}{response variable, Y (required)}
+\item{y_var}{response variable, Y (required)}
 
 \item{grouping_var}{select grouping variable to normalize by (required)}
 
@@ -26,7 +26,7 @@ library(dplyr)
 
 polar_small_multiples_data \%>\%
     filter(ID_Measurement_Angle \%in\% c(0, 45, 90, 135)) \%>\%
-    normalize_observations(response = ID,
+    normalize_observations(y_var = ID,
                            grouping_var = Tip_Bottom,
                            ref_values = c(0.2075, 0.2225))
 

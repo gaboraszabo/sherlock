@@ -136,10 +136,10 @@ library(ggh4x)
 
 ``` r
 multi_vari_data %>% 
-  draw_multivari_plot(response = force, 
-                      factor_1 = cycle, 
-                      factor_2 = fixture, 
-                      factor_3 = line)
+  draw_multivari_plot(y_var = force, 
+                      grouping_var_1 = cycle, 
+                      grouping_var_2 = fixture, 
+                      grouping_var_3 = line)
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" />
@@ -149,9 +149,9 @@ library(sherlock)
 library(ggh4x)
 
 multi_vari_data_2 %>% 
-  draw_multivari_plot(response = Length, 
-                      factor_1 = Part, 
-                      factor_2 = Operator, plot_means = TRUE)
+  draw_multivari_plot(y_var = Length, 
+                      grouping_var_1 = Part, 
+                      grouping_var_2 = Operator, plot_means = TRUE)
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;" />
@@ -192,11 +192,11 @@ library(ggh4x)
 
 polar_small_multiples_data %>% 
   filter(ID_Measurement_Angle %in% c(0, 45, 90, 135)) %>% 
-  normalize_observations(response = ID, grouping_var = Tip_Bottom, ref_values = c(0.2075, 0.2225)) %>% 
-  draw_multivari_plot(response    = ID_normalized, 
-                      factor_1    = ID_Measurement_Angle, 
-                      factor_2    = Mold_Cavity_Number, 
-                      factor_3    = Tip_Bottom, 
+  normalize_observations(y_var = ID, grouping_var = Tip_Bottom, ref_values = c(0.2075, 0.2225)) %>% 
+  draw_multivari_plot(y_var             = ID_normalized, 
+                      grouping_var_1    = ID_Measurement_Angle, 
+                      grouping_var_2    = Mold_Cavity_Number, 
+                      grouping_var_3    = Tip_Bottom, 
                       x_axis_text = 6) +
   draw_horizontal_reference_line(reference_line = 0)
 #> Joining, by = "Tip_Bottom"
