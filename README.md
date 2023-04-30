@@ -190,19 +190,16 @@ library(sherlock)
 library(dplyr)
 library(ggh4x)
 
-polar_small_multiples_data %>% 
-  filter(ID_Measurement_Angle %in% c(0, 45, 90, 135)) %>% 
-  normalize_observations(y_var = ID, grouping_var = Tip_Bottom, ref_values = c(0.2075, 0.2225)) %>% 
-  draw_multivari_plot(y_var             = ID_normalized, 
-                      grouping_var_1    = ID_Measurement_Angle, 
-                      grouping_var_2    = Mold_Cavity_Number, 
-                      grouping_var_3    = Tip_Bottom, 
-                      x_axis_text = 6) +
-  draw_horizontal_reference_line(reference_line = 0)
-#> Joining, by = "Tip_Bottom"
+# polar_small_multiples_data %>% 
+#   filter(ID_Measurement_Angle %in% c(0, 45, 90, 135)) %>% 
+#   normalize_observations(y_var = ID, grouping_var = Tip_Bottom, ref_values = c(0.2075, 0.2225)) %>% 
+#   draw_multivari_plot(y_var             = ID_normalized, 
+#                       grouping_var_1    = ID_Measurement_Angle, 
+#                       grouping_var_2    = Mold_Cavity_Number, 
+#                       grouping_var_3    = Tip_Bottom, 
+#                       x_axis_text = 6) +
+#   draw_horizontal_reference_line(reference_line = 0)
 ```
-
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="80%" style="display: block; margin: auto;" />
 
 ``` r
 youden_plot_data_2 %>% 
