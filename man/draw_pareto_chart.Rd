@@ -7,12 +7,15 @@
 draw_pareto_chart(
   data,
   cat_var,
+  summarize = FALSE,
   continuous_var,
+  drop_na = TRUE,
   highlight_first_n_items = 0,
   lump_last_n_items = 0,
   lumped_cat_name = "Other",
   column_fill = scale_fill_sherlock(3),
   scale = "numeric",
+  accuracy = 1,
   title_label = "Pareto Chart",
   analysis_desc_label = NULL,
   axis_text_size = 10
@@ -23,7 +26,11 @@ draw_pareto_chart(
 
 \item{cat_var}{Categorical variable (required)}
 
-\item{continuous_var}{Continuous variable to rank by (e.g. sum, frequency etc.)  (required)}
+\item{summarize}{Logical. If FALSE, default, the function expects total counts of each category of the categorical variable. If TRUE, individual values within each category are automatically summed up and ranked. (required)}
+
+\item{continuous_var}{Continuous variable to rank by (e.g. sum, frequency etc.). Not required if summarize argument is set to TRUE. (required)}
+
+\item{drop_na}{Logical. If TRUE, default, NA values of the categorical variable are dropped. (required)}
 
 \item{highlight_first_n_items}{Specify the top n items to be highlighted. By default, it is set to 0. (optional)}
 
@@ -34,6 +41,8 @@ draw_pareto_chart(
 \item{column_fill}{Column fill color. By default, it is set to scale_fill_sherlock(3) (optional)}
 
 \item{scale}{Specify an acceptable argument for scale. Acceptable arguments are "numeric", "percent", "dollar", "dollar-k" or "dollar-M". By default, it is set to "numeric" (optional)}
+
+\item{accuracy}{Number to round to. Default value is set to 1. If NULL, values will be rounded to the nearest integer. (optional)}
 
 \item{title_label}{Specify plot title. By default, it is set to display "Pareto Chart" (optional)}
 

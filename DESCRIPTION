@@ -34,7 +34,8 @@ Imports:
     openxlsx,
     purrr,
     fs,
-    rstudioapi
+    rstudioapi,
+    tidytext
 Suggests: 
     roxygen2
 Depends: 
