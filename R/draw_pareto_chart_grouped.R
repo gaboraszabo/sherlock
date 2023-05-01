@@ -122,7 +122,7 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
                      legend.position = "none") +
       ggplot2::labs(title    = title_label,
                     subtitle = ifelse(is.null(analysis_desc_label),
-                                      stringr::str_glue("{as_label(cat_var_expr)}"),
+                                      stringr::str_glue("{as_label(cat_var_expr)} by {as_label(grouping_var_expr)}"),
                                       analysis_desc_label))
   }
 
@@ -196,7 +196,7 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
                      legend.position = "none") +
       ggplot2::labs(title    = title_label,
                     subtitle = ifelse(is.null(analysis_desc_label),
-                                      stringr::str_glue("{as_label(cat_var_expr)}"),
+                                      stringr::str_glue("{as_label(cat_var_expr)} by {as_label(grouping_var_expr)}"),
                                       analysis_desc_label))
 
   }
