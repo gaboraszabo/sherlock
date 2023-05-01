@@ -19,7 +19,8 @@ draw_pareto_chart_grouped(
   accuracy = 1,
   title_label = "Pareto Chart",
   analysis_desc_label = NULL,
-  axis_text_size = 10
+  axis_text_size = 10,
+  x_axis_span = "free"
 )
 }
 \arguments{
@@ -52,6 +53,8 @@ draw_pareto_chart_grouped(
 \item{analysis_desc_label}{Specify plot analysis desc label (subtitle). By default, it is set to display CONTINUOUS VARIABLE COLUMN NAME "by" CATEGORICAL VARIABLE COLUMN NAME (optional)}
 
 \item{axis_text_size}{Set axis text size. By default, it is set at 10. (optional)}
+
+\item{x_axis_span}{Set X axis span. Options are "free" (a different span for each panel based on range of values for each panel) and "fixed" (the X axes in all panels are set to span the total range of all values). By default, it is set to "free". (optional)}
 }
 \value{
 A 'ggplot' object
