@@ -58,7 +58,7 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
 
     data <- data %>%
       dplyr::count(!!grouping_var_expr, !!cat_var_expr) %>%
-      dplyr::mutate(!!cat_var_expr := reorder_within(!!cat_var_expr, n, !!grouping_var_expr)) %>%
+      dplyr::mutate(!!cat_var_expr := tidytext::reorder_within(!!cat_var_expr, n, !!grouping_var_expr)) %>%
       dplyr::group_by(!!grouping_var_expr) %>%
       dplyr::arrange(dplyr::desc(n), .by_group = TRUE) %>%
       dplyr::mutate(rank = dplyr::row_number()) %>%
@@ -89,12 +89,12 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
 
     if (color == "multi") {
       plot <- plot +
-        ggplot2::geom_col(aes(fill = !!grouping_var_expr), alpha = data$alpha)
+        ggplot2::geom_col(ggplot2::aes(fill = !!grouping_var_expr), alpha = data$alpha)
     }
 
 
     plot <- plot +
-      ggplot2::facet_wrap(facets = vars(!!grouping_var_expr), scales = "free_y") +
+      ggplot2::facet_wrap(facets = ggplot2::vars(!!grouping_var_expr), scales = "free_y") +
       ggplot2::coord_flip() +
       tidytext::scale_x_reordered() +
       sherlock::scale_fill_sherlock() +
@@ -122,7 +122,7 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
       dplyr::group_by(!!grouping_var_expr) %>%
       dplyr::arrange(dplyr::desc(!!continuous_var_expr), .by_group = TRUE) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(!!cat_var_expr := reorder_within(!!cat_var_expr, !!continuous_var_expr, !!grouping_var_expr)) %>%
+      dplyr::mutate(!!cat_var_expr := tidytext::reorder_within(!!cat_var_expr, !!continuous_var_expr, !!grouping_var_expr)) %>%
       dplyr::group_by(!!grouping_var_expr) %>%
       dplyr::arrange(dplyr::desc(n), .by_group = TRUE) %>%
       dplyr::mutate(rank = dplyr::row_number()) %>%
@@ -153,12 +153,12 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
 
     if (color == "multi") {
       plot <- plot +
-        ggplot2::geom_col(aes(fill = !!grouping_var_expr), alpha = data$alpha)
+        ggplot2::geom_col(ggplot2::aes(fill = !!grouping_var_expr), alpha = data$alpha)
     }
 
 
     plot <- plot +
-      ggplot2::facet_wrap(facets = vars(!!grouping_var_expr), scales = "free_y") +
+      ggplot2::facet_wrap(facets = ggplot2::vars(!!grouping_var_expr), scales = "free_y") +
       ggplot2::coord_flip() +
       tidytext::scale_x_reordered() +
       sherlock::scale_fill_sherlock() +
