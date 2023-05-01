@@ -123,7 +123,7 @@ draw_pareto_chart <- function(data, cat_var, summarize = FALSE, continuous_var, 
       sherlock::theme_sherlock() +
       ggplot2::theme(axis.title.x = ggplot2::element_blank(),
                      plot.title   = ggplot2::element_text(size = 18),
-                     axis.text.x  = ggplot2::element_text(size = axis_text_size),
+                     axis.text    = ggplot2::element_text(size = axis_text_size),
                      axis.title.y = ggplot2::element_blank()) +
       ggplot2::scale_y_continuous(position = "right") +
       ggplot2::labs(title    = title_label,
