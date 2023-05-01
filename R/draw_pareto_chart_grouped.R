@@ -18,6 +18,7 @@
 #' @param title_label  Specify plot title. By default, it is set to display "Pareto Chart" (optional)
 #' @param analysis_desc_label  Specify plot analysis desc label (subtitle). By default, it is set to display CONTINUOUS VARIABLE COLUMN NAME "by" CATEGORICAL VARIABLE COLUMN NAME (optional)
 #' @param axis_text_size Set axis text size. By default, it is set at 10. (optional)
+#' @param x_axis_span Set X axis span. Options are "free" (a different span for each panel based on range of values for each panel) and "fixed" (the X axes in all panels are set to span the total range of all values). By default, it is set to "free". (optional)
 #'
 #' @return A 'ggplot' object
 #'
@@ -26,7 +27,8 @@
 draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = FALSE, continuous_var, drop_na = TRUE,
                                       highlight_first_n_items = 0, lump_last_n_items = 0, lumped_cat_name = "Other",
                                       color = "one", scale = "numeric", accuracy = 1,
-                                      title_label = "Pareto Chart", analysis_desc_label = NULL, axis_text_size = 10) {
+                                      title_label = "Pareto Chart", analysis_desc_label = NULL, axis_text_size = 10,
+                                      x_axis_span = "free") {
 
 
   # 1. WARNINGS ----
@@ -39,7 +41,11 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
   }
 
   if (!(color %in% c("one", "multi"))) {
-    warning('Specify an acceptable argument for scale. Acceptable arguments are "one" or "multi')
+    warning('Specify an acceptable argument for scale. Acceptable arguments are "one" or "multi".')
+  }
+
+  if (!(x_axis_span %in% c("free", "fixed"))) {
+    warning('Specify an acceptable argument for x_axis_span. Acceptable arguments are "free" or "fixed".')
   }
 
   # 2. TIDY EVAL ----
@@ -58,7 +64,7 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
 
     data <- data %>%
       dplyr::count(!!grouping_var_expr, !!cat_var_expr) %>%
-      dplyr::mutate(!!cat_var_expr := tidytext::reorder_within(!!cat_var_expr, n, !!grouping_var_expr)) %>%
+      dplyr::mutate(!!cat_var_expr := reorder_within(!!cat_var_expr, n, !!grouping_var_expr)) %>%
       dplyr::group_by(!!grouping_var_expr) %>%
       dplyr::arrange(dplyr::desc(n), .by_group = TRUE) %>%
       dplyr::mutate(rank = dplyr::row_number()) %>%
@@ -89,12 +95,22 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
 
     if (color == "multi") {
       plot <- plot +
-        ggplot2::geom_col(ggplot2::aes(fill = !!grouping_var_expr), alpha = data$alpha)
+        ggplot2::geom_col(aes(fill = !!grouping_var_expr), alpha = data$alpha)
+    }
+
+
+    if (x_axis_span == "fixed") {
+      plot <- plot +
+        ggplot2::facet_wrap(facets = vars(!!grouping_var_expr), scales = "free_y")
+    }
+
+    if (x_axis_span == "free") {
+      plot <- plot +
+        ggplot2::facet_wrap(facets = vars(!!grouping_var_expr), scales = "free")
     }
 
 
     plot <- plot +
-      ggplot2::facet_wrap(facets = ggplot2::vars(!!grouping_var_expr), scales = "free_y") +
       ggplot2::coord_flip() +
       tidytext::scale_x_reordered() +
       sherlock::scale_fill_sherlock() +
@@ -122,7 +138,7 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
       dplyr::group_by(!!grouping_var_expr) %>%
       dplyr::arrange(dplyr::desc(!!continuous_var_expr), .by_group = TRUE) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(!!cat_var_expr := tidytext::reorder_within(!!cat_var_expr, !!continuous_var_expr, !!grouping_var_expr)) %>%
+      dplyr::mutate(!!cat_var_expr := reorder_within(!!cat_var_expr, !!continuous_var_expr, !!grouping_var_expr)) %>%
       dplyr::group_by(!!grouping_var_expr) %>%
       dplyr::arrange(dplyr::desc(n), .by_group = TRUE) %>%
       dplyr::mutate(rank = dplyr::row_number()) %>%
@@ -153,12 +169,22 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
 
     if (color == "multi") {
       plot <- plot +
-        ggplot2::geom_col(ggplot2::aes(fill = !!grouping_var_expr), alpha = data$alpha)
+        ggplot2::geom_col(aes(fill = !!grouping_var_expr), alpha = data$alpha)
+    }
+
+
+    if (x_axis_span == "fixed") {
+      plot <- plot +
+        ggplot2::facet_wrap(facets = vars(!!grouping_var_expr), scales = "free_y")
+    }
+
+    if (x_axis_span == "free") {
+      plot <- plot +
+        ggplot2::facet_wrap(facets = vars(!!grouping_var_expr), scales = "free")
     }
 
 
     plot <- plot +
-      ggplot2::facet_wrap(facets = ggplot2::vars(!!grouping_var_expr), scales = "free_y") +
       ggplot2::coord_flip() +
       tidytext::scale_x_reordered() +
       sherlock::scale_fill_sherlock() +
