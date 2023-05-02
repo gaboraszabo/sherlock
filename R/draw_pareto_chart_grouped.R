@@ -160,7 +160,7 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
     }
 
     plot <- data %>%
-      ggplot2::ggplot(ggplot2::aes(!!cat_var_expr, n, fill = !!grouping_var_expr))
+      ggplot2::ggplot(ggplot2::aes(!!cat_var_expr, !!continuous_var_expr, fill = !!grouping_var_expr))
 
     if (color == "one") {
       plot <- plot +
