@@ -140,7 +140,7 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
       dplyr::ungroup() %>%
       dplyr::mutate(!!cat_var_expr := tidytext::reorder_within(!!cat_var_expr, !!continuous_var_expr, !!grouping_var_expr)) %>%
       dplyr::group_by(!!grouping_var_expr) %>%
-      dplyr::arrange(dplyr::desc(n), .by_group = TRUE) %>%
+      dplyr::arrange(dplyr::desc(!!continuous_var_expr), .by_group = TRUE) %>%
       dplyr::mutate(rank = dplyr::row_number()) %>%
       dplyr::mutate(!!(cat_var_expr) := !!(cat_var_expr) %>% forcats::as_factor() %>% forcats::fct_reorder(n)) %>%
       dplyr::ungroup()
