@@ -153,9 +153,9 @@ draw_pareto_chart_grouped <- function(data, cat_var, grouping_var, summarize = F
     if (lump_last_n_items > 0) {
       data <- data %>%
         dplyr::mutate(!!(cat_var_expr) := !!(cat_var_expr) %>% forcats::fct_lump(n = (data %>% dplyr::pull(!!(cat_var_expr)) %>% length()) - lump_last_n_items,
-                                                                                 w = n,
+                                                                                 w = !!continuous_var_expr,
                                                                                  other_level = lumped_cat_name)) %>%
-        dplyr::mutate(!!(cat_var_expr) := !!(cat_var_expr) %>% forcats::fct_reorder(n)) %>%
+        dplyr::mutate(!!(cat_var_expr) := !!(cat_var_expr) %>% forcats::fct_reorder(!!continuous_var_expr)) %>%
         dplyr::mutate(!!(cat_var_expr) := !!(cat_var_expr) %>% forcats::fct_relevel(lumped_cat_name, after = 0))
     }
 
