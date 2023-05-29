@@ -18,6 +18,9 @@
 #' @param analysis_desc_label Label (subtitle) for analysis description. By default, it is set to NULL  (optional)
 #' @param x_axis_label Label for x axis. By default, it is set to display x axis column name  (optional)
 #' @param y_axis_label Label for y axis. By default, it is set to display y axis column name  (optional)
+#' @param n_breaks_x_axis Set number of breaks on X axis. By default, it is set to 10 (optional)
+#' @param n_breaks_y_axis Set number of breaks on Y axis. By default, it is set to 10 (optional)
+#' @param accuracy Set number of decimal places to be displayed on X and Y axes. Examples: 0.1 - one decimal place, 0.01 - two decimal places, 0.001 - three decimal places etc. By default, it is set to 0.01 (optional)
 #'
 #' @return A 'ggplot' or 'plotly' object
 #'
@@ -28,7 +31,8 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
                                            faceting_var_1, faceting_var_2, plot_max_values = FALSE,
                                            lowest_highest_units, unique_color_by_group = FALSE,
                                            size = 0.7, alpha = 0.4, interactive = TRUE,
-                                           analysis_desc_label = NULL, x_axis_label = NULL, y_axis_label = NULL) {
+                                           analysis_desc_label = NULL, x_axis_label = NULL, y_axis_label = NULL,
+                                           n_breaks_x_axis = 10, n_breaks_y_axis = 10, accuracy = 0.01) {
 
   # 1. Tidy Eval ----
   x_axis_var_expr <- rlang::enquo(x_axis_var)
@@ -189,9 +193,14 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
   }
 
 
+  # 6. X-Y axis ----
+  plot <- plot +
+    ggplot2::scale_x_continuous(n.breaks = n_breaks_x_axis, labels = scales::number_format(accuracy = accuracy)) +
+    ggplot2::scale_y_continuous(n.breaks = n_breaks_y_axis, labels = scales::number_format(accuracy = accuracy))
 
 
-  # 6. Interactivity with ggplotly ----
+
+  # 7. Interactivity with ggplotly ----
   if (interactive) {
     plot <- plotly::ggplotly(plot)
   }
