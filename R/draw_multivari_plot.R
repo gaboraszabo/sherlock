@@ -3,19 +3,19 @@
 #' @description
 #' Draws a multivari small multiples plot
 #'
-#' @param data input dataset to be plotted (required)
-#' @param y_var response variable, Y (required)
-#' @param grouping_var_1 select column for lowest level grouping variable (required)
-#' @param grouping_var_2 select column for second level grouping variable (required)
-#' @param grouping_var_3 select column for third level grouping variable (optional)
-#' @param grouping_var_4 select column for fourth level grouping variable (optional)
-#' @param data_point_label select column to label data points (optional)
-#' @param plot_means logical. if FALSE, default, means for mid-level factor are not plotted (optional)
+#' @param data Input dataset to be plotted (required)
+#' @param y_var Response variable, Y (required)
+#' @param grouping_var_1 Select column for lowest level grouping variable (required)
+#' @param grouping_var_2 Select column for second level grouping variable (required)
+#' @param grouping_var_3 Select column for third level grouping variable (optional)
+#' @param grouping_var_4 Select column for fourth level grouping variable (optional)
+#' @param data_point_label Select column to label data points (optional)
+#' @param plot_means Logical. if FALSE, default, means for mid-level factor are not plotted (optional)
 #' @param point_size Set point size. By default, it is set to 2.5  (optional)
 #' @param line_size Set line size. By default, it is set to 0.7  (optional)
 #' @param alpha Set transparency. By default, it is set to 0.6  (optional)
-#' @param x_axis_text_size set x axis text size. options are "normal" (default), "small", "xs" and "none" (optional)
-#' @param panel_text_size set panel text size. By default, it is set to 14 (optional)
+#' @param x_axis_text_size Set X axis text size. By default, it is set to 11  (optional)
+#' @param panel_text_size Set panel text size. By default, it is set to 14 (optional)
 #'
 #' @return A 'ggplot' object
 #'
