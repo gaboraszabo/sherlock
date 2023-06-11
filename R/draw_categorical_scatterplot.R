@@ -29,10 +29,10 @@
 #'
 #' @export
 
-draw_categorical_scatterplot_4_levels <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3, grouping_var_4,
-                                                  plot_means = FALSE, connect_means = FALSE, group_color = FALSE,
-                                                  point_size = 2, alpha = 0.5, jitter = FALSE, x_axis_text_size = 11,
-                                                  panel_text_size = 11) {
+draw_categorical_scatterplot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3, grouping_var_4,
+                                         plot_means = FALSE, connect_means = FALSE, group_color = FALSE,
+                                         point_size = 2, alpha = 0.5, jitter = FALSE, x_axis_text_size = 11,
+                                         panel_text_size = 11) {
 
   # 0. MESSAGES AND WARNINGS ----
   if (missing(y_var)) {

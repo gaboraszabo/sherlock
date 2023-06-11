@@ -21,25 +21,25 @@ draw_multivari_plot(
 )
 }
 \arguments{
-\item{data}{input dataset to be plotted (required)}
+\item{data}{Input dataset to be plotted (required)}
 
-\item{y_var}{response variable, Y (required)}
+\item{y_var}{Response variable, Y (required)}
 
-\item{grouping_var_1}{select column for lowest level grouping variable (required)}
+\item{grouping_var_1}{Select column for lowest level grouping variable (required)}
 
-\item{grouping_var_2}{select column for second level grouping variable (required)}
+\item{grouping_var_2}{Select column for second level grouping variable (required)}
 
-\item{grouping_var_3}{select column for third level grouping variable (optional)}
+\item{grouping_var_3}{Select column for third level grouping variable (optional)}
 
-\item{grouping_var_4}{select column for fourth level grouping variable (optional)}
+\item{grouping_var_4}{Select column for fourth level grouping variable (optional)}
 
-\item{data_point_label}{select column to label data points (optional)}
+\item{data_point_label}{Select column to label data points (optional)}
 
-\item{plot_means}{logical. if FALSE, default, means for mid-level factor are not plotted (optional)}
+\item{plot_means}{Logical. if FALSE, default, means for mid-level factor are not plotted (optional)}
 
-\item{x_axis_text_size}{set x axis text size. options are "normal" (default), "small", "xs" and "none" (optional)}
+\item{x_axis_text_size}{Set X axis text size. By default, it is set to 11  (optional)}
 
-\item{panel_text_size}{set panel text size. By default, it is set to 14 (optional)}
+\item{panel_text_size}{Set panel text size. By default, it is set to 14 (optional)}
 
 \item{point_size}{Set point size. By default, it is set to 2.5  (optional)}
 
