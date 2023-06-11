@@ -2,7 +2,7 @@
 % Please edit documentation in R/draw_categorical_scatterplot.R
 \name{draw_categorical_scatterplot}
 \alias{draw_categorical_scatterplot}
-\title{Draw Categorical Scatterplot}
+\title{Draw Categorical Scatter Plot}
 \usage{
 draw_categorical_scatterplot(
   data,
@@ -10,45 +10,51 @@ draw_categorical_scatterplot(
   grouping_var_1,
   grouping_var_2,
   grouping_var_3,
+  grouping_var_4,
   plot_means = FALSE,
   connect_means = FALSE,
   group_color = FALSE,
-  size = 2,
+  point_size = 2,
   alpha = 0.5,
-  jitter = TRUE,
-  interactive = FALSE
+  jitter = FALSE,
+  x_axis_text_size = 11,
+  panel_text_size = 11
 )
 }
 \arguments{
-\item{data}{input dataset to be plotted (required)}
+\item{data}{Input dataset to be plotted (required)}
 
 \item{y_var}{Y variable to be plotted on Y axis (required)}
 
-\item{grouping_var_1}{First grouping variable (optional)}
+\item{grouping_var_1}{Select column for lowest level grouping variable (optional)}
 
-\item{grouping_var_2}{Second, higher-level grouping variable  (optional)}
+\item{grouping_var_2}{Select column for second level grouping variable (optional)}
 
-\item{grouping_var_3}{Third, highest-level grouping variable (optional)}
+\item{grouping_var_3}{Select column for third level grouping variable (optional)}
 
-\item{plot_means}{logical. if TRUE, means for lowest-level grouping variable are plotted. By default, it is set to FALSE. (optional)}
+\item{grouping_var_4}{Select column for fourth level grouping variable (optional)}
 
-\item{connect_means}{logical. if TRUE, means for lowest-level grouping variable are connected with a line. By default, it is set to FALSE. (optional)}
+\item{plot_means}{Logical. if TRUE, means for lowest-level grouping variable are plotted. By default, it is set to FALSE. (optional)}
+
+\item{connect_means}{Logical. if TRUE, means for lowest-level grouping variable are connected with a line. By default, it is set to FALSE. (optional)}
 
 \item{group_color}{Set whether to color by grouping_var_1. By default, it is set to FALSE (optional)}
 
-\item{size}{Set point size. By default, it is set to 2  (optional)}
+\item{point_size}{Set point size. By default, it is set to 2  (optional)}
 
 \item{alpha}{Set transparency. By default, it is set to 0.5  (optional)}
 
-\item{jitter}{Set whether to add jitter. By default, it is set to TRUE  (optional)}
+\item{jitter}{Set whether to add jitter. By default, it is set to FALSE  (optional)}
 
-\item{interactive}{Set plot interactivity. By default, it is set to FALSE (optional)}
+\item{x_axis_text_size}{Set X axis text size. By default, it is set to 11  (optional)}
+
+\item{panel_text_size}{Set panel text size. By default, it is set to 11 (optional)}
 }
 \value{
-A 'ggplot' or 'plotly' object
+A 'ggplot' object
 }
 \description{
-Draws a Categorical Scatterplot
+Draws a Categorical Scatter Plot
 }
 \examples{
 multi_vari_data_2 \%>\%
