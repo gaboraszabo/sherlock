@@ -21,8 +21,8 @@ create_process_behavior_chart_limits <- function(data, y_var, grouping_var) {
     data <- data %>%
       dplyr::mutate(Average = mean(!!y_var_expr)) %>%
       dplyr::mutate(Moving_Range = abs(dplyr::lag(!!y_var_expr) - !!y_var_expr)) %>%
-      dplyr::mutate(lcl = mean(Average) - 2.66 * mean(Moving_Range, na.rm = TRUE)) %>%
-      dplyr::mutate(ucl = mean(Average) + 2.66 * mean(Moving_Range, na.rm = TRUE))
+      dplyr::mutate(LCL = mean(Average) - 2.66 * mean(Moving_Range, na.rm = TRUE)) %>%
+      dplyr::mutate(UCL = mean(Average) + 2.66 * mean(Moving_Range, na.rm = TRUE))
   }
 
   if (!missing(grouping_var)) {
@@ -30,8 +30,8 @@ create_process_behavior_chart_limits <- function(data, y_var, grouping_var) {
       dplyr::group_by(!!grouping_var_expr) %>%
       dplyr::mutate(Average = mean(!!y_var_expr)) %>%
       dplyr::mutate(Moving_Range = abs(dplyr::lag(!!y_var_expr) - !!y_var_expr)) %>%
-      dplyr::mutate(lcl = mean(Average) - 2.66 * mean(Moving_Range, na.rm = TRUE)) %>%
-      dplyr::mutate(ucl = mean(Average) + 2.66 * mean(Moving_Range, na.rm = TRUE)) %>%
+      dplyr::mutate(LCL = mean(Average) - 2.66 * mean(Moving_Range, na.rm = TRUE)) %>%
+      dplyr::mutate(UCL = mean(Average) + 2.66 * mean(Moving_Range, na.rm = TRUE)) %>%
       dplyr::ungroup()
   }
 
