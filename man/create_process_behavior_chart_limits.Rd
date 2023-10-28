@@ -4,14 +4,14 @@
 \alias{create_process_behavior_chart_limits}
 \title{Create Process Behavior Chart Limits}
 \usage{
-create_process_behavior_chart_limits(data, y_var, grouping_var)
+create_process_behavior_chart_limits(data, y_var, grouping_vars)
 }
 \arguments{
 \item{data}{input dataset to be plotted (required)}
 
 \item{y_var}{Y variable to be plotted on Y axis (required)}
 
-\item{grouping_var}{Variable to group by (optional)}
+\item{grouping_vars}{Variable(s) to group by (optional)}
 }
 \value{
 A tibble with columns created to store values for the moving range, average, UCL and LCL

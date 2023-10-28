@@ -26,7 +26,7 @@ create_process_behavior_chart_limits <- function(data, y_var, grouping_vars) {
 
   if (!missing(grouping_vars)) {
     data <- data %>%
-      dplyr::group_by(across({{ grouping_vars }})) %>%
+      dplyr::group_by(dplyr::across({{ grouping_vars }})) %>%
       dplyr::mutate(Average = mean(!!y_var_expr)) %>%
       dplyr::mutate(Moving_Range = abs(dplyr::lag(!!y_var_expr) - !!y_var_expr)) %>%
       dplyr::mutate(LCL = mean(Average) - 2.66 * mean(Moving_Range, na.rm = TRUE)) %>%
