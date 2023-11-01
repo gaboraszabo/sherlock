@@ -3,15 +3,15 @@
 #' @description
 #' Draws a Small Multiples Line Plot
 #'
-#' @param data input dataset to be plotted (required)
-#' @param x_axis_var variable to be plotted on x axis (required)
-#' @param y_axis_var variable to be plotted on x axis (required)
-#' @param grouping_var set grouping variable (required)
+#' @param data Input dataset to be plotted (required)
+#' @param x_axis_var Variable to be plotted on x axis (required)
+#' @param y_axis_var Variable to be plotted on x axis (required)
+#' @param grouping_var Set grouping variable (required)
+#' @param color_var Set variable to color by (optional)
 #' @param faceting_var_1 Set first faceting variable (optional)
 #' @param faceting_var_2 Set second faceting variable (optional)
 #' @param plot_max_values Highlights maximum values per group. By default, it is set to FALSE (optional)
-#' @param lowest_highest_units takes a vector of strings corresponding to the lowest/highest units to be highlighted (optional)
-#' @param unique_color_by_group set whether to display each group in a unique color. By default, it is set to FALSE (optional)
+#' @param unique_color_by_group Set whether to display each group in a unique color. By default, it is set to FALSE (optional)
 #' @param size Set line size. By default, it is set to 0.7  (optional)
 #' @param alpha Set transparency. By default, it is set to 0.4  (optional)
 #' @param interactive set plot interactivity. By default, it is set to TRUE (optional)
@@ -27,9 +27,9 @@
 #' @export
 
 
-draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, grouping_var,
+draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, grouping_var, color_var,
                                            faceting_var_1, faceting_var_2, plot_max_values = FALSE,
-                                           lowest_highest_units, unique_color_by_group = FALSE,
+                                           unique_color_by_group = FALSE,
                                            size = 0.7, alpha = 0.4, interactive = TRUE,
                                            analysis_desc_label = NULL, x_axis_label = NULL, y_axis_label = NULL,
                                            n_breaks_x_axis = 10, n_breaks_y_axis = 10, accuracy = 0.01) {
@@ -38,6 +38,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
   x_axis_var_expr <- rlang::enquo(x_axis_var)
   y_axis_var_expr <- rlang::enquo(y_axis_var)
   grouping_var_expr <- rlang::enquo(grouping_var)
+  color_var_expr <- rlang::enquo(color_var)
   faceting_var_1_expr <- rlang::enquo(faceting_var_1)
   faceting_var_2_expr <- rlang::enquo(faceting_var_2)
 
@@ -60,19 +61,10 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
   }
 
 
-
-  # 2. Color and size columns for lowest_highest_units arg ----
-  if (!missing(lowest_highest_units)) {
-    data <- data %>%
-      dplyr::mutate(color = dplyr::case_when(!!grouping_var_expr %in% lowest_highest_units ~ "darkblue",
-                                             TRUE ~ "grey60")) %>%
-      dplyr::mutate(size = dplyr::case_when(!!grouping_var_expr %in% lowest_highest_units ~ 1.5*size,
-                                            TRUE ~ size))
-  }
-
-
   # 3. Plotting Function ----
-  if (missing(lowest_highest_units)) {
+
+  # 3.1 No color variable selected ----
+  if(missing(color_var)) {
 
     if (unique_color_by_group) {
       plot <- data %>%
@@ -99,37 +91,40 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
                               shape = data$point_shape, color = "grey50", alpha = 1)
       }
     }
+
   }
 
-
-  if (!missing(lowest_highest_units)) {
+  # 3.2 Color variable selected ----
+  if(!missing(color_var)) {
 
     if (unique_color_by_group) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-        ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = alpha, size = data$size)
+        ggplot2::geom_line(ggplot2::aes(color = !!color_var_expr), alpha = alpha, size = size)
 
       if (plot_max_values) {
         plot <- plot +
-          ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value, color = !!grouping_var_expr),
+          ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value, color = !!color_var_expr),
                               size = data$point_size, stroke = ifelse(interactive, 0.5, 1),
-                              shape = data$point_shape, alpha = alpha)
+                              shape = data$point_shape, alpha = 1)
       }
     }
 
     if (!unique_color_by_group) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-        ggplot2::geom_line(color = data$color, alpha = alpha, size = data$size)
+        ggplot2::geom_line(ggplot2::aes(color = !!color_var_expr), alpha = alpha, size = size)
 
       if (plot_max_values) {
         plot <- plot +
-          ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value), size = data$point_size,
+          ggplot2::geom_point(ggplot2::aes(x = !!x_axis_var_expr, y = value, color = !!color_var_expr),
+                              size = data$point_size,
                               stroke = ifelse(interactive, 0.5, 1),
-                              shape = data$point_shape, color = "grey60", alpha = 1)
+                              shape = data$point_shape, alpha = 1)
       }
     }
   }
+
 
 
   # 3.1 Faceting ----
