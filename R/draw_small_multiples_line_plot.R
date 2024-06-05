@@ -69,7 +69,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
     if (unique_color_by_group) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-        ggplot2::geom_line(ggplot2::aes(color = !!grouping_var_expr), alpha = alpha, size = size)
+        ggplot2::geom_path(ggplot2::aes(color = !!grouping_var_expr), alpha = alpha, size = size)
 
       if (plot_max_values) {
         plot <- plot +
@@ -82,7 +82,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
     if (!unique_color_by_group) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-        ggplot2::geom_line(color = "grey60", alpha = alpha, size = size)
+        ggplot2::geom_path(color = "grey60", alpha = alpha, size = size)
 
       if (plot_max_values) {
         plot <- plot +
@@ -100,7 +100,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
     if (unique_color_by_group) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-        ggplot2::geom_line(ggplot2::aes(color = !!color_var_expr), alpha = alpha, size = size)
+        ggplot2::geom_path(ggplot2::aes(color = !!color_var_expr), alpha = alpha, size = size)
 
       if (plot_max_values) {
         plot <- plot +
@@ -113,7 +113,7 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
     if (!unique_color_by_group) {
       plot <- data %>%
         ggplot2::ggplot(ggplot2::aes(!!x_axis_var_expr, !!y_axis_var_expr, group = !!grouping_var_expr)) +
-        ggplot2::geom_line(ggplot2::aes(color = !!color_var_expr), alpha = alpha, size = size)
+        ggplot2::geom_path(ggplot2::aes(color = !!color_var_expr), alpha = alpha, size = size)
 
       if (plot_max_values) {
         plot <- plot +

@@ -9,10 +9,10 @@ draw_small_multiples_line_plot(
   x_axis_var,
   y_axis_var,
   grouping_var,
+  color_var,
   faceting_var_1,
   faceting_var_2,
   plot_max_values = FALSE,
-  lowest_highest_units,
   unique_color_by_group = FALSE,
   size = 0.7,
   alpha = 0.4,
@@ -26,13 +26,15 @@ draw_small_multiples_line_plot(
 )
 }
 \arguments{
-\item{data}{input dataset to be plotted (required)}
+\item{data}{Input dataset to be plotted (required)}
 
-\item{x_axis_var}{variable to be plotted on x axis (required)}
+\item{x_axis_var}{Variable to be plotted on x axis (required)}
 
-\item{y_axis_var}{variable to be plotted on x axis (required)}
+\item{y_axis_var}{Variable to be plotted on x axis (required)}
 
-\item{grouping_var}{set grouping variable (required)}
+\item{grouping_var}{Set grouping variable (required)}
+
+\item{color_var}{Set variable to color by (optional)}
 
 \item{faceting_var_1}{Set first faceting variable (optional)}
 
@@ -40,9 +42,7 @@ draw_small_multiples_line_plot(
 
 \item{plot_max_values}{Highlights maximum values per group. By default, it is set to FALSE (optional)}
 
-\item{lowest_highest_units}{takes a vector of strings corresponding to the lowest/highest units to be highlighted (optional)}
-
-\item{unique_color_by_group}{set whether to display each group in a unique color. By default, it is set to FALSE (optional)}
+\item{unique_color_by_group}{Set whether to display each group in a unique color. By default, it is set to FALSE (optional)}
 
 \item{size}{Set line size. By default, it is set to 0.7  (optional)}
 
