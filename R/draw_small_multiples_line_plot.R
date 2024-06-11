@@ -129,13 +129,17 @@ draw_small_multiples_line_plot <- function(data, x_axis_var, y_axis_var, groupin
 
   # 3.1 Faceting ----
   if (!missing(faceting_var_1) & missing(faceting_var_2)) {
-    plot <- plot + ggplot2::facet_grid(ggplot2::vars(!!faceting_var_1_expr))
+    plot <- plot + ggplot2::facet_grid(rows = ggplot2::vars(!!faceting_var_1_expr))
   }
 
 
   if (!missing(faceting_var_1) & !missing(faceting_var_2)) {
     plot <- plot + ggplot2::facet_grid(rows = ggplot2::vars(!!faceting_var_1_expr),
                                        cols = ggplot2::vars(!!faceting_var_2_expr))
+  }
+
+  if (missing(faceting_var_1) & !missing(faceting_var_2)) {
+    plot <- plot + ggplot2::facet_grid(cols = ggplot2::vars(!!faceting_var_2_expr))
   }
 
 
