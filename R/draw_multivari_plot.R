@@ -9,6 +9,7 @@
 #' @param grouping_var_2 Select column for second level grouping variable (required)
 #' @param grouping_var_3 Select column for third level grouping variable (optional)
 #' @param grouping_var_4 Select column for fourth level grouping variable (optional)
+#' @param unnest_grouping_var_2 Unnest second level grouping variable. Useful when characterizing shape/geometry (optional)
 #' @param data_point_label Select column to label data points (optional)
 #' @param plot_means Logical. if FALSE, default, means for mid-level factor are not plotted (optional)
 #' @param point_size Set point size. By default, it is set to 2.5  (optional)
@@ -38,8 +39,8 @@
 #' @export
 
 
-draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3, grouping_var_4, data_point_label = NULL,
-                                plot_means = FALSE, x_axis_text_size = 11, panel_text_size = 14, point_size = 2.5,
+draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3, grouping_var_4, unnest_grouping_var_2 = FALSE,
+                                data_point_label = NULL, plot_means = FALSE, x_axis_text_size = 11, panel_text_size = 14, point_size = 2.5,
                                 line_size = 0.7, alpha = 0.6) {
 
   # 1. Tidy Eval ----
@@ -57,7 +58,7 @@ draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, gro
       panel.grid.minor  = ggplot2::element_blank(),
       panel.spacing     = ggplot2::unit(0, "lines"),
       panel.border      = ggh4x::element_part_rect(color = "grey95", linewidth = 0.2),
-      strip.background  = ggplot2::element_rect(fill = "white", color = "grey70", size = 0.5),
+      strip.background  = ggplot2::element_rect(fill = "white", color = "grey70", linewidth = 0.5),
       strip.text        = ggplot2::element_text(size = panel_text_size, color = "grey50"),
       plot.title        = ggplot2::element_text(size = 20, color = "grey50"),
       plot.subtitle     = ggplot2::element_text(size = 14, color = "grey70"),
@@ -89,6 +90,7 @@ draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, gro
     # Mean tbl for plotting averages ----
     mean_tbl <- data %>%
       dplyr::mutate(!!(factor_2_expr) := forcats::as_factor(!!factor_2_expr)) %>%
+      dplyr::mutate(!!(factor_1_expr) := forcats::as_factor(!!factor_1_expr)) %>%
       dplyr::group_by(!!factor_2_expr, !!factor_1_expr) %>%
       dplyr::summarize(mean = mean(!!response_expr)) %>%
       dplyr::ungroup()
@@ -104,7 +106,7 @@ draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, gro
     multi_vari_chart <- multi_vari_tbl %>%
 
       ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr, color = !!factor_2_expr)) +
-      ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_2_expr)) +
+      # ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_2_expr)) +
       ggplot2::guides(y.sec = "axis") +
       theme_element +
       ggplot2::labs(
@@ -119,11 +121,21 @@ draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, gro
         ggplot2::geom_point(color = "grey30", size = 1.5, alpha = 0.4) +
         ggplot2::geom_point(data = mean_tbl, ggplot2::aes(!!factor_1_expr, mean), color = "#40506e", size = 3, alpha = 0.7) +
         ggplot2::geom_line(data = mean_tbl, ggplot2::aes(!!factor_1_expr, mean, group = 1), color = "#40506e", alpha = 0.7) +
+        ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_2_expr)) +
         ggplot2::labs(caption  = stringr::str_glue("Blue data points represent averages for grouping variable {as_label(factor_1_expr)}"))
     } else {
       multi_vari_chart <- multi_vari_chart +
         ggplot2::geom_point(size = point_size, alpha = alpha) +
         ggplot2::geom_line(ggplot2::aes(group = !!factor_2_expr), linewidth = line_size, alpha = alpha)
+      #ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_2_expr))
+
+      if (unnest_grouping_var_2) {
+        multi_vari_chart <- multi_vari_chart
+      } else {
+        multi_vari_chart <- multi_vari_chart +
+          ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_2_expr))
+      }
+
 
       if (!missing(data_point_label)) {
         multi_vari_chart <- multi_vari_chart +
@@ -182,11 +194,23 @@ draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, gro
 
       multi_vari_chart <- multi_vari_tbl %>%
 
-        ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr, color = !!factor_2_expr)) +
+        ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr, color = !!factor_2_expr, group = !!factor_2_expr)) +
         ggplot2::geom_point(size = point_size, alpha = alpha) +
-        ggplot2::geom_line(linewidth = line_size, group = 1, alpha = alpha) +
+        ggplot2::geom_line(linewidth = line_size, alpha = alpha)
 
-        ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_3_expr, !!factor_2_expr)) +
+
+      if (unnest_grouping_var_2) {
+        multi_vari_chart <- multi_vari_chart +
+          ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_3_expr))
+
+      } else {
+        multi_vari_chart <- multi_vari_chart +
+          ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_3_expr,
+                                                                           !!factor_2_expr))
+      }
+
+      multi_vari_chart <- multi_vari_chart +
+
         ggplot2::guides(y.sec = "axis") +
 
         theme_element +
@@ -258,13 +282,23 @@ draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, gro
 
       multi_vari_chart <- multi_vari_tbl %>%
 
-        ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr, color = !!factor_2_expr)) +
+        ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr, color = !!factor_2_expr, group = !!factor_2_expr)) +
         ggplot2::geom_point(size = point_size, alpha = alpha) +
-        ggplot2::geom_line(linewidth = line_size, group = 1, alpha = alpha) +
+        ggplot2::geom_line(linewidth = line_size, alpha = alpha)
 
-        ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_4_expr,
-                                                                         !!factor_3_expr,
-                                                                         !!factor_2_expr)) +
+      if (unnest_grouping_var_2) {
+        multi_vari_chart <- multi_vari_chart +
+          ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_4_expr,
+                                                                           !!factor_3_expr,))
+      } else {
+        multi_vari_chart <- multi_vari_chart +
+          ggh4x::facet_nested(rows = ggplot2::vars(), cols = ggplot2::vars(!!factor_4_expr,
+                                                                           !!factor_3_expr,
+                                                                           !!factor_2_expr))
+      }
+
+      multi_vari_chart <- multi_vari_chart +
+
         ggplot2::guides(y.sec = "axis") +
 
         theme_element +
