@@ -328,7 +328,7 @@ draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, gro
 
   if (unnest_grouping_var_2) {
     multi_vari_chart <- multi_vari_chart +
-      theme(legend.position = "right",
+      ggplot2::theme(legend.position = "right",
             legend.title    = ggplot2::element_text(size = 14, color = "grey70"),
             legend.text     = ggplot2::element_text(size = 14, color = "grey70"))
   }
