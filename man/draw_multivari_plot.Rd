@@ -11,6 +11,7 @@ draw_multivari_plot(
   grouping_var_2,
   grouping_var_3,
   grouping_var_4,
+  unnest_grouping_var_2 = FALSE,
   data_point_label = NULL,
   plot_means = FALSE,
   x_axis_text_size = 11,
@@ -32,6 +33,8 @@ draw_multivari_plot(
 \item{grouping_var_3}{Select column for third level grouping variable (optional)}
 
 \item{grouping_var_4}{Select column for fourth level grouping variable (optional)}
+
+\item{unnest_grouping_var_2}{Unnest second level grouping variable. Useful when characterizing shape/geometry (optional)}
 
 \item{data_point_label}{Select column to label data points (optional)}
 

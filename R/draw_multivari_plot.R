@@ -326,6 +326,12 @@ draw_multivari_plot <- function(data, y_var, grouping_var_1, grouping_var_2, gro
   }
 
 
+  if (unnest_grouping_var_2) {
+    multi_vari_chart <- multi_vari_chart +
+      theme(legend.position = "right",
+            legend.title    = element_text(size = 14, color = "grey70"),
+            legend.text     = element_text(size = 14, color = "grey70"))
+  }
 
 
   # 5. Scale color ----
