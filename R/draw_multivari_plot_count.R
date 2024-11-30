@@ -27,7 +27,7 @@ draw_multivari_plot_count <- function(data, y_var, grouping_var_1, grouping_var_
   factor_4_expr   <- rlang::enquo(grouping_var_4)
 
   # 2. Theme element ----
-  theme_element <- ggplot2::theme_light() +
+  theme_element_2 <- ggplot2::theme_light() +
     ggplot2::theme(
       panel.grid.major  = ggplot2::element_blank(),
       panel.grid.minor  = ggplot2::element_blank(),
@@ -63,13 +63,13 @@ draw_multivari_plot_count <- function(data, y_var, grouping_var_1, grouping_var_
   if (missing(grouping_var_3)) {
 
     # Multi-vari tbl ----
-    multi_vari_tbl <- data %>%
+    multi_vari_tbl_2 <- data %>%
       dplyr::mutate(!!(factor_2_expr) := forcats::as_factor(!!factor_2_expr)) %>%
       dplyr::mutate(!!(factor_1_expr) := forcats::as_factor(!!factor_1_expr))
 
 
     # Plotting function ----
-    multi_vari_chart <- multi_vari_tbl %>%
+    multi_vari_chart <- multi_vari_tbl_2 %>%
 
       ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr)) +
       ggplot2::geom_col(alpha = alpha, fill = sherlock::scale_fill_sherlock(palette = 3)) +
@@ -90,13 +90,13 @@ draw_multivari_plot_count <- function(data, y_var, grouping_var_1, grouping_var_
   if (!missing(grouping_var_3) & missing(grouping_var_4)) {
 
     # Multi-vari tbl ----
-    multi_vari_tbl <- data %>%
+    multi_vari_tbl_2 <- data %>%
       dplyr::mutate(!!(factor_3_expr) := forcats::as_factor(!!factor_3_expr)) %>%
       dplyr::mutate(!!(factor_2_expr) := forcats::as_factor(!!factor_2_expr)) %>%
       dplyr::mutate(!!(factor_1_expr) := forcats::as_factor(!!factor_1_expr))
 
     # Plotting function ----
-    multi_vari_chart <- multi_vari_tbl %>%
+    multi_vari_chart <- multi_vari_tbl_2 %>%
 
       ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr)) +
       ggplot2::geom_col(alpha = alpha, fill = sherlock::scale_fill_sherlock(palette = 3)) +
@@ -106,7 +106,7 @@ draw_multivari_plot_count <- function(data, y_var, grouping_var_1, grouping_var_
                           space = "free_x") +
       ggplot2::guides(y.sec = "axis") +
 
-      theme_element +
+      theme_element_2 +
       ggplot2::labs(
         title    = "Multivari Plot",
         subtitle = stringr::str_glue("{as_label(factor_1_expr)} by {as_label(factor_2_expr)} by {as_label(factor_3_expr)}"),
@@ -120,14 +120,14 @@ draw_multivari_plot_count <- function(data, y_var, grouping_var_1, grouping_var_
   if (!missing(grouping_var_3) & !missing(grouping_var_4)) {
 
     # Multi-vari tbl ----
-    multi_vari_tbl <- data %>%
+    multi_vari_tbl_2 <- data %>%
       dplyr::mutate(!!(factor_4_expr) := forcats::as_factor(!!factor_4_expr)) %>%
       dplyr::mutate(!!(factor_3_expr) := forcats::as_factor(!!factor_3_expr)) %>%
       dplyr::mutate(!!(factor_2_expr) := forcats::as_factor(!!factor_2_expr)) %>%
       dplyr::mutate(!!(factor_1_expr) := forcats::as_factor(!!factor_1_expr))
 
     # Plotting function ----
-    multi_vari_chart <- multi_vari_tbl %>%
+    multi_vari_chart <- multi_vari_tbl_2 %>%
 
       ggplot2::ggplot(ggplot2::aes(!!factor_1_expr, !!response_expr)) +
       ggplot2::geom_col(alpha = alpha, fill = sherlock::scale_fill_sherlock(palette = 3)) +
@@ -139,7 +139,7 @@ draw_multivari_plot_count <- function(data, y_var, grouping_var_1, grouping_var_
                           space = "free_x") +
       ggplot2::guides(y.sec = "axis") +
 
-      theme_element +
+      theme_element_2 +
       ggplot2::labs(
         title    = "Multivari Plot",
         subtitle = stringr::str_glue("{as_label(factor_1_expr)} by {as_label(factor_2_expr)} by {as_label(factor_3_expr)} by {as_label(factor_4_expr)}"),
