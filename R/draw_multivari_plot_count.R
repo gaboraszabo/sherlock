@@ -14,6 +14,8 @@
 #' @param panel_text_size Set panel text size. By default, it is set to 14 (optional)
 #'
 #' @return A 'ggplot' object
+#'
+#' @export
 
 
 draw_multivari_plot_count <- function(data, y_var, grouping_var_1, grouping_var_2, grouping_var_3, grouping_var_4,
